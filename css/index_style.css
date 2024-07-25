@@ -22,7 +22,7 @@ html {
 .sez-immagine-bg {
     width: 100vw;
     height: 100vh;
-    background-image: url(/img/peak_background.svg);
+    background-image: url(../img/peak_background.svg);
     background-size: cover;
     /* Adatta l'immagine per coprire l'intera sezione */
     background-position: center;
