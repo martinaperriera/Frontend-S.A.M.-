@@ -1,0 +1,116 @@
+/* bg homepage */
+body,
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+
+    width: 100vw;
+    /* Larghezza totale della finestra del browser */
+    height: 100vh;
+    /* Altezza totale della finestra del browser */
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    /* Aggiungi questo */
+    padding: 0;
+    /* Aggiungi questo */
+}
+
+.sez-immagine-bg {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/img/peak_background.svg);
+    background-size: cover;
+    /* Adatta l'immagine per coprire l'intera sezione */
+    background-position: center;
+    /* Centra l'immagine */
+    background-attachment: fixed;
+    /* Mantiene l'immagine fissa durante lo scroll */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/*
+.typewriter h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 20px;
+} */
+
+.typewriter h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-bottom: 20px;
+    background: linear-gradient(147deg, #42d392, #647eff, #a627ed); /* gradiente come bg*/
+    -webkit-background-clip: text; /* gradiente applicato solo al testo e non all'intero elemento. */
+    -webkit-text-fill-color: transparent; /* colore del testo trasparente in modo che il gradiente diventi visibile */
+    background-clip: text;
+}
+
+ /* gestisce l'effetto di scrittura del testo */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Simula il cursore lampeggiante */
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: orange; }
+}
+
+.bottoni-szn {
+    display: flex;
+    gap: 20px;
+}
+
+.button-home,
+.button-home2 {
+    border-radius: 20px;
+    background-color: blue;
+    padding: 15px;
+    margin-top: 10px;
+    color: white;
+    border: none;
+    width: 150px;
+}
+
+.offcanvas {
+    background-color: #332f2f;
+    color: #66c649;
+}
+
+.offcanvas2 {
+    background-color: #332f2f;
+    color: #66c649;
+}
+
+.gif-overlay {
+    position: sticky;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    /* Imposta la larghezza desiderata della GIF */
+    height: auto;
+    /* Mantiene le proporzioni */
+    z-index: 10;
+}
+
+.gif-overlay img {
+    width: 100%;
+    /* Adatta la GIF alla dimensione del contenitore */
+    height: auto;
+    /* Mantiene le proporzioni */
+}
+
+

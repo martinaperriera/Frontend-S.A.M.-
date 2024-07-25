@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.A.M.</title>
+    <!-- mini icona pagina web -->
+    <link rel="icon" href="XXXXXXX" type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index_style.css">
+
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+
+
+    <!-- inizio pagina benvenuto / accesso -->
+    <main class="container">
+        <div class="sez-immagine-bg">
+
+            <div class="gif-overlay">
+                <img src="img/s.a.m..svg" alt="Animated GIF">
+            </div>
+
+            <div class="typewriter">
+                <h1 id="typewriterText"></h1>
+            </div>
+            <div class="bottoni-szn mt-4">
+                <button type="button" class="button-home btn-primary rounded-pill" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvas" aria-controls="offcanvas">Login</button>
+                <button type="button" class="button-home2 btn-primary rounded-pill" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvas2" aria-controls="offcanvas2">Registrati</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- offcanvas per login/accesso -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasLabel">Accesso</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Accedi</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- offcanvas x registrazione -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas2" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasLabel">Registrati</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas2" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="name" placeholder="Inserisci il tuo nome">
+                </div>
+                <div class="mb-3">
+                    <label for="surname" class="form-label">Cognome</label>
+                    <input type="text" class="form-control" id="surname" placeholder="Inserisci il tuo cognome">
+                </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">Ruolo</label>
+                    <select class="form-control" id="role" name="role">
+                        <option value="" disabled selected>Seleziona un ruolo</option>
+                        <option value="manager">Manager</option>
+                        <option value="consulente">Consulente</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Inserisci l'username che vuoi usare">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Inserisci la password">
+                </div>
+                <button type="submit" class="btn btn-primary">Registrati</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- inserisci footer qui -->
+    <footer>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        //typewriter
+        document.addEventListener('DOMContentLoaded', () => {
+            const txt = 'smart advice management';
+            const speed = 100;
+            let i = 0;
+
+            function typeWriter() {
+                if (i < txt.length) {
+                    document.getElementById("typewriterText").innerHTML += txt.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                }
+            }
+
+            typeWriter();
+        });
+    </script>
+</body>
+
+</html>
