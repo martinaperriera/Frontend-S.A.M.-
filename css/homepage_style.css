@@ -1,6 +1,7 @@
-@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
 
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+
 .fa-2x {
 font-size: 2em;
 }
@@ -127,7 +128,6 @@ background-color:#000000;
 
 
 
-
 /* Imposta le dimensioni dell'avatar quando la sidebar è chiusa */
 .main-menu {
     background: #332f2f;
@@ -147,19 +147,20 @@ background-color:#000000;
     width: 250px; /* Larghezza della sidebar aperta */
 }
 
-/* Dimensioni dell'avatar quando la sidebar è chiusa */
+/* Imposta le dimensioni dell'avatar quando la sidebar è chiusa */
 .avatar img {
     width: 30px; /* Dimensione dell'avatar quando la sidebar è chiusa */
-    border-radius: 80%;
+    height: 30px; /* Altezza uguale alla larghezza per mantenere la forma rotonda */
+    border-radius: 50%; /* Imposta il bordo arrotondato al 50% per ottenere una forma rotonda */
     overflow: hidden;
-    border: 2px solid;
-    border-color: grey;
-    transition: width 0.3s ease; /* Transizione per l'animazione */
+    border: 2px solid grey;
+    transition: width 0.3s ease, height 0.3s ease; /* Transizione per l'animazione */
 }
 
 /* Dimensioni dell'avatar quando la sidebar è aperta */
 .main-menu:hover .avatar img {
     width: 100px; /* Dimensione dell'avatar quando la sidebar è aperta */
+    height: 100px; /* Altezza uguale alla larghezza per mantenere la forma rotonda */
 }
 
 .avatar {
@@ -170,3 +171,14 @@ background-color:#000000;
     padding-right: 10px;
 }
 
+#benvenuto {
+
+    text-align: center;
+    justify-content: center;
+    font-size: 35px;
+    
+}
+
+.footer-text {
+    color:white !important;
+}
