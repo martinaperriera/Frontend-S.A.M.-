@@ -9,45 +9,44 @@
     <link rel="icon" href="XXXXXXX" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/homepage_style.css">
+    <link rel="stylesheet" href="css/planner.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
-    <body style="background-image: url(img/bghpm.jpeg);">
-
+    <body style="background-image: url(img/bghpc.jpeg);">
     <nav class="main-menu">
         <header class="avatar">
             <img src="img/bg_home.jpg" alt="Avatar" />
         </header>
-        <ul> 
+        <ul>
             <li>
-                <a href="hp_manager.html">
+                <a href="hp_consulente.html">
                     <i class="fa fa-home"></i>
                     <span class="nav-text">
-                        Pagina Manager
+                        Pagina Consulente
                     </span>
                 </a>
+              
             </li>
-
             <li class="has-subnav">
-                <a href="manager_project.html">
+                <a href="#">
                     <i class="fa fa-globe"></i>
                     <span class="nav-text">
                         I miei progetti <!-- card con progetti attuali (rimanda alle task) / passati -->
                     </span>
                 </a>
+                
             </li>
-
             <li class="has-subnav">
-                <a href="manager_task.html">
+                <a href="#">
                     <i class="fa fa-book"></i>
                     <span class="nav-text">
-                       Assegna task 
+                        Le mie task <!-- stato di avanzamento -->
                     </span>
                 </a>
                 
             </li>
-
             <li class="has-subnav">
                 <a href="#">
                     <i class="fa fa-comments"></i>
@@ -58,7 +57,6 @@
                 </a>
                
             </li>
-
             <li>
                 <a href="#">
                     <i class="fa fa-film"></i>
@@ -67,25 +65,15 @@
                     </span>
                 </a>
             </li>
-
-            <li>
-                <a href="#">
-                    <i class="fa fa-bars"></i>
-                    <span class="nav-text">
-                    Reportistica
-                    </span>
-                </a>
-            </li>
             
             <li>
-               <a href="manager_planner.html">
+               <a href="consulente_planner.html">
                    <i class="fa fa-cogs"></i>
                     <span class="nav-text">
                         Planner
                     </span>
                 </a>
             </li>
-
             <li>
                <a href="#">
                     <i class="fa fa-map-marker"></i>
@@ -94,7 +82,6 @@
                     </span>
                 </a>
             </li>
-
             <li>
                 <a href="#">
                     <i class="fa fa-user"></i>  
@@ -126,110 +113,90 @@
         </ul>
     </nav>
 
+
     <div class="contenitore">
-        <h1 class="ms-5 mt-5 mb-5" id="benvenuto">Crea un nuovo progetto</h1>
+        <h3 class="ms-5 mt-5 mb-5" id="benvenuto">Il tuo planner</h3>
     </div>
   
-    <h1>I tuoi progetti</h1>
-    <table id="destinazioni-table">
-        <thead>
-            <tr>
-                <th>Titolo</th>
-                <th>Descrizione</th>
-                <th>Consulenti</th>
-                <th>Azioni</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Contenuto dinamico -->
-        </tbody>
-    </table>
+       <!-- Main wrapper for the calendar application -->
+       <div class="wrapper">
+        <div class="container-calendar">
+            <div id="left">
+                <h1>Calendario</h1>
+                <div id="event-section">
+                    <h3>Aggiungi Evento</h3>
+                    <input type="date" id="eventDate">
+                    <input type="text"
+                        id="eventTitle"
+                        placeholder="Titolo Evento">
+                    <input type="text"
+                        id="eventDescription"
+                        placeholder="Descrizione Evento">
+                    <button id="addEvent" onclick="addEvent()">
+                        Aggiungi
+                    </button>
+                </div>
+                <div id="reminder-section">
+                    <h3>Promemoria del mese </h3>
+                    <!-- List to display reminders -->
+                    <ul id="reminderList">
+                        <li data-event-id="1">
+                            <strong>Titolo Evento</strong>
+                            - Descrizione Evento on Data Evento
+                            <button class="delete-event"
+                                onclick="deleteEvent(1)">
+                                Cancella
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="right">
+                <h3 id="monthAndYear"></h3>
+                <div class="button-container-calendar">
+                    <button id="previous"
+                            onclick="previous()">
+                          ‹
+                      </button>
+                    <button id="next"
+                            onclick="next()">
+                          ›
+                      </button>
+                </div>
+                <table class="table-calendar"
+                       id="calendar"
+                       data-lang="en">
+                    <thead id="thead-month"></thead>
+                    <!-- Table body for displaying the calendar -->
+                    <tbody id="calendar-body"></tbody>
+                </table>
+                <div class="footer-container-calendar">
+                    <label for="month">Vai a: </label>
+                    <!-- Dropdowns to select a specific month and year -->
+                    <select id="month" onchange="jump()">
+                        <option value=0>Gen</option>
+                        <option value=1>Feb</option>
+                        <option value=2>Mar</option>
+                        <option value=3>Apr</option>
+                        <option value=4>Mag</option>
+                        <option value=5>Giu</option>
+                        <option value=6>Lug</option>
+                        <option value=7>Ago</option>
+                        <option value=8>Set</option>
+                        <option value=9>Ott</option>
+                        <option value=10>Nov</option>
+                        <option value=11>Dec</option>
+                    </select>
+                    <!-- Dropdown to select a specific year -->
+                    <select id="year" onchange="jump()"></select>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h2>Aggiungi/Modifica Progetto</h2>
-    <form id="progetto-form">
-        <input type="hidden" id="progetto-id">
-        <label for="nomeProgetto">Titolo:</label>
-        <input type="text" id="nomeProgetto" name="nomeProgetto"><br>
-        <label for="descrizione">Descrizione:</label>
-        <input type="text" id="descrizione" name="descrizione"><br>
-        <label for="consulenti">Consulenti:</label>
-        <input type="text" id="consulenti" name="consulenti"><br>
+  
 
-        <button type="submit">Salva</button>
-    </form>
-
-
-      <style>
-        /* Titoli */
-        h1, h2 {
-            color: #000000;
-            text-align: center;
-        }
-        
-        /* Stile della tabella */
-        #destinazioni-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        
-        #destinazioni-table thead {
-            background-color: #2bcb1cb0;
-            color: white;
-        }
-        
-        #destinazioni-table th, #destinazioni-table td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #dddddd;
-        }
-        
-        #destinazioni-table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        
-    
-        /* Stile del form */
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            max-width: 500px;
-            margin: 20px auto;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        
-        form input[type="text"],
-        form input[type="number"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        
-        form button {
-            background-color: rgb(58, 186, 41);
-            color: rgb(0, 0, 0);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        form button:hover {
-            background-color: #257709bd;
-        }
-        </style>
-
-      <!-- footer -->
+<!-- footer -->
 <div class="container">
     <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top" style="background-color: transparent;">
         <div class="col-md-4 d-flex align-items-center">
@@ -243,8 +210,8 @@
     </footer>
 
 
-<script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/planner.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
-
 
 </html>

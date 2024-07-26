@@ -9,6 +9,7 @@
     <link rel="icon" href="XXXXXXX" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/homepage_style.css">
+    <link rel="stylesheet" href="css/task.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
@@ -127,109 +128,60 @@
     </nav>
 
     <div class="contenitore">
-        <h1 class="ms-5 mt-5 mb-5" id="benvenuto">Crea un nuovo progetto</h1>
+        <h1 class="ms-5 mt-5 mb-5" id="benvenuto">Assegna nuove task</h1>
     </div>
   
-    <h1>I tuoi progetti</h1>
-    <table id="destinazioni-table">
-        <thead>
-            <tr>
-                <th>Titolo</th>
-                <th>Descrizione</th>
-                <th>Consulenti</th>
-                <th>Azioni</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Contenuto dinamico -->
-        </tbody>
-    </table>
+   <!-- to do list -->
+   <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-md-6">
+    <div class="card-hover-shadow-2x mb-3 card todo-container">
+        <div class="card-header-tab card-header">
+            <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                <i class="fa fa-check fa-2x"></i>&nbsp;Task List
+            </div>
+        </div>
+        <div class="scroll-area-sm">
+            <perfect-scrollbar class="ps-show-limits">
+                <div style="position: static;" class="ps ps--active-y">
+                    <div class="ps-content">
+                        <ul class="list-group list-group-flush" id="task-list">
+                            <!-- task dinamiche qui -->
+                        </ul>
+                    </div>
+                </div>
+            </perfect-scrollbar>
+        </div>
+        <div class="d-block text-right card-footer">
+            <button class="btn btn-primary" onclick="showAddTaskModal()">Aggiungi Task</button>
+        </div>
+    </div>
+</div>
+<!-- aggiunta Task Modal -->
+<div class="modal" id="addTaskModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAddTaskModal()">&times;</span>
+        <h2>Add Task</h2>
+        <form id="addTaskForm">
+            <label for="taskName">Nome Task:</label>
+            <input type="text" id="taskName" name="taskName" required>
+            
+            <label for="taskDescription">Descrizione:</label>
+            <input type="text" id="taskDescription" name="taskDescription">
+            
+            <label for="taskPriority">Priorità:</label>
+            <select id="taskPriority" name="taskPriority">
+                <option value="bg-warning">Alta</option>
+                <option value="bg-focus">Media</option>
+                <option value="bg-info">Bassa</option>
+            </select>
+            
+            <button type="submit">Aggiungi Task</button>
+        </form>
+    </div>
+</div>
+</div>
 
-    <h2>Aggiungi/Modifica Progetto</h2>
-    <form id="progetto-form">
-        <input type="hidden" id="progetto-id">
-        <label for="nomeProgetto">Titolo:</label>
-        <input type="text" id="nomeProgetto" name="nomeProgetto"><br>
-        <label for="descrizione">Descrizione:</label>
-        <input type="text" id="descrizione" name="descrizione"><br>
-        <label for="consulenti">Consulenti:</label>
-        <input type="text" id="consulenti" name="consulenti"><br>
-
-        <button type="submit">Salva</button>
-    </form>
-
-
-      <style>
-        /* Titoli */
-        h1, h2 {
-            color: #000000;
-            text-align: center;
-        }
-        
-        /* Stile della tabella */
-        #destinazioni-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        
-        #destinazioni-table thead {
-            background-color: #2bcb1cb0;
-            color: white;
-        }
-        
-        #destinazioni-table th, #destinazioni-table td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #dddddd;
-        }
-        
-        #destinazioni-table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        
-    
-        /* Stile del form */
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            max-width: 500px;
-            margin: 20px auto;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        
-        form input[type="text"],
-        form input[type="number"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        
-        form button {
-            background-color: rgb(58, 186, 41);
-            color: rgb(0, 0, 0);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        form button:hover {
-            background-color: #257709bd;
-        }
-        </style>
-
-      <!-- footer -->
+<!-- footer -->
 <div class="container">
     <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top" style="background-color: transparent;">
         <div class="col-md-4 d-flex align-items-center">
@@ -244,7 +196,7 @@
 
 
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/task.js"></script>
+
 </body>
-
-
 </html>
