@@ -48,7 +48,8 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password">
                 </div>
-                <button type="submit" class="btn btn-primary">Accedi</button>
+                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
+                    type="button" role="tab" aria-controls="login" aria-selected="true">Accedi</button>
             </form>
         </div>
     </div>
@@ -85,30 +86,14 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" placeholder="Inserisci la password">
                 </div>
-                <button type="submit" class="btn btn-primary">Registrati</button>
+                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button"
+                    role="tab" aria-controls="register" aria-selected="false">Registrati</button>
             </form>
         </div>
     </div>
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script>
-        //typewriter
-        document.addEventListener('DOMContentLoaded', () => {
-            const txt = 'smart advice management';
-            const speed = 100;
-            let i = 0;
-
-            function typeWriter() {
-                if (i < txt.length) {
-                    document.getElementById("typewriterText").innerHTML += txt.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, speed);
-                }
-            }
-
-            typeWriter();
-        });
-    </script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

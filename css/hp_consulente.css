@@ -116,12 +116,12 @@
 
 /* Contenitore principale */
 .container {
-    margin-left: 60px; /* Margine sinistro per fare spazio alla sidebar chiusa */
+    margin-left: 80px; /* Aggiusta il margine sinistro per fare spazio alla sidebar chiusa */
     transition: margin-left 0.3s ease;
 }
 
 .main-menu:hover ~ .container {
-    margin-left: 250px; /* Margine sinistro per fare spazio alla sidebar aperta */
+    margin-left: 260px; /* Aggiusta il margine sinistro per fare spazio alla sidebar aperta */
 }
 
 /* Testo di benvenuto */
