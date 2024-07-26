@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.A.M.</title>
     <!-- mini icona pagina web -->
-    <link rel="icon" href="XXXXXXX" type="image/x-icon" />
+    <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index_style.css">
 </head>
@@ -26,7 +26,7 @@
             <div class="bottoni-szn mt-4">
                 <button type="button" class="button-home btn-primary rounded-pill" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvas" aria-controls="offcanvas">Login</button>
-                <button type="button" class="button-home2 btn-primary rounded-pill" data-bs-toggle="offcanvas"
+                <button type="button" class="button-home btn-primary rounded-pill" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvas2" aria-controls="offcanvas2">Registrati</button>
             </div>
         </div>
@@ -42,13 +42,13 @@
             <form>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="email">
+                    <input type="text" class="form-control" id="email" placeholder="Inserisci la tua email">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control" id="password" placeholder="Inserisci la tua password">
                 </div>
-                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
+                <button class="nav-link button-home active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
                     type="button" role="tab" aria-controls="login" aria-selected="true">Accedi</button>
             </form>
         </div>
@@ -58,7 +58,7 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas2" aria-labelledby="offcanvasLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasLabel">Registrati</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas2" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <form>
@@ -86,7 +86,7 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" placeholder="Inserisci la password">
                 </div>
-                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button"
+                <button class="nav-link button-home" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button"
                     role="tab" aria-controls="register" aria-selected="false">Registrati</button>
             </form>
         </div>

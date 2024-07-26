@@ -64,8 +64,7 @@ html {
     gap: 20px;
 }
 
-.button-home,
-.button-home2 {
+.button-home {
     border-radius: 20px;
     background-color: blue;
     padding: 15px;
