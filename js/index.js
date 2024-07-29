@@ -1,19 +1,58 @@
-//typewriter
-document.addEventListener('DOMContentLoaded', () => {
-    const txt = 'smart advice management';
-    const speed = 100;
-    let i = 0;
+/*typewriter*/
+const staticText = "smart management system:";
+const dynamicWords = ["innovativo", "affidabile", "intuitivo"];
+const typingSpeed = 100;
+const pauseTime = 1000;
+let staticIndex = 0;
+let dynamicIndex = 0;
+let letterIndex = 0;
+let isDeleting = false;
 
-    function typeWriter() {
-        if (i < txt.length) {
-            document.getElementById("typewriterText").innerHTML += txt.charAt(i);
-            i++;
-            setTimeout(typeWriter, speed);
+const staticTextElement = document.getElementById("staticText");
+const dynamicTextElement = document.getElementById("dynamicText");
+const caretElement = document.querySelector(".caret");
+
+// Inizializza dynamicTextElement con una stringa vuota
+dynamicTextElement.textContent = "";
+
+function typeStaticText() {
+    if (staticIndex < staticText.length) {
+        staticTextElement.textContent += staticText.charAt(staticIndex);
+        staticIndex++;
+        setTimeout(typeStaticText, typingSpeed);
+    } else {
+        setTimeout(typeDynamicText, pauseTime); // Attendi una pausa prima di iniziare a digitare il testo dinamico
+    }
+}
+
+function typeDynamicText() {
+    const currentWord = dynamicWords[dynamicIndex];
+    if (!isDeleting) {
+        dynamicTextElement.textContent = currentWord.slice(0, letterIndex);
+        letterIndex++;
+        if (letterIndex > currentWord.length) {
+            isDeleting = true;
+            setTimeout(typeDynamicText, pauseTime);
+            return;
+        }
+    } else {
+        dynamicTextElement.textContent = currentWord.slice(0, letterIndex);
+        letterIndex--;
+        if (letterIndex < 0) {
+            isDeleting = false;
+            dynamicIndex = (dynamicIndex + 1) % dynamicWords.length;
+            letterIndex = 0; // Reimposta l'indice delle lettere per la nuova parola
+            setTimeout(typeDynamicText, typingSpeed);
+            return;
         }
     }
+    setTimeout(typeDynamicText, typingSpeed);
+}
 
-    typeWriter();
+document.addEventListener("DOMContentLoaded", () => {
+    typeStaticText();
 });
+
 
 //login
 document.addEventListener('DOMContentLoaded', function() {

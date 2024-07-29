@@ -8,8 +8,8 @@
     <!-- mini icona pagina web -->
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/homepage_style.css">
     <link rel="stylesheet" href="css/hp_consulente.css">
-    <link rel="stylesheet" href="css/planner.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
@@ -113,90 +113,73 @@
         </ul>
     </nav>
 
-
-    <div class="container">
-        <h3 class="ms-5 mt-5 mb-5" id="benvenuto">Il tuo planner</h3>
+    <div class="container mt-5">
+        <h1 class="ms-5 mb-5" id="benvenuto">I miei progetti</h1>
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="ag-format-container">
+                    <div class="ag-courses_box justify-content-center">
+                        <div class="ag-courses_item active">
+                            <div class="ag-courses-item_link" onclick="toggleDetails(event, 'details1')">
+                                <div class="ag-courses-item_bg"></div>
+                                <div class="ag-courses-item_title">
+                                    Progetto attuale
+                                </div>
+                                <div class="ag-courses-item_date-box">
+                                    start - deadline:
+                                    <span class="ag-courses-item_date">
+                                        26.07.2024 - 02.09.2024
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="ag-courses-item_details" id="details1">
+                                <p>Dettagli del progetto: <br>
+                                    Obiettivi: raggiungimento pubblico più ampio <br>
+                                    Modalità utilizzate: remote work
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     
-  
-       <!-- Main wrapper for the calendar application -->
-       <div class="wrapper">
-        <div class="container-calendar">
-            <div id="left">
-                <h1>Calendario</h1>
-                <div id="event-section">
-                    <h3>Aggiungi Evento</h3>
-                    <input type="date" id="eventDate">
-                    <input type="text"
-                        id="eventTitle"
-                        placeholder="Titolo Evento">
-                    <input type="text"
-                        id="eventDescription"
-                        placeholder="Descrizione Evento">
-                    <button id="addEvent" onclick="addEvent()">
-                        Aggiungi
-                    </button>
+            <!-- accordion progetti passati -->
+            
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="accordion-container">
+                  <div class="accordion">
+                    <div class="accordion__item">
+                      <div class="accordion__item-content">
+                        <div class="accordion__item-title">Progetto concluso 1</div>
+                        <div class="accordion__item-details">Dettagli del progetto 1</div>
+                      </div>
+                    </div>
+                    <div class="accordion__item">
+                      <div class="accordion__item-content">
+                        <div class="accordion__item-title">Progetto concluso 2</div>
+                        <div class="accordion__item-details">Dettagli del progetto 2</div>
+                      </div>
+                    </div>
+                    <div class="accordion__item">
+                      <div class="accordion__item-content">
+                        <div class="accordion__item-title">Progetto concluso 3</div>
+                        <div class="accordion__item-details">Dettagli del progetto 3</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div id="reminder-section">
-                    <h3>Promemoria del mese </h3>
-                    <!-- List to display reminders -->
-                    <ul id="reminderList">
-                        <li data-event-id="1">
-                            <strong>Titolo Evento</strong>
-                            - Descrizione Evento on Data Evento
-                            <button class="delete-event"
-                                onclick="deleteEvent(1)">
-                                Cancella
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div id="right">
-                <h3 id="monthAndYear"></h3>
-                <div class="button-container-calendar">
-                    <button id="previous"
-                            onclick="previous()">
-                          ‹
-                      </button>
-                    <button id="next"
-                            onclick="next()">
-                          ›
-                      </button>
-                </div>
-                <table class="table-calendar"
-                       id="calendar"
-                       data-lang="en">
-                    <thead id="thead-month"></thead>
-                    <!-- Table body for displaying the calendar -->
-                    <tbody id="calendar-body"></tbody>
-                </table>
-                <div class="footer-container-calendar">
-                    <label for="month">Vai a: </label>
-                    <!-- Dropdowns to select a specific month and year -->
-                    <select id="month" onchange="jump()">
-                        <option value=0>Gen</option>
-                        <option value=1>Feb</option>
-                        <option value=2>Mar</option>
-                        <option value=3>Apr</option>
-                        <option value=4>Mag</option>
-                        <option value=5>Giu</option>
-                        <option value=6>Lug</option>
-                        <option value=7>Ago</option>
-                        <option value=8>Set</option>
-                        <option value=9>Ott</option>
-                        <option value=10>Nov</option>
-                        <option value=11>Dec</option>
-                    </select>
-                    <!-- Dropdown to select a specific year -->
-                    <select id="year" onchange="jump()"></select>
-                </div>
-            </div>
+              </div>
+              
+
         </div>
     </div>
-</div>
-  
-
-<!-- footer -->
+    
+    
+    
+    
+      
+      
+  <!-- footer -->
 <div class="container">
     <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top" style="background-color: transparent;">
         <div class="col-md-4 d-flex align-items-center">
@@ -208,10 +191,12 @@
             </a>
         </div>
     </footer>
+</div>
 
 
-    <script src="js/planner.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/hp_consulente.js"></script>
 </body>
 
 </html>
+  

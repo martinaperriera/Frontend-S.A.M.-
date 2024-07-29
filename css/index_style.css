@@ -38,13 +38,26 @@ html {
 
 .typewriter h1 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bolder;
-    margin-bottom: 20px;
-    background: linear-gradient(147deg, #42d392, #647eff, #a627ed); /* gradiente come bg*/
-    -webkit-background-clip: text; /* gradiente applicato solo al testo e non all'intero elemento. */
-    -webkit-text-fill-color: transparent; /* colore del testo trasparente in modo che il gradiente diventi visibile */
+    margin-bottom: 30px;
+}
+
+.static-text {
+    padding-top: 5%;
+    color: #ffffff;
+}
+
+.gradient-text {
+    background: linear-gradient(147deg, #42d392, #647eff, #a627ed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.caret {
+    border-right: 2px solid rgb(0, 34, 255);
+    animation: blink-caret 2.5s step-end infinite;
 }
 
  /* gestisce l'effetto di scrittura del testo */
@@ -56,7 +69,7 @@ html {
 /* Simula il cursore lampeggiante */
 @keyframes blink-caret {
     from, to { border-color: transparent; }
-    50% { border-color: orange; }
+    50% { border-color: rgb(145, 78, 203); }
 }
 
 .bottoni-szn {
@@ -76,17 +89,18 @@ html {
 
 .offcanvas {
     background-color: #332f2f;
-    color: #66c649;
+    color: rgb(145, 78, 203);
+    border-radius: 20px;
 }
 
 .offcanvas2 {
     background-color: #332f2f;
-    color: #66c649;
+    color: rgb(145, 78, 203);
 }
 
 .gif-overlay {
     position: sticky;
-    top: 50%;
+    top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
@@ -102,5 +116,4 @@ html {
     height: auto;
     /* Mantiene le proporzioni */
 }
-
 

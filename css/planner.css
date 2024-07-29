@@ -19,9 +19,9 @@ body {
     max-width: 900px;
     margin: 0 auto;
     overflow: auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: space-between;
+    box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
 }
  
 /* Event section styling */
@@ -29,7 +29,6 @@ body {
     padding: 10px;
     background: #f5f5f5;
     margin: 20px 0;
-    border: 1px solid #ccc;
 }
  
 .container-calendar #left h1 {
@@ -57,6 +56,7 @@ body {
     background: green;
     color: white;
     border: none;
+    border-radius: 10px;
     padding: 5px 10px;
     cursor: pointer;
 }
@@ -102,7 +102,6 @@ body {
     padding: 10px;
     background: #f5f5f5;
     margin: 20px 0;
-    border: 1px solid #ccc;
 }
  
 #reminder-section h3 {
@@ -119,6 +118,7 @@ body {
 #reminderList li {
     margin: 5px 0;
     font-size: 16px;
+    color: white;
 }
  
 /* Style for the delete buttons */
@@ -151,7 +151,6 @@ body {
 .table-calendar td,
 .table-calendar th {
     padding: 5px;
-    border: 1px solid #e2e2e2;
     text-align: center;
     vertical-align: top;
 }
@@ -189,6 +188,7 @@ body {
 #monthAndYear {
     text-align: center;
     margin-top: 0;
+    color: green;
 }
  
 /* Navigation buttons */
@@ -210,7 +210,6 @@ body {
 /* Footer styling */
 .footer-container-calendar {
     margin-top: 1em;
-    border-top: 1px solid #dadada;
     padding: 10px 0;
 }
  
@@ -221,4 +220,41 @@ body {
     border: 1px solid #bfc5c5;
     border-radius: 3px;
     padding: 5px 1em;
+}
+
+/* planner - per renderlo scuro */
+.container-calendar {
+    border-radius: 15px;
+    background: #332f2f;
+}
+div #event-section {
+    background-color: #332f2f;
+}
+
+div#left {
+    background-color: #332f2f;
+}
+#right {
+    background-color: #332f2f;
+}
+div.container-calendar {
+    background-color: #332f2f;
+}
+div#reminder-section {
+    box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1); 
+    border-radius: 15px;   
+    background-color: #332f2f;
+}
+.container-calendar #left h1 {
+    background-color:#332f2f;
+}
+#calendar {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1); 
+
+}
+label {
+    color: white;
+    padding-left: 30px;
 }
