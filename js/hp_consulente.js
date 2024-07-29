@@ -283,3 +283,4 @@ addBtn.addEventListener("click", e => {
         closeIcon.click();
     }
 });
+
