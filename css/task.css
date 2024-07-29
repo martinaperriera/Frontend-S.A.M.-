@@ -20,7 +20,7 @@
     padding-bottom: 0;
     padding-right: 0.625rem;
     height: 3.5rem;
-    background-color: #fff;
+    background-color: #332f2f;
 }
 
 .todo-container .widget-subheading {
@@ -64,7 +64,7 @@
     display: block;
     padding: 0.75rem 1.25rem;
     margin-bottom: -1px;
-    background-color: #fff;
+    background-color: #332f2f;
     border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -133,8 +133,8 @@
 
 .todo-container .btn-primary {
     color: #fff;
-    background-color: #3f6ad8;
-    border-color: #3f6ad8;
+    background-color: #3ac47d;
+    border-color: #3ac47d;
 }
 
 .todo-container .btn {
@@ -144,7 +144,7 @@
 }
 
 .todo-container .card-footer {
-    background-color: #fff;
+    background-color: #332f2f;
 }
 
 
@@ -172,7 +172,7 @@
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #332f2f;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
