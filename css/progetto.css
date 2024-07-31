@@ -1,0 +1,202 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.ag-format-container {
+    padding: 0;
+}
+.ag-courses_box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 100px;
+}
+div.col-lg-6.col-md-8.col-sm-12 {
+    max-height: 400px;
+}
+                
+.ag-courses_item {
+    background-color: #333;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    overflow: hidden;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.ag-courses-item_link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+.ag-courses-item_bg {
+    height: 200px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    margin-bottom: 15px;
+    border-radius: 15px;
+}
+.ag-courses-item_title {
+    font-size: 24px;
+    font-weight: bold;
+}
+.ag-courses-item_date-box {
+    font-size: 14px;
+    margin-top: 10px;
+}
+.ag-courses-item_date {
+    color: #6ec1e4;
+    font-weight: bold;
+}
+.ag-courses-item_details {
+    display: none;
+    text-align: left;
+    margin-top: 20px;
+}
+.active .ag-courses-item_details {
+    display: block;
+}
+
+
+
+  /* tl */
+ /* General Styles */
+body {
+    margin-top: 20px;
+}
+
+/* Timeline Container */
+.timeline-container {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Timeline Card */
+.timeline-card {
+    border: none;
+    margin-bottom: 24px;
+    background: transparent;
+    position: relative; /* For positioning the badge */
+    padding: 20px;
+    border-radius: 8px;
+    opacity: 0.8; /* Transparent cards */
+}
+
+/* Timeline Header */
+.timeline-header {
+    padding: 20px;
+}
+
+.timeline-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Timeline Content */
+.timeline-content {
+    padding: 20px;
+}
+
+/* Timeline List */
+.timeline-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Ensure items are displayed in a row */
+    position: relative; /* For positioning the line */
+}
+
+/* Timeline Line */
+.timeline-list:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-top: 3px solid #e9ecef;
+    z-index: 1; /* Place behind the items */
+}
+
+/* Timeline Item */
+.timeline-item {
+    position: relative;
+    flex: 1 1 30%; /* Flex basis for three items per row */
+    background: transparent; /* Transparent background */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 40px; /* Space from the horizontal line */
+}
+
+/* Vertical Connecting Lines */
+.timeline-item:before {
+    content: "";
+    position: absolute;
+    top: -20%; /* Start from the top of the item */
+    left: 50%; /* Center horizontally */
+    width: 0;
+    height: 30%; /* Full height to reach the horizontal line */
+    border-left: 2px dashed #dee2e6; /* Dashed line */
+    transform: translateX(-50%); /* Center the line */
+    z-index: 0; /* Place behind the badge */
+}
+
+/* Badge */
+.timeline-item:after {
+    content: "";
+    position: absolute;
+    top: -50px; /* Position the badge where the dashed line connects */
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #007bff; /* Default badge color */
+    border-radius: 50%;
+    transform: translateX(-50%);
+    opacity: 0.7; /* Semi-transparent badge */
+    z-index: 1; /* Ensure badge is on top of lines */
+}
+
+/* Background Color Utilities */
+.bg-primary {
+    background-color: rgba(64, 144, 203, .7) !important;
+}
+
+.bg-success {
+    background-color: rgba(71, 189, 154, .7) !important;
+}
+
+.bg-danger {
+    background-color: rgba(231, 76, 94, .7) !important;
+}
+
+/* Timeline Event Title */
+.timeline-event-title {
+    margin-top:10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Timeline Event Description */
+.timeline-event-description {
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (min-width: 1140px) {
+    .timeline-list {
+        display: flex; /* Ensure items are displayed in a row */
+    }
+    .timeline-item {
+        flex: 1 1 30%; /* Adjust width for three items per row */
+    }
+}

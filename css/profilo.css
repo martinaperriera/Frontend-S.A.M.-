@@ -1,0 +1,372 @@
+/* Font importati */
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+
+@font-face {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+/* Icone */
+.fa-2x {
+    font-size: 2em;
+}
+
+.fa {
+    position: relative;
+    display: table-cell;
+    width: 60px;
+    height: 36px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+/* Sidebar */
+.main-menu {
+    background: #332f2f;
+    border-right: 1px solid #e5e5e5;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    width: 60px; /* Larghezza della sidebar chiusa */
+    overflow: hidden;
+    -webkit-transition: width .3s ease;
+    transition: width .3s ease;
+    z-index: 1000;
+}
+
+.main-menu:hover {
+    width: 250px; /* Larghezza della sidebar aperta */
+}
+
+.main-menu>ul {
+    margin: 7px 0;
+}
+
+.main-menu li {
+    position: relative;
+    display: block;
+    width: 250px;
+}
+
+.main-menu li>a {
+    position: relative;
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: white;
+    font-family: arial;
+    font-size: 14px;
+    text-decoration: none;
+    -webkit-transform: translateZ(0) scale(1,1);
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+}
+
+.main-menu .nav-icon {
+    position: relative;
+    display: table-cell;
+    width: 60px;
+    height: 36px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+.main-menu .nav-text {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    width: 190px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.main-menu>ul.logout {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+/* Avatar */
+.avatar {
+    background: #332f2f;
+    padding: 2em 0.5em;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.avatar img {
+    width: 30px; /* Dimensione dell'avatar quando la sidebar è chiusa */
+    height: 30px; /* Altezza uguale alla larghezza per mantenere la forma rotonda */
+    border-radius: 50%; /* Imposta il bordo arrotondato al 50% per ottenere una forma rotonda */
+    overflow: hidden;
+    border: 2px solid grey;
+    transition: width 0.3s ease, height 0.3s ease; /* Transizione per l'animazione */
+}
+
+.main-menu:hover .avatar img {
+    width: 100px; /* Dimensione dell'avatar quando la sidebar è aperta */
+    height: 100px; /* Altezza uguale alla larghezza per mantenere la forma rotonda */
+}
+
+/* Contenitore principale */
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+/* container x il footer */
+.footer-container {
+    margin-left: 0; /* Aggiusta il margine sinistro per fare spazio alla sidebar chiusa */
+    transition: margin-left 0.3s ease;
+    max-width: 1200px;
+}
+/* per far spostare il footer quando la sidebar è aperta */
+.main-menu:hover ~ .footer-container {
+    margin-left: 250px; /* Margine sinistro per fare spazio alla sidebar aperta */
+}
+
+/* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
+@media (min-width: 1100px) and (max-width: 1400px) {
+    .container {
+        max-width: 1280px;
+        margin-left: 100px;
+        margin-right:100px;
+    }
+    .sidebar-container {
+        max-width: 60%; /* Adatta la larghezza della sidebar al contenuto */
+    }
+    .footer-container {
+        margin-left: 100px; /* Spazio per la sidebar aperta */
+    }
+}
+
+/* Media query per schermi più grandi di 1400px */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1650px;
+        margin-left: 100px;
+        margin-right:100px;
+    }
+    .sidebar-container {
+        max-width: 50%; /* Adatta la larghezza della sidebar al contenuto */
+    }
+    .footer-container {
+        margin-left: 100px; /* Spazio per la sidebar aperta */
+    }
+}
+
+/* Media query per schermi enormi */
+@media (min-width: 1650px) {
+    .container {
+        max-width: 3000px; 
+        margin-left: 100px; 
+        margin-right: 100px;
+    }
+    .sidebar-container {
+        max-width: 40%; /* Adatta la larghezza della sidebar al contenuto */
+    }
+    .footer-container {
+        margin-left: 500px; /* Spazio per la sidebar aperta */
+    }
+}
+
+.main-menu:hover ~ .container {
+    margin-left: 250px; /* Margine sinistro per fare spazio alla sidebar aperta */
+}
+
+/* Testo di benvenuto */
+#benvenuto {
+    text-align: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+/* Stili generali */
+a:hover, a:focus {
+    text-decoration: none;
+}
+
+nav {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+nav ul, nav li {
+    outline: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.main-menu li:hover>a, nav.main-menu li.active>a, .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus, .no-touch .dashboard-page nav.dashboard-menu ul li:hover a, .dashboard-page nav.dashboard-menu ul li.active a {
+    color: #fff;
+    background-color: #000000;
+}
+
+.footer-text {
+    color: white !important;
+}
+
+
+/* pagina profilo */ 
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.my-4 {
+    margin-left: 1.5rem; /* sposta il footer dalla sidebar quando si apre */
+} 
+
+
+/* Profile Container */
+.profile-container {
+    flex: 1;
+    max-width: 400px; /* Limita la larghezza della card del profilo */
+    margin-right: 50px; /* Spazio tra la card e la sidebar */
+}
+
+/* Profile Card */
+.profile-card {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 20px;
+    border: none !important;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Profile Image */
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* Profile Name and Email */
+.profile-name {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-email {
+    margin: 0;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+/* Button */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Sidebar Container */
+.sidebar-container {
+    flex: 2;
+    max-width: 800px; /* Limita la larghezza del medagliere e della barra di avanzamento */
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+/* medagliere */
+.medagliere-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.badge {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.badge img {
+    width: 80px;
+    height: 80px;
+}
+
+.badge:hover {
+    transform: scale(1.1);
+}
+
+
+/* Stili per la progress-section */
+.progress-section {
+    text-align: center; /* Centra l'intera sezione di progresso */
+}
+
+.progress-bar-container {
+    width: 400px;
+    margin: 0 auto; /* Centra il contenitore della progress bar orizzontalmente */
+}
+
+.progress {
+    display: flex;
+    align-items: center; /* Allinea verticalmente al centro */
+    padding: 15px;
+    background: #0056b3;
+
+}
+
+.progress-bar {
+    height: 25px;
+    border-radius: 20px;
+    width: 60%; /* Imposta la larghezza iniziale della barra di progresso */
+    animation: progressAnimation 7s;
+    background: #007bff; /* Colore della barra di progresso */
+}
+
+.progress-text {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px; /* Spazio tra la barra di progresso e il testo */
+}
+
+@keyframes progressAnimation {
+    0% { width: 0%; }
+    80% { width: 85%; }
+    100% { width: 100%; }
+}

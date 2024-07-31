@@ -118,7 +118,8 @@
 .container {
     margin-left: 100px; /* Aggiusta il margine sinistro per fare spazio alla sidebar chiusa */
     transition: margin-left 0.3s ease;
-    max-width: 100%; /* Valore predefinito per schermi piccoli */
+    max-width: 1200px;
+
   }
   
   /* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
@@ -185,3 +186,4 @@ nav ul, nav li {
 .footer-text {
     color: white !important;
 }
+

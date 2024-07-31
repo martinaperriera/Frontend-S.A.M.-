@@ -63,31 +63,39 @@ document.addEventListener("DOMContentLoaded", function() {
     loadTasks();
 });
 
-//card progetto attuale
-function toggleDetails(event, detailsId) {
-    event.preventDefault();
-    
-    const detailsElement = document.getElementById(detailsId);
-    const courseItem = detailsElement.closest('.ag-courses_item');
-    
-    if (courseItem.classList.contains('expanded')) {
-      courseItem.classList.remove('expanded');
-    } else {
-      // Collapse any other expanded cards
-      document.querySelectorAll('.ag-courses_item.expanded').forEach(item => {
-        item.classList.remove('expanded');
-      });
-      // Expand the clicked card
-      courseItem.classList.add('expanded');
-    }
-  }
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    // Ensure all cards start in the collapsed state
-    document.querySelectorAll('.ag-courses_item').forEach(item => {
-      item.classList.remove('expanded');
-    });
-  });
+// Card progetto attuale
+        function toggleDetails(event, detailsId) {
+            event.preventDefault();
+            const detailsElement = document.getElementById(detailsId);
+            const courseItem = detailsElement.closest('.ag-courses_item');
+            if (courseItem.classList.contains('expanded')) {
+                courseItem.classList.remove('expanded');
+            } else {
+                // Collapse any other expanded cards
+                document.querySelectorAll('.ag-courses_item.expanded').forEach(item => {
+                    item.classList.remove('expanded');
+                });
+                // Expand the clicked card
+                courseItem.classList.add('expanded');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ensure all cards start in the collapsed state
+            document.querySelectorAll('.ag-courses_item').forEach(item => {
+                item.classList.remove('expanded');
+            });
+        });
+
+        // Accordion
+        document.querySelectorAll('.accordion__item').forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.accordion__item').forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
 
   
 
@@ -165,64 +173,51 @@ function deleteCompletedTask(id) {
 
 fetchTasks(); 
 
-/* accordion progetti passati */
-document.querySelectorAll('.accordion__item').forEach(item => {
-    item.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      document.querySelectorAll('.accordion__item').forEach(i => i.classList.remove('active'));
-      if (!isActive) {
-        item.classList.add('active');
-      }
-    });
-  });
+
+
 
   
-  // notes 
-  const addBox = document.querySelector(".add-box"),
-popupBox = document.querySelector(".popup-box"),
-popupTitle = popupBox.querySelector("header p"),
-closeIcon = popupBox.querySelector("header i"),
-titleTag = popupBox.querySelector("input"),
-descTag = popupBox.querySelector("textarea"),
-addBtn = popupBox.querySelector("button");
+  // Variabili globali
+const addBox = document.querySelector(".add-box");
+const popupBox = document.querySelector(".popup-box");
+const popupTitle = popupBox.querySelector("header p");
+const closeIcon = popupBox.querySelector("header i");
+const titleTag = popupBox.querySelector("input[type='text']");
+const descTag = popupBox.querySelector("textarea");
+const priorityTag = popupBox.querySelector("select[name='priority']");
+const completionTag = popupBox.querySelector("select[name='completion']");
+const projectTag = popupBox.querySelector("select[id='task-project']");
+const addBtn = popupBox.querySelector("button");
 
 const months = ["January", "February", "March", "April", "May", "June", "July",
-              "August", "September", "October", "November", "December"];
-const notes = JSON.parse(localStorage.getItem("notes") || "[]");
-let isUpdate = false, updateId;
+                "August", "September", "October", "November", "December"];
+let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+let isUpdate = false;
+let updateId;
 
-addBox.addEventListener("click", () => {
-    popupTitle.innerText = "Add a new Note";
-    addBtn.innerText = "Add Note";
-    popupBox.classList.add("show");
-    document.querySelector("body").style.overflow = "hidden";
-    if(window.innerWidth > 660) titleTag.focus();
-});
+// Recupera e visualizza le task
+function showTasks() {
+    const addBox = document.querySelector(".add-box");
+    if (!tasks) return;
 
-closeIcon.addEventListener("click", () => {
-    isUpdate = false;
-    titleTag.value = descTag.value = "";
-    popupBox.classList.remove("show");
-    document.querySelector("body").style.overflow = "auto";
-});
-
-function showNotes() {
-    if(!notes) return;
+    // Pulisce le task esistenti
     document.querySelectorAll(".note").forEach(li => li.remove());
-    notes.forEach((note, id) => {
-        let filterDesc = note.description.replaceAll("\n", '<br/>');
-        let liTag = `<li class="note">
+
+    // Mostra ogni task
+    tasks.forEach((task, id) => {
+        const filterDesc = task.description.replaceAll("\n", '<br/>');
+        const liTag = `<li class="note">
                         <div class="details">
-                            <p>${note.title}</p>
+                            <p>${task.title}</p>
                             <span>${filterDesc}</span>
                         </div>
                         <div class="bottom-content">
-                            <span>${note.date}</span>
+                            <span>${task.date}</span>
                             <div class="settings">
                                 <i onclick="showMenu(this)" class="uil uil-ellipsis-h"></i>
                                 <ul class="menu">
-                                    <li onclick="updateNote(${id}, '${note.title}', '${filterDesc}')"><i class="uil uil-pen"></i>Edit</li>
-                                    <li onclick="deleteNote(${id})"><i class="uil uil-trash"></i>Delete</li>
+                                    <li onclick="updateTask(${id}, '${task.title}', '${filterDesc}', '${task.priority}', '${task.completion}', '${task.project}')"><i class="uil uil-pen"></i>Edit</li>
+                                    <li onclick="deleteTask(${id})"><i class="uil uil-trash"></i>Delete</li>
                                 </ul>
                             </div>
                         </div>
@@ -230,57 +225,163 @@ function showNotes() {
         addBox.insertAdjacentHTML("afterend", liTag);
     });
 }
-showNotes();
 
+// Mostra il menu delle opzioni della task
 function showMenu(elem) {
     elem.parentElement.classList.add("show");
     document.addEventListener("click", e => {
-        if(e.target.tagName != "I" || e.target != elem) {
+        if (e.target.tagName !== "I" || e.target !== elem) {
             elem.parentElement.classList.remove("show");
         }
     });
 }
 
-function deleteNote(noteId) {
-    let confirmDel = confirm("Are you sure you want to delete this note?");
-    if(!confirmDel) return;
-    notes.splice(noteId, 1);
-    localStorage.setItem("notes", JSON.stringify(notes));
-    showNotes();
+// Cancella una task
+function deleteTask(taskId) {
+    if (!confirm("Are you sure you want to delete this task?")) return;
+    tasks.splice(taskId, 1);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    showTasks();
 }
 
-function updateNote(noteId, title, filterDesc) {
-    let description = filterDesc.replaceAll('<br/>', '\r\n');
-    updateId = noteId;
-    isUpdate = true;
-    addBox.click();
+// Aggiorna una task
+function updateTask(taskId, title, description, priority, completion, project) {
     titleTag.value = title;
-    descTag.value = description;
-    popupTitle.innerText = "Update a Note";
-    addBtn.innerText = "Update Note";
+    descTag.value = description.replaceAll('<br/>', '\r\n');
+    priorityTag.value = priority;
+    completionTag.value = completion;
+    projectTag.value = project;
+    updateId = taskId;
+    isUpdate = true;
+    popupTitle.innerText = "Update a Task";
+    addBtn.innerText = "Update Task";
+    popupBox.classList.add("show");
+    document.querySelector("body").style.overflow = "hidden";
 }
 
+// Aggiungi o aggiorna una task
 addBtn.addEventListener("click", e => {
     e.preventDefault();
-    let title = titleTag.value.trim(),
-    description = descTag.value.trim();
+    const title = titleTag.value.trim();
+    const description = descTag.value.trim();
+    const priority = priorityTag.value;
+    const completion = completionTag.value;
+    const project = projectTag.value;
 
-    if(title || description) {
-        let currentDate = new Date(),
-        month = months[currentDate.getMonth()],
-        day = currentDate.getDate(),
-        year = currentDate.getFullYear();
+    if (title || description || priority || completion || project) {
+        const currentDate = new Date();
+        const month = months[currentDate.getMonth()];
+        const day = currentDate.getDate();
+        const year = currentDate.getFullYear();
 
-        let noteInfo = {title, description, date: `${month} ${day}, ${year}`}
-        if(!isUpdate) {
-            notes.push(noteInfo);
+        const taskInfo = {
+            title,
+            description,
+            priority,
+            completion,
+            project,
+            date: `${month} ${day}, ${year}`
+        };
+
+        if (!isUpdate) {
+            tasks.push(taskInfo);
         } else {
             isUpdate = false;
-            notes[updateId] = noteInfo;
+            tasks[updateId] = taskInfo;
         }
-        localStorage.setItem("notes", JSON.stringify(notes));
-        showNotes();
+
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        showTasks();
         closeIcon.click();
     }
+});
+
+// Chiude il popup
+closeIcon.addEventListener("click", () => {
+    isUpdate = false;
+    titleTag.value = descTag.value = "";
+    priorityTag.value = '';
+    completionTag.value = '';
+    projectTag.value = '';
+    popupBox.classList.remove("show");
+    document.querySelector("body").style.overflow = "auto";
+});
+
+// Recupera i progetti dal database e popola il menu a discesa
+async function fetchProjects() {
+    try {
+        const response = await fetch('YOUR_PROJECT_API_ENDPOINT'); // Sostituisci con l'URL della tua API per i progetti
+        const data = await response.json();
+        if (Array.isArray(data)) {
+            populateProjectDropdown(data);
+        }
+    } catch (error) {
+        console.error('Errore nel recupero dei progetti:', error);
+    }
+}
+
+// Popola il menu a discesa con i progetti
+function populateProjectDropdown(projects) {
+    const projectDropdown = document.getElementById('task-project');
+    projectDropdown.innerHTML = ''; // Pulisci le opzioni esistenti
+
+    const defaultOption = document.createElement('option');
+    defaultOption.textContent = 'Select a project';
+    defaultOption.value = '';
+    projectDropdown.appendChild(defaultOption);
+
+    projects.forEach(project => {
+        const option = document.createElement('option');
+        option.textContent = project.name; // Assumi che il nome del progetto sia una proprietà
+        option.value = project.id; // Assumi che l'ID del progetto sia una proprietà
+        projectDropdown.appendChild(option);
+    });
+}
+
+// Inizializza la pagina
+document.addEventListener('DOMContentLoaded', () => {
+    showTasks(); // Carica le task
+    fetchProjects(); // Carica i progetti
+});
+
+/* TIMELINE - eventi da db */ 
+document.addEventListener('DOMContentLoaded', function() {
+    // recupera eventi dall'API
+    async function fetchEvents() {
+        try {
+            const response = await fetch('http:/api/events'); 
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const events = await response.json();
+            populateTimeline(events);
+        } catch (error) {
+            console.error('Error fetching events:', error);
+        }
+    }
+
+    // inserisce in timeline i dati degli eventi
+    function populateTimeline(events) {
+        const timelineList = document.querySelector('.timeline-list');
+        timelineList.innerHTML = ''; // Pulisce la lista esistente
+
+        events.forEach(event => {
+            const timelineItem = document.createElement('li');
+            timelineItem.className = 'timeline-item';
+
+            // crea il contenuto dell'evento
+            timelineItem.innerHTML = `
+                <div class="timeline-date bg-primary">${new Date(event.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}</div>
+                <h5 class="timeline-event-title">${event.title}</h5>
+                <p class="timeline-event-description">${event.description}</p>
+            `;
+
+            // inserisci elemento timeline alla lista
+            timelineList.appendChild(timelineItem);
+        });
+    }
+
+    // recupera gli eventi quando il DOM è completamente caricato
+    fetchEvents();
 });
 

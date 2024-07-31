@@ -80,7 +80,7 @@ box-shadow:  28px 28px 57px #933da2,
 }
 
 .profile_button{
-	color:#fff;
+	color:#933da2;
 	padding:10px; 
    border:none;
    outline:0 !important;
@@ -90,3 +90,5 @@ box-shadow:  28px 28px 57px #933da2,
              -28px -28px 57px #c351d6;
 	
 }
+
+

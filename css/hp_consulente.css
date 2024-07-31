@@ -116,27 +116,42 @@
 
 /* Contenitore principale */
 .container {
-  margin-left: 100px; /* Aggiusta il margine sinistro per fare spazio alla sidebar chiusa */
   transition: margin-left 0.3s ease;
-  max-width: 100%; /* Valore predefinito per schermi piccoli */
+  max-width: 1200px;
+  padding: 20px;
+
+
+
 }
 
 /* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
 @media (min-width: 1100px) and (max-width: 1400px) {
   .container {
-      max-width: 1280px;
-      margin-left: 100px;
-      margin-right:100px;
+      max-width: 1100px;
+      margin-left: 50px;
+      margin-right:50px;
   }
+  .sidebar-container {
+    max-width: 60%; /* Adatta la larghezza della sidebar al contenuto */
+}
+.footer-container {
+    margin-left: 100px; /* Spazio per la sidebar aperta */
+}
 }
 
 /* Media query per schermi più grandi di 1400px */
 @media (min-width: 1400px) {
   .container {
-      max-width: 1650px;
-      margin-left: 100px;
-      margin-right:100px;
+      max-width: 1200px;
+      margin-left: 50px;
+      margin-right:50px;
   }
+  .sidebar-container {
+    max-width: 50%; /* Adatta la larghezza della sidebar al contenuto */
+}
+.footer-container {
+    margin-left: 100px; /* Spazio per la sidebar aperta */
+}
 }
 /* Media query per schermi enormi */
 @media (min-width: 1650px) {
@@ -145,6 +160,12 @@
       margin-left: 100px; 
       margin-right: 100px;
   }
+  .sidebar-container {
+    max-width: 40%; /* Adatta la larghezza della sidebar al contenuto */
+}
+.footer-container {
+    margin-left: 500px; /* Spazio per la sidebar aperta */
+}
 }
 
 .main-menu:hover ~ .container {
@@ -190,6 +211,18 @@ nav ul, nav li {
 body {
     background-color: #000;
   }
+
+  /* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.my-4 {
+  margin-left: 2rem; /* sposta il footer dalla sidebar quando si apre */
+} 
   
   .ag-courses_box {
     display: flex;
@@ -252,15 +285,7 @@ body {
     transform: scale(10);
   }
   
-  /* Active card styles */
-  .ag-courses_item.active .ag-courses-item_link {
-    background-color: #332f2f;
-  }
-  
-  .ag-courses_item.active .ag-courses-item_bg {
-    background: linear-gradient(190deg, green, #a627ed, blue);
-  }
-  
+
   /* Details area */
   .ag-courses-item_details {
     display: none;
@@ -371,92 +396,275 @@ body {
 color: white;
 }
 
-/* pagina progetto - accordion con progetti passati */ 
-.accordion-container * {
-    box-sizing: border-box;
-  }
-  
-  .accordion-container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .accordion {
-    width: 100%; /* Adjusted to fit within its parent column */
-    height: 50%;
-    margin: auto;
-    margin-top: 2rem;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+/*accordion progetti passati */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.ag-format-container {
+  padding: 0;
+}
+.ag-courses_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ag-courses_item {
+  background-color: #333;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  overflow: hidden;
+  padding: 20px;
+  text-align: center;
+  transition: max-height 0.3s ease-in-out;
+}
+.ag-courses-item_link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.ag-courses-item_bg {
+  height: 200px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  margin-bottom: 15px;
+}
+.ag-courses-item_title {
+  font-size: 24px;
+  font-weight: bold;
+}
+.ag-courses-item_date-box {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.ag-courses-item_date {
+  color: #6ec1e4;
+  font-weight: bold;
+}
+.ag-courses-item_details {
+  display: none;
+  text-align: left;
 
-  /* Media query per schermi più grandi di 1400px */
-  @media (min-width: 1400px) {
-    .accordion {
-        width: 50%;
-    }
+}
+.expanded .ag-courses-item_details {
+  display: block;
+}
+
+/* accordion */
+.accordion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.accordion-container * {
+  box-sizing: border-box;
+}
+.accordion {
+  width: 100%; /* Adjusted to fit within its parent column */
+  height: 50%;
+  margin-top: 1rem;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Media query per schermi più grandi di 1400px */
+@media (min-width: 1400px) {
+  .accordion {
+      width: 50%;
   }
-  /* Media query per schermi enormi */
-  @media (min-width: 1650px) {
-    .accordion {
-        width: 50%;
-    }
+}
+/* Media query per schermi enormi */
+@media (min-width: 1650px) {
+  .accordion {
+      width: 50%;
   }
-  
-  .accordion__item { 
-    flex-basis: 10%;
-    height: 60px; /* Altezza fissa */
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: helvetica;
-    background-color: #332f2f;
-    cursor: pointer;
-    box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
-    transition: 
+}
+
+.accordion__item { 
+  flex-basis: 10%;
+  height: 50px; /* Altezza fissa */
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: helvetica;
+  background-color: #332f2f;
+  cursor: pointer;
+  box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
+  transition: 
       flex-grow .3s linear,
       background-color 0.2s ease-in
+}
+.accordion__item-content {
+  background: #333;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+}
+.accordion__item-title {
+  font-size: 18px;
+  font-weight: bold;
+
+  padding: 0.5em;
+  color: white;
+}
+.accordion__item-details {
+  margin-top: 5px;
+
+  display: none; /* Hide details by default */
+  padding: 0.5em;
+  color: #fff; /* Changed text color for visibility */
+}
+
+
+.accordion__item:hover { 
+  background-color: #89CC04;
+  flex-grow: 1.5;
+}
+
+.accordion__item:hover .accordion__item-details {
+  display: block;
+} 
+
+.accordion__item:active { 
+  box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
+  background-color: #89CC04;
+
+  color: white;
+} 
+
+/* Contenitore principale */
+.container {
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+  max-width: 100%;
+  padding: 0 15px; /* Padding laterale per schermi piccoli */
+}
+
+/* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
+@media (min-width: 1100px) and (max-width: 1400px) {
+  .container {
+      max-width: 1280px;
+      margin-left: 100px;
+      margin-right: 100px;
+      padding: 0; /* Rimuove il padding laterale per schermi medi */
   }
-  
-  .accordion__item-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
+}
+
+/* Media query per schermi più grandi di 1400px */
+@media (min-width: 1400px) {
+  .container {
+      max-width: 1650px;
+      margin-left: 100px;
+      margin-right: 100px;
+      padding: 0; /* Rimuove il padding laterale per schermi grandi */
   }
-  
-  .accordion__item-title {
-    padding: 0.5em;
-    color: white;
+}
+
+/* Media query per schermi enormi */
+@media (min-width: 1650px) {
+  .container {
+      max-width: 3000px;
+      margin-left: 100px;
+      margin-right: 100px;
+      padding: 0; /* Rimuove il padding laterale per schermi enormi */
   }
-  
-  .accordion__item-details {
-    display: none; /* Hide details by default */
-    padding: 0.5em;
-    color: #333;
-  }
-  
-  .accordion__item:hover { 
-    background-color: #89CC04;
-    flex-grow: 1.5;
-  }
-  
-  .accordion__item:hover .accordion__item-details {
-    display: block; /* Show details on hover */
-  }
-  
-  .accordion__item:active { 
-    box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
-    background-color: #bde6fc;
-    color: white;
-  }
-  
-  /* Allineamento prima row */
-  .row.align-items-stretch {
-    align-items: stretch;
-  }
+}
+
+/* Allineamento prima row */
+.row.align-items-stretch {
+align-items: stretch;
+}
+
+/* Sidebar Container */
+.sidebar-container {
+  flex: 2;
+  max-width: 800px; /* Limita la larghezza del medagliere e della barra di avanzamento */
+  margin-left: 50px;
+  margin-top: 50px;
+  background-color: transparent !important;
+}
+
+/* medagliere */
+.medagliere-section {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 100%;
+}
+
+.badge {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.badge img {
+  width: 80px;
+  height: 80px;
+}
+
+.badge:hover {
+  transform: scale(1.1);
+}
+
+
+/* Stili per la progress-section */
+.progress-section {
+  text-align: center; /* Centra l'intera sezione di progresso */
+}
+
+.progress-bar-container {
+  width: 400px;
+  margin: 0 auto; /* Centra il contenitore della progress bar orizzontalmente */
+}
+
+.progress {
+  display: flex;
+  align-items: center; /* Allinea verticalmente al centro */
+  padding: 15px;
+  background: white;
+
+}
+
+.progress-bar {
+  height: 25px;
+  border-radius: 20px;
+  width: 60%; /* Imposta la larghezza iniziale della barra di progresso */
+  animation: progressAnimation 7s;
+  background: blue; /* Colore della barra di progresso */
+}
+
+.progress-text {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px; /* Spazio tra la barra di progresso e il testo */
+}
+
+@keyframes progressAnimation {
+  0% { width: 0%; }
+  80% { width: 85%; }
+  100% { width: 100%; }
+}

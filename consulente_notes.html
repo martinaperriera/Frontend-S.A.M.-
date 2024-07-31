@@ -27,7 +27,7 @@
                         Pagina Consulente
                     </span>
                 </a>
-              
+
             </li>
             <li class="has-subnav">
                 <a href="consulente_project.html">
@@ -36,7 +36,7 @@
                         I miei progetti <!-- card con progetti attuali (rimanda alle task) / passati -->
                     </span>
                 </a>
-                
+
             </li>
             <li class="has-subnav">
                 <a href="consulente_task.html">
@@ -45,37 +45,37 @@
                         Le mie task <!-- stato di avanzamento -->
                     </span>
                 </a>
-                
+
             </li>
             <li class="has-subnav">
                 <a href="consulente_notes.html">
                     <i class="fa fa-comments"></i>
-                   
+
                     <span class="nav-text">
                         Le mie note <!-- storico note inserite dalle task / progetto -->
                     </span>
                 </a>
-               
+
             </li>
             <li>
-                <a href="#">
+                <a href="milestones.html">
                     <i class="fa fa-film"></i>
                     <span class="nav-text">
                         Milestones <!-- storico delle milestones inserite dal manager x progetto attivo -->
                     </span>
                 </a>
             </li>
-            
+
             <li>
-               <a href="consulente_planner.html">
-                   <i class="fa fa-cogs"></i>
+                <a href="consulente_planner.html">
+                    <i class="fa fa-cogs"></i>
                     <span class="nav-text">
                         Planner
                     </span>
                 </a>
             </li>
             <li>
-               <a href="#">
+                <a href="classifica.html">
                     <i class="fa fa-map-marker"></i>
                     <span class="nav-text">
                         Classifica
@@ -83,87 +83,121 @@
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <i class="fa fa-user"></i>  
+                <a href="consulente_profilo.html">
+                    <i class="fa fa-user"></i>
                     <span class="nav-text">
-                    Il mio profilo
+                        Il mio profilo
                     </span>
                 </a>
             </li>
-            
+
         </ul>
 
         <ul class="logout">
             <li>
-                <a href="#">
-                    <i class="fa fa-info"></i>  
+                <a href="help.html">
+                    <i class="fa fa-info"></i>
                     <span class="nav-text">
                         Help
-                        </span>                
+                    </span>
                 </a>
             </li>
             <li>
-               <a href="#">
-                     <i class="fa fa-power-off"></i>
+                <a href="#">
+                    <i class="fa fa-power-off"></i>
                     <span class="nav-text">
                         Logout
                     </span>
                 </a>
-            </li>  
+            </li>
         </ul>
     </nav>
 
     <div class="container mt-5">
         <h1 class="ms-5 mb-5" id="benvenuto">Le mie note</h1>
 
+        <!-- popup-box -->
         <div class="popup-box">
             <div class="popup">
-              <div class="content">
-                <header>
-                  <p></p>
-                  <i class="uil uil-times"></i>
-                </header>
-                <form action="#">
-                  <div class="row title">
-                    <label>Title</label>
-                    <input type="text" spellcheck="false">
-                  </div>
-                  <div class="row description">
-                    <label>Description</label>
-                    <textarea spellcheck="false"></textarea>
-                  </div>
-                  <button></button>
-                </form>
-              </div>
+                <div class="content">
+                    <header>
+                        <p></p>
+                        <i class="uil uil-times"></i>
+                    </header>
+                    <form action="#">
+                        <div class="row title">
+                            <label>Titolo</label>
+                            <input type="text" id="task-title" spellcheck="false">
+                        </div>
+                        <div class="row description">
+                            <label>Descrizione</label>
+                            <textarea id="task-description" spellcheck="false"></textarea>
+                        </div>
+                        <div class="row priority">
+                            <label>Priorità</label>
+                            <select id="task-priority">
+                                <option value="Low">Bassa</option>
+                                <option value="Medium">Media</option>
+                                <option value="High">Alta</option>
+                            </select>
+                        </div>
+                        <div class="row completion">
+                            <label>Completion Level</label>
+                            <select id="task-completion">
+                                <option value="0%">Iniziato</option>
+                                <option value="25%">In corso</option>
+                                <option value="50%">In ritardo</option>
+                                <option value="75%">Completato</option>
+                                <option value="100%">Consegnato</option>
+                            </select>
+                        </div>
+                        <div class="row project">
+                            <label>Progetto</label>
+                            <select id="task-project">
+                                <!-- Progetti dal db -->
+                            </select>
+                        </div>
+                        <button id="add-task-btn">Aggiungi Nota</button>
+                        <!-- Card per visualizzare le task -->
+                        <div class="task-container">
+                            <h2>Tasks</h2>
+                            <div class="task-cards">
+                                <!-- card task dal db -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </div>
-          <div class="wrapper">
+        </div>
+
+        <div class="wrapper">
             <li class="add-box">
-              <div class="icon"><i class="uil uil-plus"></i></div>
-              <p>Add new note</p>
+                <div class="icon"><i class="uil uil-plus"></i></div>
+                <p>Add new note</p>
             </li>
-          </div>
-          
-    
-
-
-          <!-- footer -->
-<div class="container">
-    <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top" style="background-color: transparent;">
-        <div class="col-md-4 d-flex align-items-center">
-            <span class="mb-3 mb-md-0 text-body-secondary footer-text">©️ 2024 S.A.M., Inc</span>
         </div>
-        <div class="col-md-4 d-flex justify-content-end">
-            <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                <img src="img/s.a.m..svg" alt="Logo" width="100" height="100" class="me-2"> 
-            </a>
+
+
+
+
+        <!-- footer -->
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top"
+                style="background-color: transparent;">
+                <div class="col-md-4 d-flex align-items-center">
+                    <span class="mb-3 mb-md-0 text-body-secondary footer-text">©️ 2024 S.A.M., Inc</span>
+                </div>
+                <div class="col-md-4 d-flex justify-content-end">
+                    <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                        <img src="img/s.a.m..svg" alt="Logo" width="100" height="100" class="me-2">
+                    </a>
+                </div>
+            </footer>
         </div>
-    </footer>
-</div>
 
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/hp_consulente.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/hp_consulente.js"></script>
 </body>
 
 </html>

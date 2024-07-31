@@ -1,0 +1,172 @@
+/* General reset and layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+  }
+  
+  .accordion-container-fluid {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.row {
+    flex: 1;
+}
+
+  
+  .accordion-container {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .accordion-item {
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .accordion-header {
+    background: #333;
+    cursor: pointer;
+    color: white;
+    border-radius: 15px;
+  }
+  
+  .accordion-button {
+    margin: 0;
+    padding: 5rem;
+    font-size: 1.5rem;
+    border: none;
+    background: transparent;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: left;
+  }
+  h2.accordion-button{
+    padding: 15px;
+    border-radius: 15px;
+    border-top-left-radius: 15px;
+  }
+  
+  .accordion-button:hover {
+    background: linear-gradient(90deg, rgba(255,0,150,1) 0%, rgba(0,204,255,1) 100%);
+    color: #fff;
+  }
+  
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1.5rem;
+    transition: max-height 0.5s ease;
+    font-size: 1rem;
+  }
+  
+  .accordion-item:hover .accordion-body {
+    max-height: 500px; /* Adjust as needed for your content */
+    padding: 1.5rem;
+  }
+  
+  .contact-form {
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  input.form-control {
+    background-color: #333;
+    border: none;
+  }
+  textarea.form-control{
+    background-color: #333;
+    border: none;
+  }
+  
+  .contact-form h2 {
+    margin-bottom: 1rem;
+  }
+  
+  /* generali */
+/* container x il footer */
+.footer-container {
+    margin-left: 0; /* Aggiusta il margine sinistro per fare spazio alla sidebar chiusa */
+    transition: margin-left 0.3s ease;
+    max-width: 1200px;
+
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+    width: 100%;
+}
+/* per far spostare il footer quando la sidebar è aperta */
+.main-menu:hover ~ .footer-container {
+    margin-left: 250px; /* Margine sinistro per fare spazio alla sidebar aperta */
+}
+
+/* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
+@media (min-width: 1100px) and (max-width: 1400px) {
+    .container {
+        max-width: 1280px;
+        margin-left: 100px;
+        margin-right:100px;
+    }
+    .sidebar-container {
+        max-width: 60%; /* Adatta la larghezza della sidebar al contenuto */
+    }
+    .footer-container {
+        margin-left: 100px; /* Spazio per la sidebar aperta */
+    }
+}
+
+/* Media query per schermi più grandi di 1400px */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1650px;
+        margin-left: 100px;
+        margin-right:100px;
+    }
+    .sidebar-container {
+        max-width: 50%; /* Adatta la larghezza della sidebar al contenuto */
+    }
+    .footer-container {
+        margin-left: 100px; /* Spazio per la sidebar aperta */
+    }
+}
+
+/* Media query per schermi enormi */
+@media (min-width: 1650px) {
+    .container {
+        max-width: 3000px; 
+        margin-left: 100px; 
+        margin-right: 100px;
+    }
+    .sidebar-container {
+        max-width: 40%; /* Adatta la larghezza della sidebar al contenuto */
+    }
+    .footer-container {
+        margin-left: 500px; /* Spazio per la sidebar aperta */
+    }
+}
+
+.main-menu:hover ~ .container {
+    margin-left: 250px; /* Margine sinistro per fare spazio alla sidebar aperta */
+}
+
+.my-4 {
+    margin-left: 1.5rem; /* sposta il footer dalla sidebar quando si apre */
+} 

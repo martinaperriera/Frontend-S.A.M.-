@@ -7,7 +7,8 @@
     <title>S.A.M.</title>
     <!-- mini icona pagina web -->
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
-    <link rel="stylesheet" href="css/progetto.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/profilo.css">
     <link rel="stylesheet" href="css/homepage_style.css">
     <link rel="stylesheet" href="css/hp_consulente.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -85,7 +86,7 @@
                 </a>
             </li>
             <li>
-                <a href="consulente_profile.html">
+                <a href="consulente_profilo.html">
                     <i class="fa fa-user"></i>  
                     <span class="nav-text">
                     Il mio profilo
@@ -115,95 +116,74 @@
         </ul>
     </nav>
 
-    <div class="container mt-5">
-        <h1 class="ms-5 mb-5" id="benvenuto">I miei progetti</h1>
-        <div class="row align-items-stretch">
-            <div class="col-lg-6 col-md-8 col-sm-12">
-                <div class="ag-format-container">
-                    <div class="ag-courses_box justify-content-center">
-                        <div class="ag-courses_item">
-                            <div class="ag-courses-item_link" onclick="toggleDetails(event, 'details1')">
-                                <div class="ag-courses-item_bg"></div>
-                                <div class="ag-courses-item_title">Progetto Attivo</div>
-                                <div class="ag-courses-item_date-box">
-                                    start - deadline:
-                                    <span class="ag-courses-item_date">26.07.2024 - 02.09.2024</span>
-                                </div>
-                            </div>
-                            <div class="ag-courses-item_details" id="details1">
-                                <p>Dettagli del progetto: <br>
-                                    Obiettivi: raggiungimento pubblico più ampio <br>
-                                    Modalità utilizzate: remote work
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+    <div class="container">
+        <!-- Sidebar Container -->
+        <div class="sidebar-container">
+            <!-- Badges Section -->
+            <div class="medagliere-section">
+                <h2>Medagliere</h2>
+                <div class="badges-container">
+                    <!-- I badge verranno aggiunti qui dinamicamente -->
                 </div>
             </div>
-            <div class="col-lg-6 col-md-8 col-sm-12">
-                <div class="accordion-container">
-                    <div class="accordion">
-                        <div class="accordion__item">
-                            <div class="accordion__item-content">
-                                <div class="accordion__item-title">Progetto concluso 1</div>
-                                <div class="accordion__item-details">Dettagli del progetto 1</div>
-                            </div>
-                        </div>
-                        <div class="accordion__item">
-                            <div class="accordion__item-content">
-                                <div class="accordion__item-title">Progetto concluso 2</div>
-                                <div class="accordion__item-details">Dettagli del progetto 2</div>
-                            </div>
-                        </div>
-                        <div class="accordion__item">
-                            <div class="accordion__item-content">
-                                <div class="accordion__item-title">Progetto concluso 3</div>
-                                <div class="accordion__item-details">Dettagli del progetto 3</div>
-                            </div>
-                        </div>
+            
+            
+            <!-- Progress Section -->
+<div class="progress-section mt-3">
+    <h3>Completamento progetto attuale</h3>
+    <div class="progress-bar-container">
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+    <p class="progress-text">60% completato - 40% per il prossimo badge </p>
+</div>
+
+        </div>
+        
+        <!-- Profile Container -->
+        <div class="profile-container">
+            <!-- Profile Card -->
+            <div class="card p-3 py-4">
+                <div class="text-center"> 
+                <img src="https://i.imgur.com/stD0Q19.jpg" width="100" class="rounded-circle">
+                    <h3 class="mt-2">Maria Smantha</h3>
+                    <span class="mt-1 clearfix">Manager</span>
+                    
+                    <div class="row mt-3 mb-3">
+                    
+                      <div class="col-md-4">
+                        <h5>Projects</h5>
+                        <span class="num">10</span>
+                      </div>
+                      <div class="col-md-4">
+                      <h5>Projects</h5>
+                        <span class="num">10</span>
+                      </div>
+                      <div class="col-md-4">
+                      <h5>Projects</h5>
+                        <span class="num">10</span>
+                      </div>
+                    
                     </div>
+                    
+                    <hr class="line">
+                    
+                    <small class="mt-4">Breve descrizione...</small>
+                  
+                     <div class="profile mt-5">
+                     
+                     <button class="profile_button px-5">Modifica profilo</button>
+        
+                </div>
+                       
                 </div>
             </div>
         </div>
-        <div class="timeline-container mt-4">
-            <div class="timeline-card">
-                <div class="timeline-header">
-                    <h4 class="timeline-title">Timeline Progetto Attivo</h4>
-                </div>
-                <div class="timeline-content">
-                    <ul class="timeline-list">
-                        <li class="timeline-item">
-                            <div class="timeline-date bg-primary">23 Luglio</div>
-                            <h5 class="timeline-event-title">Start</h5>
-                            <p class="timeline-event-description">Divisione in gruppi, spiegazione obiettivi. Inizio.</p>
-                        </li>
-                        <li class="timeline-item">
-                            <div class="timeline-date bg-success">2 Agosto</div>
-                            <h5 class="timeline-event-title">Check</h5>
-                            <p class="timeline-event-description">Controllo risultati raggiunti.</p>
-                        </li>
-                        <li class="timeline-item">
-                            <div class="timeline-date bg-danger">2 Settembre</div>
-                            <h5 class="timeline-event-title">Consegna</h5>
-                            <p class="timeline-event-description">Presentazione.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        
     </div>
 
-
-
-
-
-
-  <!-- footer -->
-<div class="container">
+    <!-- footer -->
+<div class="footer-container">
     <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top" style="background-color: transparent;">
         <div class="col-md-4 d-flex align-items-center">
             <span class="mb-3 mb-md-0 text-body-secondary footer-text">©️ 2024 S.A.M., Inc</span>
@@ -218,6 +198,7 @@
 
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/profilo_badges.js"></script>
     <script src="js/hp_consulente.js"></script>
 </body>
 
