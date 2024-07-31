@@ -9,13 +9,13 @@
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/homepage_style.css">
-    <link rel="stylesheet" href="css/planner.css">
+    <link rel="stylesheet" href="css/hp_manager.css">
+    <link rel="stylesheet" href="css/milestone.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
 <body style="background-color: rgba(71, 38, 101, 0.59);">
-
     <nav class="main-menu">
         <header class="avatar">
             <img src="img/bg_home.jpg" alt="Avatar" />
@@ -46,10 +46,11 @@
                        Assegna task 
                     </span>
                 </a>
+                
             </li>
 
             <li class="has-subnav">
-                <a href="#">
+                <a href="manager_notes.html">
                     <i class="fa fa-comments"></i>
                    
                     <span class="nav-text">
@@ -126,87 +127,76 @@
         </ul>
     </nav>
 
-    <div class="contenitore">
-        <h3 class="ms-5 mt-5 mb-5" id="benvenuto">Il tuo planner</h3>
-    </div>
-  
-       <!-- Main wrapper for the calendar application -->
-       <div class="wrapper">
-        <div class="container-calendar">
-            <div id="left">
-                <h1>Calendario</h1>
-                <div id="event-section">
-                    <h3>Aggiungi Evento</h3>
-                    <input type="date" id="eventDate">
-                    <input type="text"
-                        id="eventTitle"
-                        placeholder="Titolo Evento">
-                    <input type="text"
-                        id="eventDescription"
-                        placeholder="Descrizione Evento">
-                    <button id="addEvent" onclick="addEvent()">
-                        Aggiungi
-                    </button>
-                </div>
-                <div id="reminder-section">
-                    <h3>Promemoria del mese </h3>
-                    <!-- List to display reminders -->
-                    <ul id="reminderList">
-                        <li data-event-id="1">
-                            <strong>Titolo Evento</strong>
-                            - Descrizione Evento on Data Evento
-                            <button class="delete-event"
-                                onclick="deleteEvent(1)">
-                                Cancella
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div id="right">
-                <h3 id="monthAndYear"></h3>
-                <div class="button-container-calendar">
-                    <button id="previous"
-                            onclick="previous()">
-                          ‹
-                      </button>
-                    <button id="next"
-                            onclick="next()">
-                          ›
-                      </button>
-                </div>
-                <table class="table-calendar"
-                       id="calendar"
-                       data-lang="en">
-                    <thead id="thead-month"></thead>
-                    <!-- Table body for displaying the calendar -->
-                    <tbody id="calendar-body"></tbody>
-                </table>
-                <div class="footer-container-calendar">
-                    <label for="month">Vai a: </label>
-                    <!-- Dropdowns to select a specific month and year -->
-                    <select id="month" onchange="jump()">
-                        <option value=0>Gen</option>
-                        <option value=1>Feb</option>
-                        <option value=2>Mar</option>
-                        <option value=3>Apr</option>
-                        <option value=4>Mag</option>
-                        <option value=5>Giu</option>
-                        <option value=6>Lug</option>
-                        <option value=7>Ago</option>
-                        <option value=8>Set</option>
-                        <option value=9>Ott</option>
-                        <option value=10>Nov</option>
-                        <option value=11>Dec</option>
-                    </select>
-                    <!-- Dropdown to select a specific year -->
-                    <select id="year" onchange="jump()"></select>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="container mt-5">
+    <h1 class="" id="benvenuto">Timeline</h1>
 
- <!-- footer -->
+    <section class="design-section">
+        <div class="timeline">
+        
+            
+                <!-- prima riga: sinistra-->
+               <div class="timeline-component timeline-content">
+                <h3>Quarto Progetto</h3> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <!-- prima riga: destra-->
+                <div class="timeline-middle">
+                    <div class="timeline-circle"></div>
+                </div>
+
+                <div class="timeline-empty">
+                </div>
+        
+                <!-- seconda riga: sinistra-->
+                <div class="timeline-empty">
+                </div>
+
+                <div class="timeline-middle">
+                <div class="timeline-circle"></div>
+                </div>
+
+                <!--sedconda riga: destra-->
+                <div class="timeline-component timeline-content">
+                <h3>Terzo Progetto</h3> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <!--terza riga: sinistra-->
+                <div class="timeline-component timeline-content">
+                <h3>Secondo Progetto</h3> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <!--terza riga: destra-->
+                <div class="timeline-middle">
+                <div class="timeline-circle"></div>
+                </div>
+
+                <div class="timeline-empty">
+                </div>
+        
+                <!--quarta riga: sinistra-->
+                <div class="timeline-empty">
+                </div>
+        
+                <div class="timeline-middle">
+                <div class="timeline-circle"></div>
+                </div>
+
+                <!-- quarta riga: destra-->
+                <div class=" timeline-component timeline-content">
+                <h3>Primo Progetto</h3> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+        
+        </div>
+</section>
+
+    </div>
+        
+
+<!-- footer -->
 <div class="container">
     <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top" style="background-color: transparent;">
         <div class="col-md-4 d-flex align-items-center">
@@ -219,10 +209,9 @@
         </div>
     </footer>
 
-
-    <script src="js/planner.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-
+    <script src="js/hp_manager.js"></script>
 </body>
+
 
 </html>
