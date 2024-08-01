@@ -1,132 +1,21 @@
-/* Font importati */
-@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
-
-@font-face {
-    font-family: 'Titillium Web';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
-}
-
-/* Icone */
-.fa-2x {
-    font-size: 2em;
-}
-
-.fa {
-    position: relative;
-    display: table-cell;
-    width: 60px;
-    height: 36px;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 20px;
-}
-
-/* Sidebar */
-.main-menu {
-    background: #332f2f;
-    border-right: 1px solid #e5e5e5;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    left: 0;
-    width: 60px; /* Larghezza della sidebar chiusa */
-    overflow: hidden;
-    -webkit-transition: width .3s ease;
-    transition: width .3s ease;
-    z-index: 1000;
-}
-
-.main-menu:hover {
-    width: 250px; /* Larghezza della sidebar aperta */
-}
-
-.main-menu>ul {
-    margin: 7px 0;
-}
-
-.main-menu li {
-    position: relative;
-    display: block;
-    width: 250px;
-}
-
-.main-menu li>a {
-    position: relative;
-    display: table;
-    border-collapse: collapse;
-    border-spacing: 0;
-    color: white;
-    font-family: arial;
-    font-size: 14px;
-    text-decoration: none;
-    -webkit-transform: translateZ(0) scale(1,1);
-    -webkit-transition: all .1s linear;
-    transition: all .1s linear;
-}
-
-.main-menu .nav-icon {
-    position: relative;
-    display: table-cell;
-    width: 60px;
-    height: 36px;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 18px;
-}
-
-.main-menu .nav-text {
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-    width: 190px;
-    font-family: 'Titillium Web', sans-serif;
-}
-
-.main-menu>ul.logout {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-
-/* Avatar */
-.avatar {
-    background: #332f2f;
-    padding: 2em 0.5em;
-    text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.avatar img {
-    width: 30px; /* Dimensione dell'avatar quando la sidebar è chiusa */
-    height: 30px; /* Altezza uguale alla larghezza per mantenere la forma rotonda */
-    border-radius: 50%; /* Imposta il bordo arrotondato al 50% per ottenere una forma rotonda */
-    overflow: hidden;
-    border: 2px solid grey;
-    transition: width 0.3s ease, height 0.3s ease; /* Transizione per l'animazione */
-}
-
-.main-menu:hover .avatar img {
-    width: 100px; /* Dimensione dell'avatar quando la sidebar è aperta */
-    height: 100px; /* Altezza uguale alla larghezza per mantenere la forma rotonda */
-}
 
 /* Contenitore principale */
 .container {
-  margin-left: 100px; /* Aggiusta il margine sinistro per fare spazio alla sidebar chiusa */
+  margin-left: 0;
   transition: margin-left 0.3s ease;
-  max-width: 100%; /* Valore predefinito per schermi piccoli */
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px; /* Padding laterale per schermi piccoli */
 }
 
 /* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
 @media (min-width: 1100px) and (max-width: 1400px) {
   .container {
       max-width: 1280px;
-      margin-left: 100px;
-      margin-right:100px;
+      margin-left: 50px;
+      margin-right: 100px;
+      padding: 0; /* Rimuove il padding laterale per schermi medi */
   }
 }
 
@@ -134,21 +23,46 @@
 @media (min-width: 1400px) {
   .container {
       max-width: 1650px;
-      margin-left: 100px;
-      margin-right:100px;
-  }
-}
-/* Media query per schermi enormi */
-@media (min-width: 1650px) {
-  .container {
-      max-width: 3000px; 
-      margin-left: 100px; 
+      margin-left: 50px;
       margin-right: 100px;
+      padding: 0; /* Rimuove il padding laterale per schermi grandi */
   }
 }
 
-.main-menu:hover ~ .container {
-    margin-left: 260px; /* Aggiusta il margine sinistro per fare spazio alla sidebar aperta */
+/* Media query per schermi enormi */
+@media (min-width: 1650px) {
+  .container {
+      max-width: 3000px;
+      margin-left: 100px;
+      margin-right: 100px;
+      padding: 0; /* Rimuove il padding laterale per schermi enormi */
+  }
+}
+
+/* Allineamento prima row */
+.row.align-items-stretch {
+align-items: stretch;
+}
+
+
+/* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
+@media (min-width: 1100px) and (max-width: 1400px) {
+  .sidebar-container {
+    max-width: 60%; /* Adatta la larghezza della sidebar al contenuto */
+}
+}
+
+/* Media query per schermi più grandi di 1400px */
+@media (min-width: 1400px) {
+  .sidebar-container {
+    max-width: 50%; /* Adatta la larghezza della sidebar al contenuto */
+}
+}
+/* Media query per schermi enormi */
+@media (min-width: 1650px) {
+  .sidebar-container {
+    max-width: 40%; /* Adatta la larghezza della sidebar al contenuto */
+}
 }
 
 /* Testo di benvenuto */
@@ -158,209 +72,20 @@
     font-size: 35px;
 }
 
-/* Stili generali */
-a:hover, a:focus {
-    text-decoration: none;
-}
-
-nav {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-}
-
-nav ul, nav li {
-    outline: 0;
-    margin: 0;
-    padding: 0;
-}
-
-.main-menu li:hover>a, nav.main-menu li.active>a, .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus, .no-touch .dashboard-page nav.dashboard-menu ul li:hover a, .dashboard-page nav.dashboard-menu ul li.active a {
-    color: #fff;
-    background-color: #000000;
-}
-
-.footer-text {
-    color: white !important;
-}
 
 /* card progetto attuale */
 body {
     background-color: #000;
   }
-  
-  .ag-courses_box {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    padding: 50px 0;
-    justify-content: center;
-  }
-  
-  .ag-courses_item {
-    width: 100%; /* Set to 100% to make it responsive within its parent */
-    max-width: 600px; /* Set a max-width for the card */
-    margin: 0 15px 30px;
-    border-radius: 28px;
-    overflow: hidden;
-    transition: transform 0.3s ease, max-height 0.5s ease;
-    box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
-  }
-  
-  .ag-courses-item_link {
-    display: block;
-    padding: 30px 20px;
-    position: relative;
-  }
-  
-  .ag-courses-item_title {
-    min-height: 87px;
-    margin: 0 0 25px;
-    font-weight: bold;
-    font-size: 30px;
-    color: #FFF;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .ag-courses-item_date-box {
-    font-size: 18px;
-    color: #FFF;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .ag-courses-item_date {
-    font-weight: bold;
-    color: #66c649;
-    transition: color 0.5s ease;
-  }
-  
-  .ag-courses-item_bg {
-    height: 128px;
-    width: 128px;
-    border-radius: 50%;
-    position: absolute;
-    top: -75px;
-    right: -75px;
-    transition: transform 0.5s ease;
-  }
-  
-  .ag-courses-item_link:hover .ag-courses-item_bg {
-    transform: scale(10);
-  }
-  
-  /* Active card styles */
-  .ag-courses_item.active .ag-courses-item_link {
-    background-color: #332f2f;
-  }
-  
-  .ag-courses_item.active .ag-courses-item_bg {
-    background: linear-gradient(190deg, green, #a627ed, blue);
-  }
-  
-  /* Details area */
-  .ag-courses-item_details {
-    display: none;
-    padding: 20px;
-    background-color: #222;
-    color: #fff;
-  }
-  
-  /* Expanded card */
-  .ag-courses_item.expanded {
-    max-height: 500px; /* Adjust based on content */
-  }
-  
-  .ag-courses_item.expanded .ag-courses-item_details {
-    display: block;
-  }
-  
-  /* Media queries */
-  @media only screen and (max-width: 979px) {
-    .ag-courses_item {
-      flex-basis: calc(50% - 30px);
-    }
-    .ag-courses-item_title {
-      font-size: 24px;
-    }
-  }
-  
-  @media only screen and (max-width: 639px) {
-    .ag-courses_item {
-      flex-basis: 100%;
-    }
-    .ag-courses-item_title {
-      min-height: 72px;
-      font-size: 24px;
-      line-height: 1;
-    }
-    .ag-courses-item_link {
-      padding: 22px 40px;
-    }
-    .ag-courses-item_date-box {
-      font-size: 16px;
-    }
-  }
-  
-  /* Stile card per il task manager */
-   .task-card {
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
-    background-color: #332f2f;
-    font-family: 'Titillium Web', sans-serif;
-    color: #89CC04;
-}
-.task-card h2 {
-    margin-top: 0;
-    font-size: 24px;
-}
-.task-list {
-    list-style: none;
-    padding: 0;
-}
-.task-list li {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f9f9f9;
-}
-.task-list li.completed {
-    text-decoration: line-through;
-    color: gray;
-    background-color: #e0e0e0;
-}
-.task-actions {
-    display: flex;
-    gap: 10px;
-}
-.button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-.button.complete {
-    background-color: #28a745;
-    color: white;
-}
-.button.delete {
-    background-color: #dc3545;
-    color: white;
-}
-.completed-tasks {
-    margin-top: 20px;
-}
 
+
+  /* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
 /* card hp consulente */
 .card {
     background-color: #332f2f;
@@ -371,80 +96,86 @@ body {
 color: white;
 }
 
-/* pagina progetto - accordion con progetti passati */ 
-.accordion-container * {
-    box-sizing: border-box;
-  }
-  
-  .accordion-container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .accordion {
-    width: 100%; /* Adjusted to fit within its parent column */
-    height: 50%;
-    margin: auto;
-    margin-top: 2rem;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .accordion__item { 
-    flex-basis: 10%;
-    height: 60px; /* Altezza fissa */
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: helvetica;
-    background-color: #332f2f;
-    cursor: pointer;
-    box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
-    transition: 
-      flex-grow .3s linear,
-      background-color 0.2s ease-in
-  }
-  
-  .accordion__item-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
-  }
-  
-  .accordion__item-title {
-    padding: 0.5em;
-    color: white;
-  }
-  
-  .accordion__item-details {
-    display: none; /* Hide details by default */
-    padding: 0.5em;
-    color: #333;
-  }
-  
-  .accordion__item:hover { 
-    background-color: #89CC04;
-    flex-grow: 1.5;
-  }
-  
-  .accordion__item:hover .accordion__item-details {
-    display: block; /* Show details on hover */
-  }
-  
-  .accordion__item:active { 
-    box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
-    background-color: #bde6fc;
-    color: white;
-  }
-  
-  /* Allineamento prima row */
-  .row.align-items-stretch {
-    align-items: stretch;
-  }
-  
+/* Sidebar Container */
+.sidebar-container {
+  flex: 2;
+  width: 100%;
+  max-width: 800px; /* Limita la larghezza del medagliere e della barra di avanzamento */
+  margin-left: 50px;
+  margin-top: 50px;
+  background-color: transparent !important;
+}
+
+/* medagliere */
+.medagliere-section {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 100%;
+}
+
+.badge {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.badge img {
+  width: 80px;
+  height: 80px;
+}
+
+.badge:hover {
+  transform: scale(1.1);
+}
+
+
+/* Stili per la progress-section */
+.progress-section {
+  text-align: center; /* Centra l'intera sezione di progresso */
+}
+
+.progress-bar-container {
+  width: 400px;
+  margin: 0 auto; /* Centra il contenitore della progress bar orizzontalmente */
+}
+
+.progress {
+  display: flex;
+  align-items: center; /* Allinea verticalmente al centro */
+  padding: 15px;
+  background: white;
+
+}
+
+.progress-bar {
+  height: 25px;
+  border-radius: 20px;
+  width: 60%; /* Imposta la larghezza iniziale della barra di progresso */
+  animation: progressAnimation 7s;
+  background: blue; /* Colore della barra di progresso */
+}
+
+.progress-text {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px; /* Spazio tra la barra di progresso e il testo */
+}
+
+@keyframes progressAnimation {
+  0% { width: 0%; }
+  80% { width: 85%; }
+  100% { width: 100%; }
+}

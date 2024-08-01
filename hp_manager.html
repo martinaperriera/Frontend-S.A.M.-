@@ -8,7 +8,7 @@
     <!-- mini icona pagina web -->
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/homepage_style.css">
+    <link rel="stylesheet" href="css/sidebar_footer.css">
     <link rel="stylesheet" href="css/hp_manager.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -69,7 +69,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="manager_reportistica.html">
                     <i class="fa fa-bars"></i>
                     <span class="nav-text">
                     Reportistica
@@ -87,7 +87,7 @@
             </li>
 
             <li>
-               <a href="#">
+               <a href="manager_classifica.html">
                     <i class="fa fa-map-marker"></i>
                     <span class="nav-text">
                         Classifica
@@ -108,7 +108,7 @@
 
         <ul class="logout">
             <li>
-                <a href="#">
+                <a href="manager_help.html">
                     <i class="fa fa-info"></i>  
                     <span class="nav-text">
                         Help
@@ -127,45 +127,99 @@
     </nav>
 
     <div class="container mt-5">
-        <h1 class="ms-5 mt-5 mb-5" id="benvenuto">Benvenuto Manager</h1>
-    </div>
-
-    <div class="row d-flex justify-content-center align-items-center container">
-        <div class="col-md-6">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Overview progetti</h6>
+        <h1 class="ms-5 mb-5" id="benvenuto">Benvenuto Manager</h1>
+    
+        <!-- Sidebar Container -->
+         <div class="container">
+        <div class="row align-items-stretch mb-4">
+            <div class="col-md-4">
+                <div class="sidebar-container">
+                    <!-- badges Section -->
+                    <div class="medagliere-section mb-4">
+                        <div class="card-header">
+                            <h2>Medagliere</h2>
+                            <div class="badges-container">
+                                <!-- I badge verranno aggiunti qui dinamicamente -->
+                            </div>
+                        </div>
+                    </div>
+                  
+    
+                    <!-- Progress Section -->
+                    <div class="progress-section mt-3">
+                            <h3>Completamento progetto attuale</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress">
+                                    <div class="progress-bar"></div>
+                                </div>
+                                </div>
+                                <p class="progress-text">60% completato - 40% per il prossimo badge</p>
+                            </div>
+                        </div>
+                    </div>
             </div>
-            <div class="card-body">
-                <h4 class="small font-weight-bold">Task 1 - <span class="float-right">20%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20"
-                        aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="col-md-8">
+                <!-- Placeholder for future element -->
+            </div>
+        </div>
+    
+    
+        <!-- Second Row: Project Overview and Task Lists -->
+         <div class="container">
+        <div class="row d-flex justify-content-center align-items-start">
+            <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold" id="text-primary">Overview progetti</h6>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="small font-weight-bold">Task 1 - <span class="float-right">20%</span></h4>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h4 class="small font-weight-bold">Task 2 - <span class="float-right">40%</span></h4>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h4 class="small font-weight-bold">Task 3 - <span class="float-right">60%</span></h4>
+                        <div class="progress mb-4">
+                            <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h4 class="small font-weight-bold">Task 4 - <span class="float-right">80%</span></h4>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h4 class="small font-weight-bold">Task 5 - <span class="float-right">Complete!</span></h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
                 </div>
-                <h4 class="small font-weight-bold">Task 2 - <span class="float-right">40%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Task 3 - <span class="float-right">60%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Task 4 - <span class="float-right">80%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Task 5 - <span class="float-right">Complete!</span></h4>
-                <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100"
-                        aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+    
+            <div class="col-md-6 mb-4">
+                <div class="card-hover-shadow-2x mb-3 card todo-container">
+                    <div class="card-header-tab card-header">
+                        <div class="card-header-title font-size-lg text-capitalize font-weight-normal" id="text-primary">
+                            <i class="fa fa-check fa-2x"></i>&nbsp;Task Lists
+                        </div>
+                    </div>
+                    <div class="scroll-area-sm">
+                        <perfect-scrollbar class="ps-show-limits">
+                            <div style="position: static;" class="ps ps--active-y">
+                                <div class="ps-content">
+                                    <ul class="list-group list-group-flush" id="task-list">
+                                        <!-- task dinamiche qui -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </perfect-scrollbar>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
   
 
 <!-- footer -->
@@ -182,6 +236,7 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/profilo_badges.js"></script>
     <script src="js/hp_manager.js"></script>
 </body>
 

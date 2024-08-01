@@ -7,61 +7,62 @@
     <title>S.A.M.</title>
     <!-- mini icona pagina web -->
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/profilo.css">
-    <link rel="stylesheet" href="css/homepage_style.css">
-    <link rel="stylesheet" href="css/hp_consulente.css">
+    <link rel="stylesheet" href="css/classifica.css">
+    <link rel="stylesheet" href="css/sidebar_footer.css">
+
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
-<body style="background-color: #40832bd0;">
+<body style="background-color: rgba(71, 38, 101, 0.59);">
     <nav class="main-menu">
         <header class="avatar">
             <img src="img/bg_home.jpg" alt="Avatar" />
         </header>
-        <ul>
+        <ul> 
             <li>
-                <a href="hp_consulente.html">
+                <a href="hp_manager.html">
                     <i class="fa fa-home"></i>
                     <span class="nav-text">
-                        Pagina Consulente
+                        Pagina Manager
                     </span>
                 </a>
-
             </li>
+
             <li class="has-subnav">
-                <a href="consulente_project.html">
+                <a href="manager_project.html">
                     <i class="fa fa-globe"></i>
                     <span class="nav-text">
                         I miei progetti <!-- card con progetti attuali (rimanda alle task) / passati -->
                     </span>
                 </a>
-
             </li>
+
             <li class="has-subnav">
-                <a href="consulente_task.html">
+                <a href="manager_task.html">
                     <i class="fa fa-book"></i>
                     <span class="nav-text">
-                        Le mie task <!-- stato di avanzamento -->
+                       Assegna task 
                     </span>
                 </a>
-
             </li>
-            <li class="has-subnav">
-                <a href="consulente_notes.html">
-                    <i class="fa fa-comments"></i>
 
+            <li class="has-subnav">
+                <a href="manager_notes.html">
+                    <i class="fa fa-comments"></i>
+                   
                     <span class="nav-text">
                         Le mie note <!-- storico note inserite dalle task / progetto -->
                     </span>
                 </a>
-
+               
             </li>
+
             <li>
-                <a href="milestones.html">
+                <a href="manager_milestone.html">
                     <i class="fa fa-film"></i>
                     <span class="nav-text">
                         Milestones <!-- storico delle milestones inserite dal manager x progetto attivo -->
@@ -70,35 +71,46 @@
             </li>
 
             <li>
-               <a href="consulente_planner.html">
+                <a href="manager_reportistica.html">
+                    <i class="fa fa-bars"></i>
+                    <span class="nav-text">
+                    Reportistica
+                    </span>
+                </a>
+            </li>
+            
+            <li>
+               <a href="manager_planner.html">
                    <i class="fa fa-cogs"></i>
                     <span class="nav-text">
                         Planner
                     </span>
                 </a>
             </li>
+
             <li>
-               <a href="classifica.html">
+               <a href="manager_classifica.html">
                     <i class="fa fa-map-marker"></i>
                     <span class="nav-text">
                         Classifica
                     </span>
                 </a>
             </li>
+
             <li>
-                <a href="consulente_profilo.html">
+                <a href="manager_profile.html">
                     <i class="fa fa-user"></i>  
                     <span class="nav-text">
                     Il mio profilo
                     </span>
                 </a>
             </li>
-
+            
         </ul>
 
         <ul class="logout">
             <li>
-                <a href="help.html">
+                <a href="manager_help.html">
                     <i class="fa fa-info"></i>  
                     <span class="nav-text">
                         Help
@@ -116,71 +128,58 @@
         </ul>
     </nav>
 
-    <div class="container">
-        <!-- Sidebar Container -->
-        <div class="sidebar-container">
-            <!-- Badges Section -->
-            <div class="medagliere-section">
-                <h2>Medagliere</h2>
-                <div class="badges-container">
-                    <!-- I badge verranno aggiunti qui dinamicamente -->
-                </div>
-            </div>
-            
-            
-            <!-- Progress Section -->
-<div class="progress-section mt-3">
-    <h3>Completamento progetto attuale</h3>
-    <div class="progress-bar-container">
-        <div class="progress">
-            <div class="progress-bar"></div>
-        </div>
+    <div class="container justify-content-center align-items-center mt-5">
+        <table>
+            <thead>
+                <tr>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                    <th>Column 3</th>
+                    <th>Column 4</th>
+                    <th>Column 5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cell 1</td>
+                    <td>Cell 2</td>
+                    <td>Cell 3</td>
+                    <td>Cell 4</td>
+                    <td>Cell 5</td>
+                </tr>
+                <tr>
+                    <td>Cell 1</td>
+                    <td>Cell 2</td>
+                    <td>Cell 3</td>
+                    <td>Cell 4</td>
+                    <td>Cell 5</td>
+                </tr>
+                <tr>
+                    <td>Cell 1</td>
+                    <td>Cell 2</td>
+                    <td>Cell 3</td>
+                    <td>Cell 4</td>
+                    <td>Cell 5</td>
+                </tr>
+                <tr>
+                    <td>Cell 1</td>
+                    <td>Cell 2</td>
+                    <td>Cell 3</td>
+                    <td>Cell 4</td>
+                    <td>Cell 5</td>
+                </tr>
+                <tr>
+                    <td>Cell 1</td>
+                    <td>Cell 2</td>
+                    <td>Cell 3</td>
+                    <td>Cell 4</td>
+                    <td>Cell 5</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <p class="progress-text">60% completato - 40% per il prossimo badge </p>
-</div>
 
-        </div>
-        
-        <!-- Profile Container -->
-        <div class="profile-container">
-            <!-- Profile Card -->
-            <div class="card p-3 py-4">
-                <div class="text-center"> 
-                <img src="https://i.imgur.com/stD0Q19.jpg" width="100" class="rounded-circle">
-                    <h3 class="mt-2">Maria Smantha</h3>
-                    <span class="mt-1 clearfix">Manager</span>
-                    
-                    <div class="row mt-3 mb-3">
-                    
-                      <div class="col-md-4">
-                        <h5>Projects</h5>
-                        <span class="num">10</span>
-                      </div>
-                      <div class="col-md-4">
-                      <h5>Projects</h5>
-                        <span class="num">10</span>
-                      </div>
-                      <div class="col-md-4">
-                      <h5>Projects</h5>
-                        <span class="num">10</span>
-                      </div>
-                    
-                    </div>
-                    
-                    <hr class="line">
-                    
-                    <small class="mt-4">Breve descrizione...</small>
-                  
-                     <div class="profile mt-5">
-                     
-                     <button class="profile_button px-5">Modifica profilo</button>
-        
-                </div>
-                       
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- footer -->
 <div class="footer-container">
@@ -198,10 +197,7 @@
 
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/profilo_badges.js"></script>
-    <script src="js/hp_consulente.js"></script>
+    <script src="js/classifica.js"></script>
 </body>
 
 </html>
-
-  

@@ -7,19 +7,24 @@
     <title>S.A.M.</title>
     <!-- mini icona pagina web -->
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
-    <link rel="stylesheet" href="css/progetto.css">
-    <link rel="stylesheet" href="css/homepage_style.css">
-    <link rel="stylesheet" href="css/hp_consulente.css">
+    <link rel="stylesheet" href="css/consulente_project.css">
+    <link rel="stylesheet" href="css/sidebar_footer.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 </head>
 
 <body style="background-color: #40832bd0;">
     <nav class="main-menu">
         <header class="avatar">
             <img src="img/bg_home.jpg" alt="Avatar" />
+            <div class='user-info'>
+                <div class='user-name'>Nome Utente</div>
+                <div class='user-stats'>
+                  <div class='projects'>Progetti: 1</div>
+                  <div class='tasks'>Task: 1</div>
+                </div>
+                <button class='btn-change-password'><a href="modificapassword.html">Cambia password</a></button>
+              </div>
         </header>
         <ul>
             <li>
@@ -60,7 +65,7 @@
 
             </li>
             <li>
-                <a href="milestones.html">
+                <a href="consulente_milestone.html">
                     <i class="fa fa-film"></i>
                     <span class="nav-text">
                         Milestones <!-- storico delle milestones inserite dal manager x progetto attivo -->
@@ -77,7 +82,7 @@
                 </a>
             </li>
             <li>
-               <a href="classifica.html">
+               <a href="consulente.classifica.html">
                     <i class="fa fa-map-marker"></i>
                     <span class="nav-text">
                         Classifica
@@ -97,7 +102,7 @@
 
         <ul class="logout">
             <li>
-                <a href="help.html">
+                <a href="consulente_help.html">
                     <i class="fa fa-info"></i>  
                     <span class="nav-text">
                         Help
@@ -121,13 +126,17 @@
             <div class="col-lg-6 col-md-8 col-sm-12">
                 <div class="ag-format-container">
                     <div class="ag-courses_box justify-content-center">
-                        <div class="ag-courses_item">
+                        <div class="ag-courses_item active">
                             <div class="ag-courses-item_link" onclick="toggleDetails(event, 'details1')">
                                 <div class="ag-courses-item_bg"></div>
-                                <div class="ag-courses-item_title">Progetto Attivo</div>
+                                <div class="ag-courses-item_title">
+                                    Progetto attuale
+                                </div>
                                 <div class="ag-courses-item_date-box">
                                     start - deadline:
-                                    <span class="ag-courses-item_date">26.07.2024 - 02.09.2024</span>
+                                    <span class="ag-courses-item_date">
+                                        26.07.2024 - 02.09.2024
+                                    </span>
                                 </div>
                             </div>
                             <div class="ag-courses-item_details" id="details1">
@@ -138,33 +147,36 @@
                             </div>
                         </div>
                     </div>
-                </div>
+            </div>
             </div>
             <div class="col-lg-6 col-md-8 col-sm-12">
                 <div class="accordion-container">
                     <div class="accordion">
-                        <div class="accordion__item">
-                            <div class="accordion__item-content">
-                                <div class="accordion__item-title">Progetto concluso 1</div>
-                                <div class="accordion__item-details">Dettagli del progetto 1</div>
-                            </div>
+                      <div class="accordion__item mt-5">
+                        <div class="accordion__item-content">
+                          <div class="accordion__item-title">Progetto concluso 1</div>
+                          <div class="accordion__item-details">Dettagli del progetto 1</div>
                         </div>
-                        <div class="accordion__item">
-                            <div class="accordion__item-content">
-                                <div class="accordion__item-title">Progetto concluso 2</div>
-                                <div class="accordion__item-details">Dettagli del progetto 2</div>
-                            </div>
+                      </div>
+                      <div class="accordion__item">
+                        <div class="accordion__item-content">
+                          <div class="accordion__item-title">Progetto concluso 2</div>
+                          <div class="accordion__item-details">Dettagli del progetto 2</div>
                         </div>
-                        <div class="accordion__item">
-                            <div class="accordion__item-content">
-                                <div class="accordion__item-title">Progetto concluso 3</div>
-                                <div class="accordion__item-details">Dettagli del progetto 3</div>
-                            </div>
+                      </div>
+                      <div class="accordion__item">
+                        <div class="accordion__item-content">
+                          <div class="accordion__item-title">Progetto concluso 3</div>
+                          <div class="accordion__item-details">Dettagli del progetto 3</div>
                         </div>
-                    </div>
-                </div>
+                      </div>
+                    </div> 
+
+                  </div>
+
             </div>
         </div>
+            
         <div class="timeline-container mt-4">
             <div class="timeline-card">
                 <div class="timeline-header">
@@ -218,7 +230,7 @@
 
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/hp_consulente.js"></script>
+    <script src="js/consulente_project.js"></script>
 </body>
 
 </html>

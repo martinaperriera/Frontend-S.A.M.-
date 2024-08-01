@@ -1,0 +1,495 @@
+
+/* Card del progetto attuale */
+.ag-courses_item { /**/
+  background-color: #332f2f;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.ag-courses_item.expanded .ag-courses-item_content {
+  display: block;
+}
+
+.ag-courses-item_content {
+  display: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* Accordion */
+.accordion__item {
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.accordion__item:hover {
+  background-color: #333;
+  cursor: pointer;
+}
+
+.accordion__item.active .accordion__content {
+  display: block;
+  max-height: none; /* Ensure the content can expand fully */
+
+}
+
+.accordion__content {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #333;
+  transition: max-height 0.3s ease;
+
+}
+
+
+
+
+
+
+
+
+/* Testo di benvenuto */
+#benvenuto {
+  text-align: center;
+  justify-content: center;
+  font-size: 35px;
+}
+ 
+ /* Media queries */
+ @media only screen and (max-width: 979px) {
+    .ag-courses_item {
+      flex-basis: calc(50% - 30px);
+    }
+    .ag-courses-item_title {
+      font-size: 24px;
+    }
+  }
+
+  @media only screen and (max-width: 639px) {
+    .ag-courses_item {
+      flex-basis: 100%;
+    }
+    .ag-courses-item_title {
+      min-height: 72px;
+      font-size: 24px;
+      line-height: 1;
+    }
+    .ag-courses-item_link {
+      padding: 22px 40px;
+    }
+    .ag-courses-item_date-box {
+      font-size: 16px;
+    }
+  }
+
+  /* tl */
+ /* General Styles */
+body {
+    margin-top: 20px;
+}
+
+/* Timeline Container */
+.timeline-container {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Timeline Card */
+.timeline-card {
+    border: none;
+    margin-bottom: 24px;
+    background: transparent;
+    position: relative; /* For positioning the badge */
+    padding: 20px;
+    border-radius: 8px;
+    opacity: 0.8; /* Transparent cards */
+}
+
+/* Timeline Header */
+.timeline-header {
+    padding: 20px;
+}
+
+.timeline-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Timeline Content */
+.timeline-content {
+    padding: 20px;
+}
+
+/* Timeline List */
+.timeline-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Ensure items are displayed in a row */
+    position: relative; /* For positioning the line */
+}
+
+/* Timeline Line */
+.timeline-list:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-top: 3px solid #e9ecef;
+    z-index: 1; /* Place behind the items */
+}
+
+/* Timeline Item */
+.timeline-item {
+    position: relative;
+    flex: 1 1 30%; /* Flex basis for three items per row */
+    background: transparent; /* Transparent background */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 40px; /* Space from the horizontal line */
+}
+
+/* Vertical Connecting Lines */
+.timeline-item:before {
+    content: "";
+    position: absolute;
+    top: -20%; /* Start from the top of the item */
+    left: 50%; /* Center horizontally */
+    width: 0;
+    height: 30%; /* Full height to reach the horizontal line */
+    border-left: 2px dashed #dee2e6; /* Dashed line */
+    transform: translateX(-50%); /* Center the line */
+    z-index: 0; /* Place behind the badge */
+}
+
+/* Badge */
+.timeline-item:after {
+    content: "";
+    position: absolute;
+    top: -50px; /* Position the badge where the dashed line connects */
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #007bff; /* Default badge color */
+    border-radius: 50%;
+    transform: translateX(-50%);
+    opacity: 0.7; /* Semi-transparent badge */
+    z-index: 1; /* Ensure badge is on top of lines */
+}
+
+/* Background Color Utilities */
+.bg-primary {
+    background-color: rgba(64, 144, 203, .7) !important;
+}
+
+.bg-success {
+    background-color: rgba(71, 189, 154, .7) !important;
+}
+
+.bg-danger {
+    background-color: rgba(231, 76, 94, .7) !important;
+}
+
+/* Timeline Event Title */
+.timeline-event-title {
+    margin-top:10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Timeline Event Description */
+.timeline-event-description {
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (min-width: 1140px) {
+    .timeline-list {
+        display: flex; /* Ensure items are displayed in a row */
+    }
+    .timeline-item {
+        flex: 1 1 30%; /* Adjust width for three items per row */
+    }
+}
+
+
+/*progetti attuali*/
+
+  /* General Styles */
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+  
+/* card progetto attuale */
+body {
+    background-color: #000;
+  }
+
+/* Aggiorna lo sfondo della card */*
+.ag-courses-item_link {
+  display: block;
+  padding: 30px 20px;
+  position: relative;
+  background-color: #332f2f; /* Assicurati che il colore sia quello della sidebar */
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+/* Colore di sfondo della card all'hover */
+.ag-courses-item_link:hover {
+  background: linear-gradient(190deg, green, #a627ed, blue); /* Colore della sidebar all'hover */
+  color: white;
+}
+
+.ag-courses-item_link:hover .ag-courses-item_date {
+  color: white;
+}
+
+  .ag-courses_box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 50px 0;
+    justify-content: center;
+  }
+
+  .ag-courses_item {
+  width: 100%; /* Set to 100% to make it responsive within its parent */
+    max-width: 600px; /* Set a max-width for the card */
+    margin: 0 15px 30px;
+    border-radius: 28px;
+    overflow: hidden;
+    transition: transform 0.3s ease, max-height 0.5s ease;
+    box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
+  }
+
+
+  .ag-courses-item_title {
+    min-height: 87px;
+    margin: 0 0 25px;
+    font-weight: bold;
+    font-size: 30px;
+    color: #FFF;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ag-courses-item_date-box {
+    font-size: 18px;
+    color: #FFF;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ag-courses-item_date {
+    font-weight: bold;
+    color: #66c649;
+    transition: color 0.5s ease;
+  }
+
+  .ag-courses-item_bg {
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+    position: absolute;
+    top: -75px;
+    right: -75px;
+    transition: transform 0.5s ease;
+  }
+
+  .ag-courses-item_link:hover .ag-courses-item_bg {
+    transform: scale(10);
+  }
+/* Active card styles */
+  .ag-courses_item.active .ag-courses-item_link {
+    background-color: #332f2f;
+  }
+
+  .ag-courses_item.active .ag-courses-item_bg {
+    background: linear-gradient(190deg, green, #a627ed, blue);
+  }
+
+  /* Details area */
+  .ag-courses-item_details {
+    display: none;
+    padding: 20px;
+    border-radius: none;
+    background-color: #332f2f;
+    color: #fff;
+  }
+
+  .ag-courses_item {
+    transition: all 0.3s ease;
+}
+
+  .ag-courses_item.expanded .ag-courses-item_details {
+    display: block;
+  }
+
+  /* Media queries */
+  @media only screen and (max-width: 979px) {
+    .ag-courses_item {
+      flex-basis: calc(50% - 30px);
+    }
+    .ag-courses-item_title {
+      font-size: 24px;
+    }
+  }
+
+  @media only screen and (max-width: 639px) {
+    .ag-courses_item {
+      flex-basis: 100%;
+    }
+    .ag-courses-item_title {
+      min-height: 72px;
+      font-size: 24px;
+      line-height: 1;
+    }
+    .ag-courses-item_link {
+      padding: 22px 40px;
+    }
+    .ag-courses-item_date-box {
+      font-size: 16px;
+    }
+  }
+
+
+
+/* Stili generali dell'accordion */
+
+
+.ag-courses_box, .accordion {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Ridimensionamento dell'accordion per schermi grandi */
+@media (min-width: 1400px) {
+  .accordion {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1650px) {
+  .accordion {
+    width: 50%;
+  }
+}
+
+
+.accordion {
+  width: 100%;
+  height: auto; /* Permette l'espansione verticale */
+  margin: auto;
+  padding: 2em;
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  gap: 1em; /* Spazio tra gli elementi */
+}
+
+.accordion__item {
+  flex-basis: auto; /* Permette la flessibilità di dimensionamento */
+  height: 20px; /* Altezza di base */
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #332f2f;
+  color: #FFF;
+  cursor: pointer;
+  box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
+  transition: 
+    flex-grow 0.3s linear,
+    background-color 0.2s ease-in,
+    max-height 0.3s ease; /* Aggiunta transizione per max-height */
+    position: relative; /* Necessario per posizionare i dettagli aggiuntivi */
+
+}
+
+.accordion__item:hover {
+  background-color: #66c649;
+  flex-grow: 3; /* Espande la card al passaggio del mouse */
+}
+
+.accordion__item:active {
+  box-shadow: 1px 1px 0.1em #67adb5;
+  background-color: #332f2f;
+  color: white;
+}
+
+.accordion__item-content {
+  max-height: 0; /* Nascosto di default */
+  color: #fff;
+  padding: 0 15px; /* Padding orizzontale */
+  border-radius: 10px;
+  transition: max-height 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  background-color: #66c649; /* Colore di sfondo per i dettagli */
+  z-index: 1;
+  width: 800px;
+}
+
+div.accordion__item-title{
+  color: #fff;
+
+}
+
+.accordion__item-title {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0.5em;
+  color: white;
+}
+
+.accordion__item-details {
+  margin-top: 5px;
+  padding: 0.5em;
+  color: #fff;
+  display: none; /* Nascosto di default */
+  transition: opacity 0.3s ease; /* Transizione per opacità */
+  opacity: 0; /* Nascosto di default */
+}
+
+.accordion__item:hover .accordion__item-content {
+  max-height: 150px; /* Imposta un'altezza massima per mostrare il contenuto espanso */
+}
+
+.accordion__item:hover .accordion__item-details {
+  display: block; /* Mostra i dettagli quando la card è espansa */
+  opacity: 1; /* Rende i dettagli visibili */
+}
+
+

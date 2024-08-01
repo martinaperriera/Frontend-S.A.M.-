@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.A.M.</title>
     <!-- mini icona pagina web -->
-    <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
+    <link rel="icon" href="img/Favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/notes.css">
-    <link rel="stylesheet" href="css/homepage_style.css">
+    <link rel="stylesheet" href="css/consulente_notes.css">
+    <link rel="stylesheet" href="css/sidebar_footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
@@ -58,7 +58,7 @@
 
             </li>
             <li>
-                <a href="milestones.html">
+                <a href="consulente_milestone.html">
                     <i class="fa fa-film"></i>
                     <span class="nav-text">
                         Milestones <!-- storico delle milestones inserite dal manager x progetto attivo -->
@@ -75,7 +75,7 @@
                 </a>
             </li>
             <li>
-                <a href="classifica.html">
+                <a href="consulente.classifica.html">
                     <i class="fa fa-map-marker"></i>
                     <span class="nav-text">
                         Classifica
@@ -83,19 +83,18 @@
                 </a>
             </li>
             <li>
-                <a href="consulente_profilo.html">
+                <a href="consulente_profile.html">
                     <i class="fa fa-user"></i>
                     <span class="nav-text">
                         Il mio profilo
                     </span>
                 </a>
             </li>
-
         </ul>
 
         <ul class="logout">
             <li>
-                <a href="help.html">
+                <a href="consulente_help.html">
                     <i class="fa fa-info"></i>
                     <span class="nav-text">
                         Help
@@ -116,66 +115,36 @@
     <div class="container mt-5">
         <h1 class="ms-5 mb-5" id="benvenuto">Le mie note</h1>
 
-        <!-- popup-box -->
         <div class="popup-box">
             <div class="popup">
-                <div class="content">
-                    <header>
-                        <p></p>
-                        <i class="uil uil-times"></i>
-                    </header>
-                    <form action="#">
-                        <div class="row title">
-                            <label>Titolo</label>
-                            <input type="text" id="task-title" spellcheck="false">
-                        </div>
-                        <div class="row description">
-                            <label>Descrizione</label>
-                            <textarea id="task-description" spellcheck="false"></textarea>
-                        </div>
-                        <div class="row priority">
-                            <label>Priorità</label>
-                            <select id="task-priority">
-                                <option value="Low">Bassa</option>
-                                <option value="Medium">Media</option>
-                                <option value="High">Alta</option>
-                            </select>
-                        </div>
-                        <div class="row completion">
-                            <label>Completion Level</label>
-                            <select id="task-completion">
-                                <option value="0%">Iniziato</option>
-                                <option value="25%">In corso</option>
-                                <option value="50%">In ritardo</option>
-                                <option value="75%">Completato</option>
-                                <option value="100%">Consegnato</option>
-                            </select>
-                        </div>
-                        <div class="row project">
-                            <label>Progetto</label>
-                            <select id="task-project">
-                                <!-- Progetti dal db -->
-                            </select>
-                        </div>
-                        <button id="add-task-btn">Aggiungi Nota</button>
-                        <!-- Card per visualizzare le task -->
-                        <div class="task-container">
-                            <h2>Tasks</h2>
-                            <div class="task-cards">
-                                <!-- card task dal db -->
-                            </div>
-                        </div>
-                    </form>
-                </div>
+              <div class="content">
+                <header>
+                  <p></p>
+                  <i class="uil uil-times"></i>
+                </header>
+                <form action="#">
+                  <div class="row title">
+                    <label>Titolo</label>
+                    <input type="text" spellcheck="false">
+                  </div>
+                  <div class="row description">
+                    <label>Descrizione</label>
+                    <textarea spellcheck="false"></textarea>
+                  </div>
+                  <button></button>
+                </form>
+              </div>
             </div>
-        </div>
-
-        <div class="wrapper">
+          </div>
+          <div class="wrapper">
             <li class="add-box">
-                <div class="icon"><i class="uil uil-plus"></i></div>
-                <p>Add new note</p>
+              <div class="icon"><i class="uil uil-plus"></i></div>
+              <p>Aggiungi nuove note</p>
             </li>
-        </div>
+          </div>
+          
+
+     
 
 
 
@@ -197,7 +166,7 @@
 
 
         <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/hp_consulente.js"></script>
+        <script src="js/consulente_notes.js"></script>
 </body>
 
 </html>

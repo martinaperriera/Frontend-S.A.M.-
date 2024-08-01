@@ -69,3 +69,8 @@
             transform: translateX(-50%);
   }
 }
+#benvenuto {
+  text-align: center;
+  justify-content: center;
+  font-size: 35px;
+}

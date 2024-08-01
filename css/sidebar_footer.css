@@ -114,49 +114,36 @@
     height: 100px; /* Altezza uguale alla larghezza per mantenere la forma rotonda */
 }
 
-/* Contenitore principale */
-.container {
-    margin-left: 100px; /* Aggiusta il margine sinistro per fare spazio alla sidebar chiusa */
-    transition: margin-left 0.3s ease;
-    max-width: 1200px;
-
-  }
   
   /* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
   @media (min-width: 1100px) and (max-width: 1400px) {
-    .container {
-        max-width: 1280px;
-        margin-left: 100px;
-        margin-right:100px;
-    }
+    .footer-container {
+        max-width: 1200px; /* Stessa larghezza massima del contenitore principale */
+        margin: 0 auto; /* Centra orizzontalmente */
+        padding: 20px; /* Padding se necessario */
+        }
   }
   
   /* Media query per schermi più grandi di 1400px */
   @media (min-width: 1400px) {
-    .container {
-        max-width: 1650px;
-        margin-left: 100px;
-        margin-right:100px;
-    }
+    .footer-container {
+        margin-left: 100px; /* Spazio per la sidebar aperta */
+        max-width: 1200px;
+        margin: 0 auto;
+    } 
   }
   /* Media query per schermi enormi */
   @media (min-width: 1650px) {
-    .container {
-        max-width: 3000px; 
-        margin-left: 100px; 
-        margin-right: 100px;
+
+    .footer-container {
+        margin-left: 500px; /* Spazio per la sidebar aperta */
+        max-width: 3000px;
+        margin: 0 auto;
     }
   }
 
 .main-menu:hover ~ .container {
     margin-left: 250px; /* Margine sinistro per fare spazio alla sidebar aperta */
-}
-
-/* Testo di benvenuto */
-#benvenuto {
-    text-align: center;
-    justify-content: center;
-    font-size: 35px;
 }
 
 /* Stili generali */
@@ -187,3 +174,54 @@ nav ul, nav li {
     color: white !important;
 }
 
+.my-4 {
+    margin-left: 1.5rem; /* sposta il footer dalla sidebar quando si apre */
+  } 
+
+
+  /* Nuova sezione user-info */
+.user-info {
+    padding: 1em;
+    color: white;
+    opacity: 0; /*nasconde userinfo*/
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transizione per visibilità e opacità */
+}
+/* Mostra user-info quando la sidebar è aperta */
+.main-menu:hover .user-info {
+    opacity: 1;
+    visibility: visible;
+}
+
+.user-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.user-stats {
+    font-size: 14px;
+    margin-bottom: 1em;
+}
+
+.user-stats div {
+    margin-bottom: 0.5em;
+}
+
+.btn-change-password {
+    background-color: #4CAF50; /* Colore di sfondo per il bottone */
+    border: none;
+    color: white;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    margin: 0 auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-change-password:hover {
+    background-color: #45a049; /* Colore di sfondo del bottone al passaggio del mouse */
+}
