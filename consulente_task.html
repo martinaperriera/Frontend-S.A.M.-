@@ -7,26 +7,22 @@
     <title>S.A.M.</title>
     <!-- mini icona pagina web -->
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/consulente_project.css">
     <link rel="stylesheet" href="css/sidebar_footer.css">
-    <link rel="stylesheet" href="css/consulente_task.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 </head>
 
 <body style="background-color: #40832bd0;">
     <nav class="main-menu">
-        <header class="avatar">
-            <img src="img/bg_home.jpg" alt="Avatar" />
-            <div class='user-info'>
-                <div class='user-name'>Nome Utente</div>
-                <div class='user-stats'>
-                  <div class='projects'>Progetti: 1</div>
-                  <div class='tasks'>Task: 1</div>
-                </div>
-                <button class='btn-change-password'><a href="modificapassword.html">Cambia password</a></button>
-              </div>
-        </header>
+      <header class="avatar">
+        <img src="img/bg_home.jpg" alt="Avatar">
+        <div class='user-info'>
+            <div class='user-name'>Nome Utente</div>
+            <div class='user-stats'>
+              <div class='projects'>Progetti: 1</div>
+              <div class='tasks'>Task: 1</div>
+    </header>
         <ul>
             <li>
                 <a href="hp_consulente.html">
@@ -35,7 +31,7 @@
                         Pagina Consulente
                     </span>
                 </a>
-              
+
             </li>
             <li class="has-subnav">
                 <a href="consulente_project.html">
@@ -44,7 +40,7 @@
                         I miei progetti <!-- card con progetti attuali (rimanda alle task) / passati -->
                     </span>
                 </a>
-                
+
             </li>
             <li class="has-subnav">
                 <a href="consulente_task.html">
@@ -53,17 +49,16 @@
                         Le mie task <!-- stato di avanzamento -->
                     </span>
                 </a>
-                
+
             </li>
             <li class="has-subnav">
                 <a href="consulente_notes.html">
                     <i class="fa fa-comments"></i>
-                   
+
                     <span class="nav-text">
                         Le mie note <!-- storico note inserite dalle task / progetto -->
                     </span>
                 </a>
-               
             </li>
             <li>
                 <a href="consulente_milestone.html">
@@ -73,7 +68,7 @@
                     </span>
                 </a>
             </li>
-            
+
             <li>
                <a href="consulente_planner.html">
                    <i class="fa fa-cogs"></i>
@@ -82,23 +77,6 @@
                     </span>
                 </a>
             </li>
-            <li>
-               <a href="consulente.classifica.html">
-                    <i class="fa fa-map-marker"></i>
-                    <span class="nav-text">
-                        Classifica
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="consulente_profile.html">
-                    <i class="fa fa-user"></i>  
-                    <span class="nav-text">
-                    Il mio profilo
-                    </span>
-                </a>
-            </li>
-            
         </ul>
 
         <ul class="logout">
@@ -152,6 +130,7 @@
         <div class="container mt-5 me-2">
             <h1 class="mb-5" id="benvenuto">Le mie task</h1>
             <div class="row d-flex justify-content-center me-2 align-items-center">
+                
                 <div class="col-lg-6">
                     <div class="card-hover-shadow-2x mb-3 card todo-container" style="background-color: #332f2f; min-height: 600px;">
                         <div class="card-header-tab card-header">
@@ -172,6 +151,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6">
                     <div class="card-hover-shadow-2x mb-3 card todo-container" style="background-color: #332f2f; min-height: 600px; ">
                         <div class="card-header-tab card-header">
@@ -192,10 +172,12 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+
 
 
 <!--  modal cambia status-->

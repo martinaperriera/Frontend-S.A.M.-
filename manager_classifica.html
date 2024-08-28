@@ -20,9 +20,14 @@
 <body style="background-color: rgba(71, 38, 101, 0.59);">
     <nav class="main-menu">
         <header class="avatar">
-            <img src="img/bg_home.jpg" alt="Avatar" />
+            <img src="img/bg_home.jpg" alt="Avatar">
+            <div class='user-info'>
+                <div class='user-name'>Nome Utente</div>
+                <div class='user-stats'>
+                  <div class='projects'>Progetti: 1</div>
+                  <div class='tasks'>Task: 1</div>
         </header>
-        <ul> 
+        <ul>
             <li>
                 <a href="hp_manager.html">
                     <i class="fa fa-home"></i>
@@ -30,8 +35,8 @@
                         Pagina Manager
                     </span>
                 </a>
+              
             </li>
-
             <li class="has-subnav">
                 <a href="manager_project.html">
                     <i class="fa fa-globe"></i>
@@ -39,17 +44,17 @@
                         I miei progetti <!-- card con progetti attuali (rimanda alle task) / passati -->
                     </span>
                 </a>
+                
             </li>
-
             <li class="has-subnav">
                 <a href="manager_task.html">
                     <i class="fa fa-book"></i>
                     <span class="nav-text">
-                       Assegna task 
+                        Le mie task <!-- stato di avanzamento -->
                     </span>
                 </a>
+                
             </li>
-
             <li class="has-subnav">
                 <a href="manager_notes.html">
                     <i class="fa fa-comments"></i>
@@ -60,7 +65,6 @@
                 </a>
                
             </li>
-
             <li>
                 <a href="manager_milestone.html">
                     <i class="fa fa-film"></i>
@@ -69,7 +73,6 @@
                     </span>
                 </a>
             </li>
-
             <li>
                 <a href="manager_reportistica.html">
                     <i class="fa fa-bars"></i>
@@ -78,7 +81,6 @@
                     </span>
                 </a>
             </li>
-            
             <li>
                <a href="manager_planner.html">
                    <i class="fa fa-cogs"></i>
@@ -87,25 +89,7 @@
                     </span>
                 </a>
             </li>
-
-            <li>
-               <a href="manager_classifica.html">
-                    <i class="fa fa-map-marker"></i>
-                    <span class="nav-text">
-                        Classifica
-                    </span>
-                </a>
-            </li>
-
-            <li>
-                <a href="manager_profile.html">
-                    <i class="fa fa-user"></i>  
-                    <span class="nav-text">
-                    Il mio profilo
-                    </span>
-                </a>
-            </li>
-            
+                       
         </ul>
 
         <ul class="logout">
@@ -205,18 +189,17 @@
 
 
     <!-- footer -->
-<div class="footer-container">
-    <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top" style="background-color: transparent;">
-        <div class="col-md-4 d-flex align-items-center">
-            <span class="mb-3 mb-md-0 text-body-secondary footer-text">©️ 2024 S.A.M., Inc</span>
-        </div>
-        <div class="col-md-4 d-flex justify-content-end">
-            <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                <img src="img/s.a.m..svg" alt="Logo" width="60" height="60" class="me-2"> 
-            </a>
-        </div>
-    </footer>
-</div>
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top" style="background-color: transparent;">
+            <div class="col-md-4 d-flex align-items-center">
+                <span class="mb-3 mb-md-0 text-body-secondary footer-text">©️ 2024 S.A.M., Inc</span>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end">
+                <a href="index.html" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                    <img src="img/s.a.m..svg" alt="Logo" width="100" height="100" class="me-2"> 
+                </a>
+            </div>
+        </footer>
 
 
     <script src="js/bootstrap.bundle.min.js"></script>

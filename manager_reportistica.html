@@ -10,16 +10,21 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/sidebar_footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/reportistica.css">
 
 </head>
 
 <body style="background-color: rgba(71, 38, 101, 0.59);">
-
     <nav class="main-menu">
         <header class="avatar">
-            <img src="img/bg_home.jpg" alt="Avatar" />
+            <img src="img/bg_home.jpg" alt="Avatar">
+            <div class='user-info'>
+                <div class='user-name'>Nome Utente</div>
+                <div class='user-stats'>
+                  <div class='projects'>Progetti: 1</div>
+                  <div class='tasks'>Task: 1</div>
         </header>
-        <ul> 
+        <ul>
             <li>
                 <a href="hp_manager.html">
                     <i class="fa fa-home"></i>
@@ -27,8 +32,8 @@
                         Pagina Manager
                     </span>
                 </a>
+              
             </li>
-
             <li class="has-subnav">
                 <a href="manager_project.html">
                     <i class="fa fa-globe"></i>
@@ -36,17 +41,17 @@
                         I miei progetti <!-- card con progetti attuali (rimanda alle task) / passati -->
                     </span>
                 </a>
+                
             </li>
-
             <li class="has-subnav">
                 <a href="manager_task.html">
                     <i class="fa fa-book"></i>
                     <span class="nav-text">
-                       Assegna task 
+                        Le mie task <!-- stato di avanzamento -->
                     </span>
                 </a>
+                
             </li>
-
             <li class="has-subnav">
                 <a href="manager_notes.html">
                     <i class="fa fa-comments"></i>
@@ -57,7 +62,6 @@
                 </a>
                
             </li>
-
             <li>
                 <a href="manager_milestone.html">
                     <i class="fa fa-film"></i>
@@ -66,7 +70,6 @@
                     </span>
                 </a>
             </li>
-
             <li>
                 <a href="manager_reportistica.html">
                     <i class="fa fa-bars"></i>
@@ -75,7 +78,6 @@
                     </span>
                 </a>
             </li>
-            
             <li>
                <a href="manager_planner.html">
                    <i class="fa fa-cogs"></i>
@@ -84,25 +86,7 @@
                     </span>
                 </a>
             </li>
-
-            <li>
-               <a href="manager_classifica.html">
-                    <i class="fa fa-map-marker"></i>
-                    <span class="nav-text">
-                        Classifica
-                    </span>
-                </a>
-            </li>
-
-            <li>
-                <a href="manager_profile.html">
-                    <i class="fa fa-user"></i>  
-                    <span class="nav-text">
-                    Il mio profilo
-                    </span>
-                </a>
-            </li>
-            
+                       
         </ul>
 
         <ul class="logout">
@@ -123,7 +107,7 @@
                 </a>
             </li>  
         </ul>
-    </nav> 
+    </nav>
 
      <!-- Navbar Mobile -->
 <div class="navbar-mobile">
@@ -148,23 +132,82 @@
     </ul>
 </div>
 
-    <h1 id="benvenuto">Reportistics</h1>
+<div class="container">
+    <h1 class="ms-5 mt-5 mb-5" id="benvenuto">Reportistica</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Consulente</th>
+                    <th>Progetto</th>
+                    <th>Data Inizio</th>
+                    <th>Data Fine</th>
+                    <th>Stato</th>
+                    <th>Dettagli</th>
+                </tr>
+            </thead>
+            <tbody id="reportTableBody">
+                <!-- I dati verranno inseriti dinamicamente -->
+            </tbody>
+        </table>
+    </div>
+  
+    <br>
+    
+    <h2 id="benvenuto">Avanzamento dei progetti</h2>
+    
+    <br>
+
+    <div class="simple-bar-chart">
+
+    <div class="item" style="--clr: #5EB344; --val: 80">
+        <div class="label">Progetto 1</div>
+        <div class="value">80%</div>
+    </div>
+    
+    <div class="item" style="--clr: #2a2afc; --val: 50">
+        <div class="label">Progetto 2</div>
+        <div class="value">50%</div>
+    </div>
+    
+    <div class="item" style="--clr: #2e5a1b; --val: 15">
+        <div class="label">Progetto 3</div>
+        <div class="value">15%</div>
+    </div>
+    
+    <div class="item" style="--clr: #963D97; --val: 100">
+        <div class="label">Progetto 4</div>
+        <div class="value">1%</div>
+    </div>
+    
+    <div class="item" style="--clr: #069CDB; --val: 90">
+        <div class="label">Progetto 5</div>
+        <div class="value">90%</div>
+    </div>
+
+    </div>
+
+</div>
+
+
      <!-- footer -->
-     <div class="footer-container">
+     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top" style="background-color: transparent;">
             <div class="col-md-4 d-flex align-items-center">
                 <span class="mb-3 mb-md-0 text-body-secondary footer-text">©️ 2024 S.A.M., Inc</span>
             </div>
             <div class="col-md-4 d-flex justify-content-end">
-                <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                    <img src="img/s.a.m..svg" alt="Logo" width="60" height="60" class="me-2"> 
+                <a href="index.html" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                    <img src="img/s.a.m..svg" alt="Logo" width="100" height="100" class="me-2"> 
                 </a>
             </div>
         </footer>
-    </div>
     
     
-        <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/reportistica.js"></script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
     </body>
     
     </html>

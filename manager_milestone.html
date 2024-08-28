@@ -9,132 +9,115 @@
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/sidebar_footer.css">
-    <link rel="stylesheet" href="css/milestone.css">
+    <link rel="stylesheet" href="css/manager_milestone.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
 <body style="background-color: rgba(71, 38, 101, 0.59);">
     <nav class="main-menu">
-        <header class="avatar">
-            <img src="img/bg_home.jpg" alt="Avatar" />
-        </header>
-        <ul> 
-            <li>
-                <a href="hp_manager.html">
-                    <i class="fa fa-home"></i>
-                    <span class="nav-text">
-                        Pagina Manager
-                    </span>
-                </a>
-            </li>
-
-            <li class="has-subnav">
-                <a href="manager_project.html">
-                    <i class="fa fa-globe"></i>
-                    <span class="nav-text">
-                        I miei progetti <!-- card con progetti attuali (rimanda alle task) / passati -->
-                    </span>
-                </a>
-            </li>
-
-            <li class="has-subnav">
-                <a href="manager_task.html">
-                    <i class="fa fa-book"></i>
-                    <span class="nav-text">
-                       Assegna task 
-                    </span>
-                </a>
-                
-            </li>
-
-            <li class="has-subnav">
-                <a href="manager_notes.html">
-                    <i class="fa fa-comments"></i>
-                   
-                    <span class="nav-text">
-                        Le mie note <!-- storico note inserite dalle task / progetto -->
-                    </span>
-                </a>
-               
-            </li>
-
-            <li>
-                <a href="manager_milestone.html">
-                    <i class="fa fa-film"></i>
-                    <span class="nav-text">
-                        Milestones <!-- storico delle milestones inserite dal manager x progetto attivo -->
-                    </span>
-                </a>
-            </li>
-
-            <li>
-                <a href="manager_reportistica.html">
-                    <i class="fa fa-bars"></i>
-                    <span class="nav-text">
-                    Reportistica
-                    </span>
-                </a>
-            </li>
+      <header class="avatar">
+          <img src="img/bg_home.jpg" alt="Avatar">
+          <div class='user-info'>
+              <div class='user-name'>Nome Utente</div>
+              <div class='user-stats'>
+                <div class='projects'>Progetti: 1</div>
+                <div class='tasks'>Task: 1</div>
+      </header>
+      <ul>
+          <li>
+              <a href="hp_manager.html">
+                  <i class="fa fa-home"></i>
+                  <span class="nav-text">
+                      Pagina Manager
+                  </span>
+              </a>
             
-            <li>
-               <a href="manager_planner.html">
-                   <i class="fa fa-cogs"></i>
-                    <span class="nav-text">
-                        Planner
-                    </span>
-                </a>
-            </li>
-
-            <li>
-               <a href="manager_classifica.html">
-                    <i class="fa fa-map-marker"></i>
-                    <span class="nav-text">
-                        Classifica
-                    </span>
-                </a>
-            </li>
-
-            <li>
-                <a href="manager_profile.html">
-                    <i class="fa fa-user"></i>  
-                    <span class="nav-text">
-                    Il mio profilo
-                    </span>
-                </a>
-            </li>
-            
-        </ul>
-
-        <ul class="logout">
-            <li>
-                <a href="manager_help.html">
-                    <i class="fa fa-info"></i>  
-                    <span class="nav-text">
-                        Help
-                        </span>                
-                </a>
-            </li>
-            <li>
-               <a href="#">
-                     <i class="fa fa-power-off"></i>
-                    <span class="nav-text">
-                        Logout
-                    </span>
-                </a>
-            </li>  
-        </ul>
-    </nav>
-
-     <!-- Navbar Mobile -->
-<div class="navbar-mobile">
+          </li>
+          <li class="has-subnav">
+              <a href="manager_project.html">
+                  <i class="fa fa-globe"></i>
+                  <span class="nav-text">
+                      I miei progetti <!-- card con progetti attuali (rimanda alle task) / passati -->
+                  </span>
+              </a>
+              
+          </li>
+          <li class="has-subnav">
+              <a href="manager_task.html">
+                  <i class="fa fa-book"></i>
+                  <span class="nav-text">
+                      Le mie task <!-- stato di avanzamento -->
+                  </span>
+              </a>
+              
+          </li>
+          <li class="has-subnav">
+              <a href="manager_notes.html">
+                  <i class="fa fa-comments"></i>
+                 
+                  <span class="nav-text">
+                      Le mie note <!-- storico note inserite dalle task / progetto -->
+                  </span>
+              </a>
+             
+          </li>
+          <li>
+              <a href="manager_milestone.html">
+                  <i class="fa fa-film"></i>
+                  <span class="nav-text">
+                      Milestones <!-- storico delle milestones inserite dal manager x progetto attivo -->
+                  </span>
+              </a>
+          </li>
+          <li>
+            <a href="manager_reportistica.html">
+                <i class="fa fa-bars"></i>
+                <span class="nav-text">
+                Reportistica
+                </span>
+            </a>
+        </li>
+          <li>
+             <a href="manager_planner.html">
+                 <i class="fa fa-cogs"></i>
+                  <span class="nav-text">
+                      Planner
+                  </span>
+              </a>
+          </li>
+                     
+      </ul>
+  
+      <ul class="logout">
+          <li>
+              <a href="manager_help.html">
+                  <i class="fa fa-info"></i>  
+                  <span class="nav-text">
+                      Help
+                      </span>                
+              </a>
+          </li>
+          <li>
+             <a href="#">
+                   <i class="fa fa-power-off"></i>
+                  <span class="nav-text">
+                      Logout
+                  </span>
+              </a>
+          </li>  
+      </ul>
+  </nav>
+  
+       <!-- Navbar Mobile -->
+  <div class="navbar-mobile">
     <div class="avatar-mobile">
         <img class="avatarmobile" src="img/bg_home.jpg" alt="Avatar">
     </div>
-</div>
-
-<!-- Footer Mobile -->
-<div class="footer-mobile">
+  </div>
+  
+  <!-- Footer Mobile -->
+  <div class="footer-mobile">
     <ul>
         <li><a href="hp_consulente.html"><i class="fa fa-home"></i></a></li>
         <li><a href="consulente_project.html"><i class="fa fa-globe"></i></a></li>
@@ -147,12 +130,11 @@
         <li><a href="consulente_help.html"><i class="fa fa-info"></i></a></li>
         <li><a href="#"><i class="fa fa-power-off"></i></a></li>
     </ul>
-</div>
+  </div>
+  
 
     <div class="container mt-5">
         <h1 class="" id="benvenuto">Timeline</h1>
-    
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     
         <section class="timeline_area section_padding_130">
             <div class="container">
