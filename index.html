@@ -42,17 +42,19 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <form>
+            <div class="alert alert-danger text-center" id="message" style="display: none;" role="alert">
+              </div>
+            <form id="loginForm">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="email" placeholder="Inserisci la tua email">
+                    <input type="text" class="form-control" id="emailLogin" placeholder="Inserisci la tua email">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Inserisci la tua password">
+                    <input type="password" class="form-control" id="passwordLogin" placeholder="Inserisci la tua password">
                 </div>
-                <button class="nav-link button-home active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
-                    type="button" role="tab" aria-controls="login" aria-selected="true">Accedi</button>
+                <button class="nav-link button-home active" 
+                    type="submit">Accedi</button>
             </form>
         </div>
     </div>
@@ -64,33 +66,38 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <form>
+            <div class="alert alert-danger text-center" id="registerMessage" style="display: none;" role="alert">
+            </div>
+            <form id="registerForm">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="name" placeholder="Inserisci il tuo nome">
+                    <input type="text" class="form-control" id="register-name" required placeholder="Inserisci il tuo nome">
                 </div>
                 <div class="mb-3">
                     <label for="surname" class="form-label">Cognome</label>
-                    <input type="text" class="form-control" id="surname" placeholder="Inserisci il tuo cognome">
+                    <input type="text" class="form-control" id="register-lastName" required placeholder="Inserisci il tuo cognome">
                 </div>
                 <div class="mb-3">
                     <label for="role" class="form-label">Ruolo</label>
-                    <select class="form-control" id="role" name="role">
+                    <select class="form-control" id="register-role" required name="role">
                         <option value="" disabled selected>Seleziona un ruolo</option>
-                        <option value="manager">Manager</option>
-                        <option value="consulente">Consulente</option>
+                        <option value="1">Consulente</option>
+                        <option value="2">Manager</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="email" placeholder="Inserisci l'email che vuoi usare">
+                    <input type="email" class="form-control" id="register-email" required placeholder="Inserisci l'email che vuoi usare">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Inserisci la password">
+                    <input type="password"  minlength="8" class="form-control" id="register-password" required placeholder="Inserisci la password">
                 </div>
-                <button class="nav-link button-home" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button"
-                    role="tab" aria-controls="register" aria-selected="false">Registrati</button>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Conferma password</label>
+                    <input type="password"  minlength="8" class="form-control" id="register-passwordConf" required placeholder="Conferma la password">
+                </div>
+                <button class="nav-link button-home"type="submit">Registrati</button>
             </form>
         </div>
     </div>

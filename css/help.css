@@ -51,7 +51,7 @@ body, html {
   
   .accordion-button {
     margin: 0;
-    padding: 5rem;
+    padding: 1rem;
     font-size: 1.5rem;
     border: none;
     background: transparent;
@@ -74,9 +74,18 @@ body, html {
     max-height: 0;
     overflow: hidden;
     padding: 0 1.5rem;
-    transition: max-height 0.5s ease;
+    transition: max-height 1s ease, padding 0.5s ease; /* da qui x aumentare tempo transizione */
     font-size: 1rem;
   }
+  /* Evitare lo spostamento del testo "F.A.Q." */
+.faq {
+  transition: margin-bottom 0.3s ease; /* Assicura una transizione fluida del margine */
+}
+
+  .accordion-item.active .accordion-body {
+    max-height: 300px; /* Altezza massima per l'espansione */
+    padding: 1.5rem;
+}
   
   .accordion-item:hover .accordion-body {
     max-height: 500px; /* Adjust as needed for your content */

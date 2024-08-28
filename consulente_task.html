@@ -18,6 +18,14 @@
     <nav class="main-menu">
         <header class="avatar">
             <img src="img/bg_home.jpg" alt="Avatar" />
+            <div class='user-info'>
+                <div class='user-name'>Nome Utente</div>
+                <div class='user-stats'>
+                  <div class='projects'>Progetti: 1</div>
+                  <div class='tasks'>Task: 1</div>
+                </div>
+                <button class='btn-change-password'><a href="modificapassword.html">Cambia password</a></button>
+              </div>
         </header>
         <ul>
             <li>
@@ -113,25 +121,95 @@
         </ul>
     </nav>
 
-    <div class="container mt-5">
-        <h1 class="ms-5 mb-5" id="benvenuto">Le mie task</h1>
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8 col-sm-12">
-                <div class="task-card">
-                    <h2>Task Assegnate</h2>
-                    <ul class="task-list" id="task-list">
-                        <!-- Le task verranno inserite qui dinamicamente -->
-                    </ul>
-                    <div class="completed-tasks">
-                        <h3>Task Completate</h3>
-                        <ul class="task-list" id="completed-task-list">
-                            <!-- Le task completate verranno inserite qui -->
-                        </ul>
+    <!-- Navbar Mobile -->
+<div class="navbar-mobile">
+    <div class="avatar-mobile">
+        <img class="avatarmobile" src="img/bg_home.jpg" alt="Avatar">
+    </div>
+</div>
+
+<!-- Footer Mobile -->
+<div class="footer-mobile">
+    <ul>
+        <li><a href="hp_consulente.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="consulente_project.html"><i class="fa fa-globe"></i></a></li>
+        <li><a href="consulente_task.html"><i class="fa fa-book"></i></a></li>
+        <li><a href="consulente_notes.html"><i class="fa fa-comments"></i></a></li>
+        <li><a href="consulente_milestone.html"><i class="fa fa-film"></i></a></li>
+        <li><a href="consulente_planner.html"><i class="fa fa-cogs"></i></a></li>
+        <li><a href="consulente.classifica.html"><i class="fa fa-map-marker"></i></a></li>
+        <li><a href="consulente_profile.html"><i class="fa fa-user"></i></a></li>
+        <li><a href="consulente_help.html"><i class="fa fa-info"></i></a></li>
+        <li><a href="#"><i class="fa fa-power-off"></i></a></li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-11">
+
+        <div class="container mt-5 me-2">
+            <h1 class="mb-5" id="benvenuto">Le mie task</h1>
+            <div class="row d-flex justify-content-center me-2 align-items-center">
+                <div class="col-lg-6">
+                    <div class="card-hover-shadow-2x mb-3 card todo-container" style="background-color: #332f2f; min-height: 600px;">
+                        <div class="card-header-tab card-header">
+                            <div class="card-header-title font-size-lg text-center text-capitalize font-weight-normal">
+                                <i class="fa-solid fa-list"></i>&nbsp;Task Assegnate
+                            </div>
+                        </div>
+                        <div class="scroll-area-sm">
+                            <perfect-scrollbar class="ps-show-limits">
+                                <div style="position: static;" class="ps ps--active-y">
+                                    <div class="ps-content">
+                                        <ul class="list-group list-group-flush" id="task-list">
+                                            <!-- task dinamiche qui -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </perfect-scrollbar>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card-hover-shadow-2x mb-3 card todo-container" style="background-color: #332f2f; min-height: 600px; ">
+                        <div class="card-header-tab card-header">
+                            <div class="card-header-title ms-auto font-size-lg text-capitalize font-weight-normal">
+                                <i class="fa-solid fa-list-check"></i>&nbsp;Task Completate
+                            </div>
+                        </div>
+                        <div class="scroll-area-sm">
+                            <perfect-scrollbar class="ps-show-limits">
+                                <div style="position: static;" class="ps ps--active-y">
+                                    <div class="ps-content">
+                                        <ul class="list-group list-group-flush" id="completed-task-list">
+                                            <!-- task dinamiche qui -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </perfect-scrollbar>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+<!--  modal cambia status-->
+<div class="modal" id="changePriorityModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeChangePriorityModal()">&times;</span>
+        <form>
+            <label for="changePrioritySelect">Priorità: </label>
+            <select name="changePrioritySelect" id="changePrioritySelect"></select>
+            <button type="submit" class="btn btn-secondary" onclick="closeChangePriorityModal()">Conferma</button>
+        </form>
+    </div>
+</div>
+
       
   <!-- footer -->
 <div class="container">

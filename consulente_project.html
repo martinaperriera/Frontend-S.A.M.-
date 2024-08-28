@@ -16,7 +16,7 @@
 <body style="background-color: #40832bd0;">
     <nav class="main-menu">
         <header class="avatar">
-            <img src="img/bg_home.jpg" alt="Avatar" />
+            <img src="img/bg_home.jpg" alt="Avatar">
             <div class='user-info'>
                 <div class='user-name'>Nome Utente</div>
                 <div class='user-stats'>
@@ -120,6 +120,30 @@
         </ul>
     </nav>
 
+<!-- Navbar Mobile -->
+<div class="navbar-mobile">
+    <div class="avatar-mobile">
+        <img class="avatarmobile" src="img/bg_home.jpg" alt="Avatar">
+    </div>
+</div>
+
+<!-- Footer Mobile -->
+<div class="footer-mobile">
+    <ul>
+        <li><a href="hp_consulente.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="consulente_project.html"><i class="fa fa-globe"></i></a></li>
+        <li><a href="consulente_task.html"><i class="fa fa-book"></i></a></li>
+        <li><a href="consulente_notes.html"><i class="fa fa-comments"></i></a></li>
+        <li><a href="consulente_milestone.html"><i class="fa fa-film"></i></a></li>
+        <li><a href="consulente_planner.html"><i class="fa fa-cogs"></i></a></li>
+        <li><a href="consulente.classifica.html"><i class="fa fa-map-marker"></i></a></li>
+        <li><a href="consulente_profile.html"><i class="fa fa-user"></i></a></li>
+        <li><a href="consulente_help.html"><i class="fa fa-info"></i></a></li>
+        <li><a href="#"><i class="fa fa-power-off"></i></a></li>
+    </ul>
+</div>
+
+<!-- 
     <div class="container mt-5">
         <h1 class="ms-5 mb-5" id="benvenuto">I miei progetti</h1>
         <div class="row align-items-stretch">
@@ -129,52 +153,88 @@
                         <div class="ag-courses_item active">
                             <div class="ag-courses-item_link" onclick="toggleDetails(event, 'details1')">
                                 <div class="ag-courses-item_bg"></div>
-                                <div class="ag-courses-item_title">
+                                <div class="ag-courses-item_title" id="projectTitle">
                                     Progetto attuale
                                 </div>
                                 <div class="ag-courses-item_date-box">
                                     start - deadline:
-                                    <span class="ag-courses-item_date">
+                                    <span class="ag-courses-item_date" id="projectDate">
                                         26.07.2024 - 02.09.2024
                                     </span>
                                 </div>
                             </div>
                             <div class="ag-courses-item_details" id="details1">
-                                <p>Dettagli del progetto: <br>
+                                <p id="projectDetails">Dettagli del progetto: <br>
                                     Obiettivi: raggiungimento pubblico più ampio <br>
                                     Modalità utilizzate: remote work
                                 </p>
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
             </div>
             <div class="col-lg-6 col-md-8 col-sm-12">
-                <div class="accordion-container">
-                    <div class="accordion">
-                      <div class="accordion__item mt-5">
-                        <div class="accordion__item-content">
-                          <div class="accordion__item-title">Progetto concluso 1</div>
-                          <div class="accordion__item-details">Dettagli del progetto 1</div>
+                <div class="row row-cols-1 row-cols-md-2 g-4 mt-5">
+                    <div class="col">
+                      <div class="note-card" onclick="toggleNoteCard(this)">
+                        <div class="note-card-header">
+                          <h5 class="note-card-title">Progetto passato 1</h5>
+                        </div>
+                        <div class="note-card-body d-none">
+                          <p class="note-card-text">Questa è una descrizione più lunga che verrà mostrata al click. Include dettagli e altre informazioni utili.</p>
                         </div>
                       </div>
-                      <div class="accordion__item">
-                        <div class="accordion__item-content">
-                          <div class="accordion__item-title">Progetto concluso 2</div>
-                          <div class="accordion__item-details">Dettagli del progetto 2</div>
+                    </div>
+                    <div class="col">
+                      <div class="note-card" onclick="toggleNoteCard(this)">
+                        <div class="note-card-header">
+                          <h5 class="note-card-title">Progetto passato 2</h5>
+                        </div>
+                        <div class="note-card-body d-none">
+                          <p class="note-card-text">Descrizione più dettagliata per la seconda card. Anche questa verrà mostrata al click.</p>
                         </div>
                       </div>
-                      <div class="accordion__item">
-                        <div class="accordion__item-content">
-                          <div class="accordion__item-title">Progetto concluso 3</div>
-                          <div class="accordion__item-details">Dettagli del progetto 3</div>
+                    </div>
+                    <div class="col">
+                      <div class="note-card" onclick="toggleNoteCard(this)">
+                        <div class="note-card-header">
+                          <h5 class="note-card-title">Progetto passato 3</h5>
+                        </div>
+                        <div class="note-card-body d-none">
+                          <p class="note-card-text">Un'altra descrizione con informazioni che sono utili al click.</p>
                         </div>
                       </div>
-                    </div> 
-
+                    </div>
+                    <div class="col align-items-center justify-content-center">
+                        <div class="col">
+                            <div class="note-card note-card-plus" onclick="openModal()">
+                              <div class="note-card-header">
+                                <h5 class="note-card-title">+</h5>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
                   </div>
+                  
+            </div> 
 
-            </div>
+            
+<div class="modal fade" id="projectsModal" tabindex="-1" aria-labelledby="projectsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectsModalLabel">Progetti Passati</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-cols-1 row-cols-md-2 g-4" id="modalProjectsContainer">
+            //card progetti passati
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
         </div>
             
         <div class="timeline-container mt-4">
@@ -210,8 +270,151 @@
     </div>
 
 
+-->
 
 
+<!-- Contentitore di tutto-->
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-11" style="margin-left: -40px;">
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="text-center"> I miei Progetti</div>
+                    <div class="list-group text-center" id="list-tab" role="tablist">
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="tab-content" id="nav-tabContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- milestone -->
+    <section class="timeline_area section_padding_130 mt-4" id="mileSection">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="apland-timeline-area">
+                        <div class="single-timeline-area">
+                            <div class="timeline-date">
+                                <p>Completate</p>
+                            </div>
+                            <div class="row" id="completedRow">&nbsp;
+                                <!-- qui dentro ci va il template della milestone-->
+
+                            </div>
+                        </div>
+
+                        <div class="single-timeline-area">
+                            <div class="timeline-date">
+                                <p>In Corso</p>
+                            </div>
+                            <div class="row" id="wipRow">&nbsp;
+                                <!-- qui dentro ci va il template della milestone-->
+                            </div>
+                        </div>
+
+                        <div class="single-timeline-area">
+                            <div class="timeline-date">
+                                <p>Pianificate</p>
+                            </div>
+                            <div class="row" id="plannedRow">&nbsp;
+                                <!-- qui dentro ci va il template della milestone-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Modali task-->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal taskModal fade" id="mileTaskModal" tabindex="-1" aria-labelledby="mileNameModal"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id=""></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body container-fluid">
+                <h5 class="mb-2 text-center" id="benvenuto">Task correnti</h5>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="switchCompleted" checked>
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Mostra completate</label>
+                  </div>
+                <div class="row d-flex justify-content-center me-2 align-items-center">
+                    <div class="col-12 col-lg-6">
+                        <div class="card-hover-shadow-2x mb-3 card container">
+                            <div class="card-header-tab card-header">
+                                <div
+                                    class="card-header-title ms-auto font-size-lg text-capitalize font-weight-normal">
+                                    <i class="fa-solid fa-list-check"></i>&nbsp;Task Assegnate
+                                </div>
+                            </div>
+                            <div class="scroll-area-sm">
+                                <perfect-scrollbar class="ps-show-limits">
+                                    <div style="position: static;" class="ps ps--active-y">
+                                        <div class="ps-content">
+                                            <ul class="list-group list-group-flush" id="task-list">&nbsp;
+                                                <!-- task dinamiche qui -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </perfect-scrollbar>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="card-hover-shadow-2x mb-3 card container">
+                            <div class="card-header-tab card-header">
+                                <div
+                                    class="card-header-title ms-auto font-size-lg text-capitalize font-weight-normal">
+                                    <i class="fa-solid fa-list-check"></i>&nbsp;Task Da Assegnare
+                                </div>
+                            </div>
+                            <div class="scroll-area-sm">
+                                <perfect-scrollbar class="ps-show-limits">
+                                    <div style="position: static;" class="ps ps--active-y">
+                                        <div class="ps-content">
+                                            <ul class="list-group list-group-flush" id="unassigned-task-list">&nbsp;
+                                                <!-- task dinamiche qui -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </perfect-scrollbar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  modal cambia status-->
+<div class="modal" id="changePriorityModal">
+    <div class="modal-content" style="max-width: 300px;">
+        <form>
+            <label for="changePrioritySelect">Priorità: </label>
+            <select name="changePrioritySelect" id="changePrioritySelect"></select>
+            <span class="close" id="xcloseStatusModal" onclick="closeChangePriorityModalProj()"><i class="fa-regular fa-circle-check"></i></span>
+        </form>
+    </div>
+</div>
 
 
   <!-- footer -->

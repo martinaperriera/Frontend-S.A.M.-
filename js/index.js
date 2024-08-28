@@ -58,12 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('loginForm').addEventListener('submit', async function(event) {
         event.preventDefault();
-        const email = document.getElementById('login-username').value;
-        const password = document.getElementById('login-password').value;
-        const messageElement = document.getElementById('message');
-
+        const email = document.getElementById('emailLogin').value;
+        const password = document.getElementById('passwordLogin').value;
+        const messageElement = document.getElementById('message')
         try {
-            const response = await fetch('http://localhost:8080/api/users/login', {
+            const response = await fetch('http://local.sam.com:8080/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -71,63 +70,81 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({ email, password })
             });
 
-            if (response.status === 200) {
+            if (response.status === 202) {
                 const data = await response.json();
                 const token = data.token;
-                localStorage.setItem('authToken', token);
+                localStorage.setItem('token', token);
                 messageElement.textContent = 'Login successful';
                 messageElement.style.color = 'green';
-                window.location.href = 'profilo.html'; // Redirect to profile page --- quale?
+                if (data.isAdmin)
+                window.location.href = 'hp_manager.html';
+                else 
+                window.location.href = 'hp_consulente.html'
             } else {
-                messageElement.textContent = 'Invalid credentials';
+                messageElement.style = "display: block;"
+                messageElement.textContent = 'Credenziali non valide';
                 messageElement.style.color = 'red';
             }
         } catch (error) {
             console.error('Error during login:', error);
-            messageElement.textContent = 'Error during login';
+            messageElement.textContent = 'Errore durante il login';
             messageElement.style.color = 'red';
         }
-    });
+    }); 
 
-    document.getElementById('registerForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
-        const email = document.getElementById('register-username').value;
-        const password = document.getElementById('register-password').value;
-        const name = document.getElementById('register-name').value;
-        const lastName = document.getElementById('register-lastName').value;
-        const messageElement = document.getElementById('message');
+    //registrazione
+document.getElementById('registerForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const email = document.getElementById('register-email').value;
+    const password = document.getElementById('register-password').value;
+    const confirmPassword = document.getElementById('register-passwordConf').value;
+    const name = document.getElementById('register-name').value;
+    const lastName = document.getElementById('register-lastName').value;
+    const messageElement = document.getElementById('registerMessage');
+    const role_id = document.getElementById('register-role').value
+    if(password == confirmPassword){
+    try {
+        const response = await fetch(`http://localhost:8080/auth/register/${role_id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+                "email":email, 
+                "password":password, 
+                "nomeCompleto": `${name} ${lastName}`, 
+                "role" : null})
+        });
 
-        try {
-            const response = await fetch('http://localhost:8080/api/users/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password, nomeCompleto: `${name} ${lastName}` })
-            });
-
-            if (response.status === 201) {
-                messageElement.textContent = 'Registration successful';
-                messageElement.style.color = 'green';
-            } else {
-                const errorData = await response.json();
-                let errorMessage = 'Registration failed';
-                if (Array.isArray(errorData)) {
-                    errorMessage = errorData.map(error => error.defaultMessage).join(', ');
-                } else if (typeof errorData === 'string') {
-                    errorMessage = errorData;
-                }
-                messageElement.textContent = errorMessage;
-                messageElement.style.color = 'red';
-            }
-        } catch (error) {
-            console.error('Error during registration:', error);
-            messageElement.textContent = 'Error during registration';
+        if (response.status === 202) {
+            const data = await response.json();
+            const token = data.token;
+            localStorage.setItem('token', token);
+            messageElement.textContent = 'Login successful';
+            messageElement.style.color = 'green';
+            if (data.isAdmin)
+            window.location.href = 'hp_manager.html';
+            else 
+            window.location.href = 'hp_consulente.html'
+        } else {
+            messageElement.textContent ='Registrazione fallita';
             messageElement.style.color = 'red';
         }
-    });
+    } catch (error) {
+        console.error('Error during registration:', error);
+        messageElement.textContent = 'Errore durante la registrazione';
+        messageElement.style.color = 'red';
+    }
+    } else {
+        messageElement.textContent = 'Le password non corrispondono';
+        messageElement.style.color = 'red';
+    }}
+);
 
-    // Logout button 
+    
+});
+
+/*// Logout button 
     document.getElementById('logoutButton').addEventListener('click', async function(event) {
         event.preventDefault();
         const messageElement = document.getElementById('message');
@@ -155,5 +172,4 @@ document.addEventListener('DOMContentLoaded', function() {
             messageElement.textContent = 'Error during logout';
             messageElement.style.color = 'red';
         }
-    });
-});
+    });*/

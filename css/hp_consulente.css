@@ -96,7 +96,7 @@ padding: 0;
   flex: 2;
   width: 100%;
   max-width: 800px; /* Limita la larghezza del medagliere e della barra di avanzamento */
-  margin-left: 50px;
+  margin-left: 10px;
   margin-top: 50px;
   background-color: transparent !important;
 }
@@ -175,4 +175,234 @@ padding: 0;
   0% { width: 0%; }
   80% { width: 85%; }
   100% { width: 100%; }
+}
+
+/* note-pad */
+/* Stili per il container delle note */
+.notes-container {
+  background-color: #FFFF88;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 800px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+}
+
+.notes-container h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+
+.notes-container #notes-list .note {
+  background-color: #333;
+ 
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.notes-container #notes-list .note h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+.notes-container #notes-list .note p {
+  margin: 0;
+  font-size: 14px;
+  color: #FFFF88;
+}
+
+.notes-container #notes-list .note .note-date {
+  font-size: 12px;
+  color: #FFFF88;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+
+/* Stili per il block notes */
+.notes-section {
+  padding: 20px;
+  background-color: #FFFF88; /* Colore di sfondo chiaro */
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+}
+
+.notes-section h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+
+}
+
+.notes-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notes-list li {
+  background: #FFFF88; /* Colore di sfondo delle note */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.notes-list li h3 {
+  margin: 0 0 5px;
+  font-size: 14px;
+  color: #007bff; /* Colore del titolo della nota */
+}
+
+.notes-list li p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+
+#tasklist {
+  color: white;
+  text-align: center;
+}
+.taskshp{
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.list-group{
+
+  background-color: #333;
+}
+.row{
+  margin-left: 50px;
+}
+
+
+/* media queries per centrare il contenuto */
+/* Media query per schermi più piccoli di 768px */
+@media (max-width: 767px) {
+  .container {
+      width: 100%;
+      padding: 10px; /* Riduce il padding laterale per schermi piccoli */
+  }
+
+  .row {
+      margin-left: 0; /* Elimina il margine sinistro per schermi piccoli */
+      flex-direction: column; /* Dispone le colonne una sotto l'altra */
+      align-items: center; /* Centra gli elementi all'interno delle colonne */
+  }
+
+  .col-md-6 {
+      width: 100%; /* Imposta la larghezza delle colonne al 100% */
+      margin-bottom: 20px; /* Aggiunge margine inferiore tra le colonne */
+  }
+
+  .sidebar-container {
+      margin-left: 0; /* Elimina il margine sinistro per schermi piccoli */
+  }
+
+  .medagliere-section, .progress-section, .notes-section {
+      width: 100%; /* Imposta la larghezza delle sezioni al 100% */
+      text-align: center; /* Centra il testo all'interno delle sezioni */
+  }
+
+  .notes-container {
+      max-width: 100%; /* Imposta la larghezza massima del container delle note al 100% */
+  }
+
+  .card {
+      margin-bottom: 20px; /* Aggiunge margine inferiore tra le card */
+  }
+
+  .footer-mobile ul {
+      display: flex; /* Utilizza flexbox per disporre i pulsanti del footer */
+      flex-wrap: wrap; /* Permette ai pulsanti di andare su più righe se necessario */
+      justify-content: center; /* Centra i pulsanti all'interno del footer */
+  }
+
+  .footer-mobile ul li {
+      margin: 5px; /* Aggiunge margine tra i pulsanti del footer */
+  }
+}
+
+/* Media query per schermi tra 768px e 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+      width: 100%;
+      padding: 15px; /* Riduce il padding laterale per schermi medi */
+  }
+
+  .row {
+      margin-left: 0; /* Elimina il margine sinistro per schermi medi */
+      flex-direction: column; /* Dispone le colonne una sotto l'altra */
+      align-items: center; /* Centra gli elementi all'interno delle colonne */
+  }
+
+  .col-md-6 {
+      width: 100%; /* Imposta la larghezza delle colonne al 100% */
+      margin-bottom: 20px; /* Aggiunge margine inferiore tra le colonne */
+  }
+
+  .sidebar-container {
+      margin-left: 0; /* Elimina il margine sinistro per schermi medi */
+  }
+
+  .medagliere-section, .progress-section, .notes-section {
+      width: 100%; /* Imposta la larghezza delle sezioni al 100% */
+      text-align: center; /* Centra il testo all'interno delle sezioni */
+  }
+
+  .notes-container {
+      max-width: 100%; /* Imposta la larghezza massima del container delle note al 100% */
+  }
+
+  .card {
+      margin-bottom: 20px; /* Aggiunge margine inferiore tra le card */
+  }
+
+  .footer-mobile ul {
+      display: flex; /* Utilizza flexbox per disporre i pulsanti del footer */
+      flex-wrap: wrap; /* Permette ai pulsanti di andare su più righe se necessario */
+      justify-content: center; /* Centra i pulsanti all'interno del footer */
+  }
+
+  .footer-mobile ul li {
+      margin: 5px; /* Aggiunge margine tra i pulsanti del footer */
+  }
+}
+
+/* Media query per schermi più piccoli di 768px */
+@media (max-width: 767px) {
+  .footer-mobile ul {
+      display: flex; /* Utilizza flexbox per disporre i pulsanti del footer */
+      flex-wrap: nowrap; /* Evita che i pulsanti vadano su più righe */
+      overflow-x: auto; /* Abilita lo scorrimento orizzontale */
+      -webkit-overflow-scrolling: touch; /* Abilita lo scorrimento fluido per i dispositivi touch */
+  }
+
+  .footer-mobile ul li {
+      flex: 0 0 auto; /* Impedisce ai pulsanti di ridimensionarsi */
+      margin: 0 5px; /* Aggiunge margine laterale tra i pulsanti */
+  }
+}
+
+/* Media query per schermi tra 768px e 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+  .footer-mobile ul {
+      display: flex; /* Utilizza flexbox per disporre i pulsanti del footer */
+      flex-wrap: nowrap; /* Evita che i pulsanti vadano su più righe */
+      overflow-x: auto; /* Abilita lo scorrimento orizzontale */
+      -webkit-overflow-scrolling: touch; /* Abilita lo scorrimento fluido per i dispositivi touch */
+  }
+
+  .footer-mobile ul li {
+      flex: 0 0 auto; /* Impedisce ai pulsanti di ridimensionarsi */
+      margin: 0 5px; /* Aggiunge margine laterale tra i pulsanti */
+  }
 }

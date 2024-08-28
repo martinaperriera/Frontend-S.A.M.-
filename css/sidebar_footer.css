@@ -9,10 +9,6 @@
 }
 
 /* Icone */
-.fa-2x {
-    font-size: 2em;
-}
-
 .fa {
     position: relative;
     display: table-cell;
@@ -26,7 +22,6 @@
 /* Sidebar */
 .main-menu {
     background: #332f2f;
-    border-right: 1px solid #e5e5e5;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -37,6 +32,9 @@
     -webkit-transition: width .3s ease;
     transition: width .3s ease;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .main-menu:hover {
@@ -45,22 +43,28 @@
 
 .main-menu>ul {
     margin: 7px 0;
+    flex-grow: 1; /* Fa crescere il contenitore ul e spinge le icone verso il basso */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .main-menu li {
     position: relative;
-    display: block;
-    width: 250px;
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
 .main-menu li>a {
     position: relative;
-    display: table;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
     border-collapse: collapse;
     border-spacing: 0;
     color: white;
-    font-family: arial;
-    font-size: 14px;
+    font-size: 15px;
     text-decoration: none;
     -webkit-transform: translateZ(0) scale(1,1);
     -webkit-transition: all .1s linear;
@@ -68,21 +72,26 @@
 }
 
 .main-menu .nav-icon {
-    position: relative;
-    display: table-cell;
-    width: 60px;
-    height: 36px;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 18px;
+    font-size: 14px;
+    margin-left: 0;
 }
 
 .main-menu .nav-text {
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-    width: 190px;
     font-family: 'Titillium Web', sans-serif;
+    display: none; /* Nascosto di default */
+}
+
+.main-menu:hover .nav-text {
+    display: table-cell; /* Mostra il testo delle icone quando la sidebar è aperta */
+}
+
+.main-menu:hover .fa {
+    text-align: left; /* Mostra le icone a sinistra quando la sidebar è aperta */
+}
+
+.main-menu:hover ul.logout {
+    text-align: left;
+    margin-left: 40px;
 }
 
 .main-menu>ul.logout {
@@ -98,53 +107,79 @@
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
+    overflow: hidden;
 }
 
 .avatar img {
-    width: 30px; /* Dimensione dell'avatar quando la sidebar è chiusa */
-    height: 30px; /* Altezza uguale alla larghezza per mantenere la forma rotonda */
-    border-radius: 50%; /* Imposta il bordo arrotondato al 50% per ottenere una forma rotonda */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     overflow: hidden;
     border: 2px solid grey;
-    transition: width 0.3s ease, height 0.3s ease; /* Transizione per l'animazione */
+    transition: width 0.3s ease, height 0.3s ease;
 }
+
 
 .main-menu:hover .avatar img {
-    width: 100px; /* Dimensione dell'avatar quando la sidebar è aperta */
-    height: 100px; /* Altezza uguale alla larghezza per mantenere la forma rotonda */
+    width: 100px;
+    height: 100px;
 }
 
-  
-  /* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
-  @media (min-width: 1100px) and (max-width: 1400px) {
+/* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
+@media (min-width: 1100px) and (max-width: 1400px) {
     .footer-container {
-        max-width: 1200px; /* Stessa larghezza massima del contenitore principale */
-        margin: 0 auto; /* Centra orizzontalmente */
-        padding: 20px; /* Padding se necessario */
-        }
-  }
-  
-  /* Media query per schermi più grandi di 1400px */
-  @media (min-width: 1400px) {
-    .footer-container {
-        margin-left: 100px; /* Spazio per la sidebar aperta */
         max-width: 1200px;
         margin: 0 auto;
-    } 
-  }
-  /* Media query per schermi enormi */
-  @media (min-width: 1650px) {
+        padding: 20px;
+    }
+    .avatarmobile {
+        display: none;
+    }
+    .footer-mobile {
+        display: none;
+    }
+}
 
+/* Media query per schermi più grandi di 1400px */
+@media (min-width: 1400px) {
     .footer-container {
-        margin-left: 500px; /* Spazio per la sidebar aperta */
+        margin-left: 100px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .avatarmobile {
+        display: none;
+    }
+    .footer-mobile {
+        display: none;
+    }
+}
+
+/* Media query per schermi enormi */
+@media (min-width: 1650px) {
+    .footer-container {
+        margin-left: 500px;
         max-width: 3000px;
         margin: 0 auto;
     }
-  }
-
-.main-menu:hover ~ .container {
-    margin-left: 250px; /* Margine sinistro per fare spazio alla sidebar aperta */
+    .avatarmobile {
+        display: none;
+    }
+    .footer-mobile {
+        display: none;
+    }
 }
+
+/*
+.main-menu:hover ~ .container {
+    margin-left: 250px;
+}
+    */
+    .main-menu:hover ~ .container {
+        transform: translateX(250px);
+        transition: transform 0.3s ease;
+    }
+
 
 /* Stili generali */
 a:hover, a:focus {
@@ -167,7 +202,6 @@ nav ul, nav li {
 
 .main-menu li:hover>a, nav.main-menu li.active>a, .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus, .no-touch .dashboard-page nav.dashboard-menu ul li:hover a, .dashboard-page nav.dashboard-menu ul li.active a {
     color: #fff;
-    background-color: #000000;
 }
 
 .footer-text {
@@ -175,33 +209,32 @@ nav ul, nav li {
 }
 
 .my-4 {
-    margin-left: 1.5rem; /* sposta il footer dalla sidebar quando si apre */
-  } 
+    margin-left: 1.5rem;
+}
 
-
-  /* Nuova sezione user-info */
+/* Nuova sezione user-info */
 .user-info {
     padding: 1em;
     color: white;
-    opacity: 0; /*nasconde userinfo*/
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transizione per visibilità e opacità */
+    display: none; /* Nasconde user-info */
 }
+
 /* Mostra user-info quando la sidebar è aperta */
 .main-menu:hover .user-info {
-    opacity: 1;
-    visibility: visible;
+    display: block;
 }
 
 .user-name {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 0.5em;
+    text-align: center;
 }
 
 .user-stats {
     font-size: 14px;
     margin-bottom: 1em;
+    text-align: center;
 }
 
 .user-stats div {
@@ -209,7 +242,7 @@ nav ul, nav li {
 }
 
 .btn-change-password {
-    background-color: #4CAF50; /* Colore di sfondo per il bottone */
+    background-color: violet;
     border: none;
     color: white;
     padding: 0.5em 1em;
@@ -223,5 +256,318 @@ nav ul, nav li {
 }
 
 .btn-change-password:hover {
-    background-color: #45a049; /* Colore di sfondo del bottone al passaggio del mouse */
+    background-color: #45a049;
 }
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    /* Nascondi la sidebar sui dispositivi mobili */
+    .main-menu {
+        display: none;
+    }
+
+    /* Mostra la navbar mobile */
+    .navbar-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(51, 47, 47, 0.8); /* Semi trasparente */
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    .avatar-mobile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    /* Mostra il footer mobile sticky */
+    .footer-mobile {
+        display: flex;
+        justify-content: space-around;
+        background: #332f2f;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    .footer-mobile ul {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .footer-mobile li {
+        flex: 1;
+        text-align: center;
+    }
+
+    .footer-mobile a {
+        color: white;
+        font-size: 24px;
+    }
+
+    /* Aggiungi padding al contenitore principale per evitare la sovrapposizione con navbar e footer */
+    .container {
+        padding-top: 60px; /* Altezza della navbar mobile */
+        padding-bottom: 60px; /* Altezza del footer mobile */
+    }
+}
+
+/* Container */
+@media screen and (min-width: 600px) {
+    .container {
+        width: 100px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 738px;
+        padding-top: 60px; /* Altezza della navbar mobile */
+        padding-bottom: 60px; /* Altezza del footer mobile */
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        width: 962px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        width: 1250px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .container {
+        width: 1890px;
+    }
+}
+
+/* Media Queries per schermi da 768px a 1024px (iPad Air e Pro) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Nascondi la sidebar */
+    .main-menu {
+        display: none;
+    }
+
+    /* Mostra la navbar mobile */
+    .navbar-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(51, 47, 47, 0.8); /* Semi trasparente */
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+    .avatarmobile {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid grey;
+        transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    /* Mostra il footer mobile */
+    .footer-mobile {
+        display: flex;
+        justify-content: space-around;
+        background: #332f2f;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    .footer-mobile ul {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .footer-mobile li {
+        flex: 1;
+        text-align: center;
+    }
+
+    .footer-mobile a {
+        color: white;
+        font-size: 24px;
+    }
+
+    /* Spaziatura per il contenuto principale */
+    .container {
+        padding-top: 60px; /* Altezza della navbar mobile */
+        padding-bottom: 60px; /* Altezza del footer mobile */
+        width: calc(100% - 40px); /* Ridurre la larghezza per i dispositivi più piccoli */
+        margin: 0 auto;
+    }
+}
+
+/* Media Queries per iPad Mini (da 600px a 768px) */
+@media (min-width: 600px) and (max-width: 768px) {
+    /* Nascondi la sidebar */
+    .main-menu {
+        display: none;
+    }
+
+    /* Mostra la navbar mobile */
+    .navbar-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(51, 47, 47, 0.8); /* Semi trasparente */
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    /* Mostra il footer mobile */
+    .footer-mobile {
+        display: flex;
+        justify-content: space-around;
+        background: #332f2f;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    /* Spaziatura per il contenuto principale */
+    .container {
+        padding-top: 60px; /* Altezza della navbar mobile */
+        padding-bottom: 60px; /* Altezza del footer mobile */
+        width: calc(100% - 40px); /* Ridurre la larghezza per i dispositivi più piccoli */
+        margin: 0 auto;
+    }
+}
+
+/*centra il contenuto*/
+.container > .row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 1024px) and (max-width: 1101px) {
+    /* Nascondi la sidebar */
+    .main-menu {
+        display: none;
+    }
+
+    /* Mostra la navbar mobile */
+    .navbar-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(51, 47, 47, 0.8); /* Semi trasparente */
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+    .avatarmobile {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid grey;
+        transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    /* Mostra il footer mobile */
+    .footer-mobile {
+        display: flex;
+        justify-content: space-around;
+        background: #332f2f;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    .footer-mobile ul {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .footer-mobile li {
+        flex: 1;
+        text-align: center;
+    }
+
+    .footer-mobile a {
+        color: white;
+        font-size: 24px;
+    }
+
+    /* Spaziatura per il contenuto principale */
+    .container {
+        padding-top: 60px; /* Altezza della navbar mobile */
+        padding-bottom: 60px; /* Altezza del footer mobile */
+        width: calc(100% - 40px); /* Ridurre la larghezza per i dispositivi più piccoli */
+        margin: 0 auto;
+    }
+}
+
+
+/* Media Queries per dispositivi con larghezza inferiore a 640px per far vedere tutti i bottoni del footer (scorrendo) */
+@media (max-width: 640px) {
+    .footer-mobile ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        overflow-x: auto; /* Permette di scrollare orizzontalmente se necessario */
+    }
+
+    .footer-mobile li {
+        flex: 0 0 auto; /* I bottoni non si restringono */
+        text-align: center;
+        margin: 0 5px; /* Riduce la spaziatura tra i bottoni */
+    }
+
+    .footer-mobile a {
+        color: white;
+        font-size: 20px; /* Riduce leggermente la dimensione dei bottoni */
+    }
+}
+

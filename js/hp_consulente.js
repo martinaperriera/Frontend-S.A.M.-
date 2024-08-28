@@ -195,6 +195,7 @@ let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
 let isUpdate = false;
 let updateId;
 
+
 // Recupera e visualizza le task
 function showTasks() {
     const addBox = document.querySelector(".add-box");
@@ -344,44 +345,36 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchProjects(); // Carica i progetti
 });
 
-/* TIMELINE - eventi da db */ 
-document.addEventListener('DOMContentLoaded', function() {
-    // recupera eventi dall'API
-    async function fetchEvents() {
-        try {
-            const response = await fetch('http:/api/events'); 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const events = await response.json();
-            populateTimeline(events);
-        } catch (error) {
-            console.error('Error fetching events:', error);
-        }
-    }
 
-    // inserisce in timeline i dati degli eventi
-    function populateTimeline(events) {
-        const timelineList = document.querySelector('.timeline-list');
-        timelineList.innerHTML = ''; // Pulisce la lista esistente
 
-        events.forEach(event => {
-            const timelineItem = document.createElement('li');
-            timelineItem.className = 'timeline-item';
 
-            // crea il contenuto dell'evento
-            timelineItem.innerHTML = `
-                <div class="timeline-date bg-primary">${new Date(event.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}</div>
-                <h5 class="timeline-event-title">${event.title}</h5>
-                <p class="timeline-event-description">${event.description}</p>
+// notes
+document.addEventListener("DOMContentLoaded", function() {
+    const notesList = document.getElementById('notes-list');
+
+    // Funzione per visualizzare le note
+    function showNotes() {
+        // Esempio di note (da sostituire con dati reali da un database)
+        const notes = [
+            { title: "Nota 1", description: "Descrizione della nota 1", date: "01/08/2024" },
+            { title: "Nota 2", description: "Descrizione della nota 2", date: "02/08/2024" }
+        ];
+
+        notesList.innerHTML = ''; // Pulisce la lista delle note
+        notes.forEach(note => {
+            const noteElement = document.createElement('div');
+            noteElement.classList.add('note');
+
+            noteElement.innerHTML = `
+                <h3>${note.title}</h3>
+                <p>${note.description}</p>
+                <span class="note-date">${note.date}</span>
             `;
 
-            // inserisci elemento timeline alla lista
-            timelineList.appendChild(timelineItem);
+            notesList.appendChild(noteElement);
         });
     }
 
-    // recupera gli eventi quando il DOM è completamente caricato
-    fetchEvents();
-});
-
+    // Chiamare la funzione per mostrare le note al caricamento della pagina
+    showNotes();
+}); 

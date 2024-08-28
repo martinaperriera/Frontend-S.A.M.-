@@ -129,39 +129,311 @@
         </ul>
     </nav>
 
-    <div class="container">
-        <h1 class="ms-5 mt-5 mb-5" id="benvenuto">Crea un nuovo progetto</h1>
-  
-    <h1>I tuoi progetti</h1>
-    <table id="destinazioni-table">
-        <thead>
-            <tr>
-                <th>Titolo</th>
-                <th>Descrizione</th>
-                <th>Consulenti</th>
-                <th>Azioni</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Contenuto dinamico -->
-        </tbody>
-    </table>
-
-    <h2>Aggiungi/Modifica Progetto</h2>
-    <form id="progetto-form">
-        <input type="hidden" id="progetto-id">
-        <label for="nomeProgetto">Titolo:</label>
-        <input type="text" id="nomeProgetto" name="nomeProgetto"><br>
-        <label for="descrizione">Descrizione:</label>
-        <input type="text" id="descrizione" name="descrizione"><br>
-        <label for="consulenti">Consulenti:</label>
-        <input type="text" id="consulenti" name="consulenti"><br>
-
-        <button type="submit">Salva</button>
-    </form>
+     <!-- Navbar Mobile -->
+<div class="navbar-mobile">
+    <div class="avatar-mobile">
+        <img class="avatarmobile" src="img/bg_home.jpg" alt="Avatar">
+    </div>
 </div>
 
-     
+<!-- Footer Mobile -->
+<div class="footer-mobile">
+    <ul>
+        <li><a href="hp_consulente.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="consulente_project.html"><i class="fa fa-globe"></i></a></li>
+        <li><a href="consulente_task.html"><i class="fa fa-book"></i></a></li>
+        <li><a href="consulente_notes.html"><i class="fa fa-comments"></i></a></li>
+        <li><a href="consulente_milestone.html"><i class="fa fa-film"></i></a></li>
+        <li><a href="consulente_planner.html"><i class="fa fa-cogs"></i></a></li>
+        <li><a href="consulente.classifica.html"><i class="fa fa-map-marker"></i></a></li>
+        <li><a href="consulente_profile.html"><i class="fa fa-user"></i></a></li>
+        <li><a href="consulente_help.html"><i class="fa fa-info"></i></a></li>
+        <li><a href="#"><i class="fa fa-power-off"></i></a></li>
+    </ul>
+</div>
+
+   <!-- Contentitore di tutto-->
+   <div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-11" style="margin-left: -40px;">
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="text-center"> I miei Progetti</div>
+                    <div class="list-group text-center" id="list-tab" role="tablist">
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="tab-content" id="nav-tabContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- milestone -->
+    <section class="timeline_area section_padding_130 mt-4" id="mileSection">
+        <div class="container">
+            <div class="row">
+                <div id="mileBtn"></div>
+                <div class="col-12">
+                    <div class="apland-timeline-area">
+                        <div class="single-timeline-area">
+                            <div class="timeline-date">
+                                <p>Completate</p>
+                            </div>
+                            <div class="row" id="completedRow">&nbsp;
+                                <!-- qui dentro ci va il template della milestone-->
+
+                            </div>
+                        </div>
+
+                        <div class="single-timeline-area">
+                            <div class="timeline-date">
+                                <p>In Corso</p>
+                            </div>
+                            <div class="row" id="wipRow">&nbsp;
+                                <!-- qui dentro ci va il template della milestone-->
+                            </div>
+                        </div>
+
+                        <div class="single-timeline-area">
+                            <div class="timeline-date">
+                                <p>Pianificate</p>
+                            </div>
+                            <div class="row" id="plannedRow">&nbsp;
+                                <!-- qui dentro ci va il template della milestone-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Modali task-->
+ <!-- aggiunta Task Modal -->
+    <div class="modal" id="addTaskModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddTaskModal()">&times;</span>
+            <h2>Add Task</h2>
+            <form id="addTaskForm">
+                <label for="taskName">Nome Task:</label>
+                <input type="text" id="newTaskName" name="taskName" required>
+
+                <label for="taskDescription">Descrizione:</label>
+                <input type="text" id="newTaskDescription" name="taskDescription">
+                <br>
+                <label for="taskPriority">Priorità:</label>
+                <select id="newTaskPriority" name="taskPriority">
+                </select>
+                <label for="newTaskValue">Valore:</label>
+                <input type="number" id="newTaskValue" name="taskValue">
+                <br>
+                <label for="newTaskEndDate">Deadline:</label>
+                <input type="date" name="taskEndDate" id="newTaskEndDate">
+                <br>
+                <label for="newTaskProjectID">Progetto:</label>
+                <select name="newTaskProjectID" id="newTaskProjectID" value="0">
+                </select>
+                <label for="newTaskMilestoneID">Milestone:</label>
+                <select name="newTaskMilestoneID" disabled id="newTaskMilestoneID" value="0">
+                </select>
+                <br>
+                <label for="taskUserID">Consulente:</label>
+                <select name="taskUserID" disabled id="newTaskUserID">
+
+                </select>
+                <br>
+                <button type="submit">Aggiungi Task</button>
+
+            </form>
+        </div>
+    </div>
+
+
+    <!--  modal cambia status-->
+    <div class="modal" id="changePriorityModal">
+        <div class="modal-content" style="max-width: 300px;">
+            <form>
+                <label for="changePrioritySelect">Priorità: </label>
+                <select name="changePrioritySelect" id="changePrioritySelect"></select>
+                <span class="close" id="xcloseStatusModal" onclick="closeChangePriorityModalProj()"><i class="fa-regular fa-circle-check"></i></span>
+            </form>
+        </div>
+    </div>
+    <!--  modal assegna consulente-->
+    <div class="modal" id="assignUserModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAssignUserModal()">&times;</span>
+            <form>
+                <label for="assignUserSelect">Assegna utente</label>
+                <select name="assignUserSelect" id="assignUserSelect"></select>
+                <button type="button" class="btn btn-secondary" onclick="closeAssignUserModal()">Conferma</button>
+
+            </form>
+        </div>
+    </div>
+
+    <!--  modal aggiorna task -->
+    <div class="modal" id="updateTaskModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeUpdateTaskModal()"><i class="fa-regular fa-circle-xmark"></i></span>
+            <h2>Aggiorna questa Task</h2>
+            <form id="updateTaskForm">
+                <label for="newTaskName">Nome Task:</label>
+                <input type="text" id="updateTaskName" name="updateTaskName" required>
+
+                <label for="newTaskDescription">Descrizione:</label>
+                <input type="text" id="updateTaskDescription" name="updateTaskDescription">
+                <br>
+                <label for="updateTaskValue">Valore :</label>
+                <input type="number" id="updateTaskValue" name="updateTaskValue" required>
+
+                <br>
+
+                
+                <label for="newTaskEndDate">Deadline:</label>
+                <input type="date" name="updateTaskEndDate" id="updateTaskEndDate">
+                <br>
+                <br>
+                <br>
+                <button type="submit">Modifica Task</button>
+
+            </form>
+        </div>
+    </div>
+
+
+<!-- Modale in cui carica le task -->
+<div class="modal taskModal fade" id="mileTaskModal" tabindex="-1" aria-labelledby="mileNameModal"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id=""></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body container-fluid">
+                <h5 class="mb-2 text-center" id="benvenuto">Task correnti</h5>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="switchCompleted" checked>
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Mostra completate</label>
+                  </div>
+                <div class="row d-flex justify-content-center me-2 align-items-center">
+                    <div class="col-12 col-lg-6">
+                        <div class="card-hover-shadow-2x mb-3 card container">
+                            <div class="card-header-tab card-header">
+                                <div
+                                    class="card-header-title ms-auto font-size-lg text-capitalize font-weight-normal">
+                                    <i class="fa-solid fa-list-check"></i>&nbsp;Task Assegnate
+                                </div>
+                            </div>
+                            <div class="scroll-area-sm">
+                                <perfect-scrollbar class="ps-show-limits">
+                                    <div style="position: static;" class="ps ps--active-y">
+                                        <div class="ps-content">
+                                            <ul class="list-group list-group-flush" id="task-list">&nbsp;
+                                                <!-- task dinamiche qui -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </perfect-scrollbar>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="card-hover-shadow-2x mb-3 card container">
+                            <div class="card-header-tab card-header">
+                                <div
+                                    class="card-header-title ms-auto font-size-lg text-capitalize font-weight-normal">
+                                    <i class="fa-solid fa-list-check"></i>&nbsp;Task Da Assegnare
+                                </div>
+                            </div>
+                            <div class="scroll-area-sm">
+                                <perfect-scrollbar class="ps-show-limits">
+                                    <div style="position: static;" class="ps ps--active-y">
+                                        <div class="ps-content">
+                                            <ul class="list-group list-group-flush" id="unassigned-task-list">&nbsp;
+                                                <!-- task dinamiche qui -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </perfect-scrollbar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Nuovo progetto-->
+    <div class="modal" id="newProjectModal">
+        <h2>Aggiungi/Modifica Progetto</h2>
+        <form id="progetto-form">
+            <input type="hidden" id="progetto-id">
+            <label for="newProjName">Titolo:</label>
+            <input type="text" id="newProjName" name="newProjName"><br>
+            <label for="newProjDesc">Descrizione:</label>
+            <input type="text" id="newProjDesc" name="newProjDesc"><br>
+            <label for="newProjBudget">Budget:</label>
+            <input type="number" id="newProjBudget" name="newProjBudget"><br>
+            
+            <label for="newProjEnd">Deadline:</label>
+            <input type="date" id="newProjEnd" name="newProjEnd"><br>
+            
+            <label for="newProjExpected">Fine stimata:</label>
+            <input type="date" id="newProjExpected" name="newProjExpected"><br>
+            
+            <label for="newProjStatus">Status:</label>
+            <input type="text" id="newProjStatus" name="newProjStatus"><br>
+            
+            <label for="NewProjCustomer">Cliente:</label>
+            <select name="NewProjCustomer" id="NewProjCustomer"></select>
+
+            <label for="consulenti">Consulenti:</label>
+            <select name="NewProjUsers" id="NewProjUsers" multiple></select>
+            <button type="button" onclick="closeNewProjectModal()">Salva</button>
+        </form>
+
+    </div>
+
+    <div class="modal" id="newMileModal">
+        <h2>Milestone</h2>
+        <form id="milestone-form">
+            <input type="hidden" id="progetto-id">
+            <label for="newMileName">Nome:</label>
+            <input type="text" id="newMileName" name="newMileName"><br>
+            <label for="newMileDesc">Descrizione:</label>
+            <input type="text" id="newMileDesc" name="newMileDesc"><br>
+            <label for="newMileEnd">Deadline:</label>
+            <input type="date" id="newMileEnd" name="newMileEnd"><br>
+            <label for="newMileIcon">Icona:</label>
+            <i id="icon-preview" class="fa-solid fa-flag"></i>
+            <select name="newMileIcon" id="newMileIcon">
+                <option value="fa-solid fa-flag"> Flag</option>
+                <option value="fa-solid fa-trophy"> Trophy</option>
+                <option value="fa-solid fa-star">Star</option>
+                <option value="fa-solid fa-check-circle">Check Circle</option>
+                <option value="fa-solid fa-bullseye"> Bullseye</option>
+                <option value="fa-solid fa-rocket"> Rocket</option>
+                <option value="fa-solid fa-calendar-check"> Calendar Check</option>
+                <option value="fa-solid fa-crown"> Crown</option>
+                <option value="fa-solid fa-medal"> Medal</option>
+                <option value="fa-solid fa-lightbulb"> Lightbulb</option>
+            </select>
+
+            <button type="button" onclick="closeNewMileModal()">Salva</button>
+        </form>
+
+    </div>
 
       <!-- footer -->
 <div class="container">

@@ -160,4 +160,27 @@
     margin-top: 20px;
 }
 
+/* centra il contenuto */
+/* Per dispositivi piccoli e medi */
+@media (max-width: 767px), (min-width: 768px) and (max-width: 991px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center; /* Per centrare il testo */
+        padding: 0 15px; /* Mantiene il padding laterale */
+    }
+
+    .row {
+        width: 100%; /* Assicura che il contenuto della riga prenda tutta la larghezza disponibile */
+        margin: 0; /* Rimuove i margini laterali */
+    }
+
+    .task-card {
+        width: 100%; /* Assicura che il task card prenda tutta la larghezza disponibile */
+        max-width: 100%; /* Evita che il task card ecceda la larghezza della schermata */
+        margin: 0 auto; /* Centra il task card */
+    }
+}
 

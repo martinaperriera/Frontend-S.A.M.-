@@ -17,7 +17,15 @@
 <body style="background-color: #40832bd0;">
     <nav class="main-menu">
         <header class="avatar">
-            <img src="img/bg_home.jpg" alt="Avatar" />
+            <img src="img/bg_home.jpg" alt="Avatar">
+            <div class='user-info'>
+                <div class='user-name'>Nome Utente</div>
+                <div class='user-stats'>
+                  <div class='projects'>Progetti: 1</div>
+                  <div class='tasks'>Task: 1</div>
+                </div>
+                <button class='btn-change-password'><a href="modificapassword.html">Cambia password</a></button>
+              </div>
         </header>
         <ul>
             <li>
@@ -96,7 +104,7 @@
         <ul class="logout">
             <li>
                 <a href="consulente_help.html">
-                    <i class="fa fa-info"></i>  
+                    <i class="fa fa-info" id="iconelogout"></i>  
                     <span class="nav-text">
                         Help
                         </span>                
@@ -104,7 +112,7 @@
             </li>
             <li>
                <a href="#">
-                     <i class="fa fa-power-off"></i>
+                     <i class="fa fa-power-off" id="iconelogout"></i>
                     <span class="nav-text">
                         Logout
                     </span>
@@ -113,13 +121,36 @@
         </ul>
     </nav>
 
+    <!-- Navbar Mobile -->
+<div class="navbar-mobile">
+    <div class="avatar-mobile">
+        <img class="avatarmobile" src="img/bg_home.jpg" alt="Avatar">
+    </div>
+</div>
+
+<!-- Footer Mobile -->
+<div class="footer-mobile">
+    <ul>
+        <li><a href="hp_consulente.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="consulente_project.html"><i class="fa fa-globe"></i></a></li>
+        <li><a href="consulente_task.html"><i class="fa fa-book"></i></a></li>
+        <li><a href="consulente_notes.html"><i class="fa fa-comments"></i></a></li>
+        <li><a href="consulente_milestone.html"><i class="fa fa-film"></i></a></li>
+        <li><a href="consulente_planner.html"><i class="fa fa-cogs"></i></a></li>
+        <li><a href="consulente.classifica.html"><i class="fa fa-map-marker"></i></a></li>
+        <li><a href="consulente_profile.html"><i class="fa fa-user"></i></a></li>
+        <li><a href="consulente_help.html"><i class="fa fa-info"></i></a></li>
+        <li><a href="#"><i class="fa fa-power-off"></i></a></li>
+    </ul>
+</div>
+
     <div class="container mt-5">
         <h1 class="ms-5 mb-5" id="benvenuto">Benvenuto consulente</h1>
     
         <!-- Sidebar Container -->
          <div class="container">
         <div class="row align-items-stretch mb-4">
-            <div class="col-md-4">
+            <div class="col-md-6 gx-5">
                 <div class="sidebar-container">
                     <!-- badges Section -->
                     <div class="medagliere-section mb-4">
@@ -144,10 +175,18 @@
                             </div>
                         </div>
                     </div>
+            
+            <div class="col-md-6 mt-5">
+                    <div class="notes-section align-items-center justify-content-center">
+                        <i class="fa fa-heart"></i>&nbsp;Block Notes
+                        <ul class="notes-list mt-3">
+                            <p class="notes">manager 1 dice: </p>
+                            <!-- Le note verranno inserite qui -->
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-8">
-                <!-- Placeholder for future element -->
-            </div>
+        </div>
         </div>
     
     
@@ -196,6 +235,7 @@
                             <div style="position: static;" class="ps ps--active-y">
                                 <div class="ps-content">
                                     <ul class="list-group list-group-flush" id="task-list">
+                                        <p class="taskshp">task 1 </p>
                                         <!-- task dinamiche qui -->
                                     </ul>
                                 </div>
