@@ -126,11 +126,11 @@
     <div class="col-1">
     </div>
     <div class="col-11">
-
         <div class="container mt-5 me-2">
             <h1 class="mb-5" id="benvenuto">Le mie task</h1>
             <div class="row d-flex justify-content-center me-2 align-items-center">
                 
+                <!-- Task Assegnate -->
                 <div class="col-lg-6">
                     <div class="card-hover-shadow-2x mb-3 card todo-container" style="background-color: #332f2f; min-height: 600px;">
                         <div class="card-header-tab card-header">
@@ -139,36 +139,33 @@
                             </div>
                         </div>
                         <div class="scroll-area-sm">
-                            <perfect-scrollbar class="ps-show-limits">
-                                <div style="position: static;" class="ps ps--active-y">
-                                    <div class="ps-content">
-                                        <ul class="list-group list-group-flush" id="task-list">
-                                            <!-- task dinamiche qui -->
-                                        </ul>
-                                    </div>
+                            <div style="position: static;" class="ps ps--active-y">
+                                <div class="ps-content">
+                                    <ul class="list-group list-group-flush" id="task-list">
+                                        <!-- Task dinamiche qui -->
+                                    </ul>
                                 </div>
-                            </perfect-scrollbar>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Task Completate -->
                 <div class="col-lg-6">
-                    <div class="card-hover-shadow-2x mb-3 card todo-container" style="background-color: #332f2f; min-height: 600px; ">
+                    <div class="card-hover-shadow-2x mb-3 card todo-container" style="background-color: #332f2f; min-height: 600px;">
                         <div class="card-header-tab card-header">
                             <div class="card-header-title ms-auto font-size-lg text-capitalize font-weight-normal">
                                 <i class="fa-solid fa-list-check"></i>&nbsp;Task Completate
                             </div>
                         </div>
                         <div class="scroll-area-sm">
-                            <perfect-scrollbar class="ps-show-limits">
-                                <div style="position: static;" class="ps ps--active-y">
-                                    <div class="ps-content">
-                                        <ul class="list-group list-group-flush" id="completed-task-list">
-                                            <!-- task dinamiche qui -->
-                                        </ul>
-                                    </div>
+                            <div style="position: static;" class="ps ps--active-y">
+                                <div class="ps-content">
+                                    <ul class="list-group list-group-flush" id="completed-task-list">
+                                        <!-- Task dinamiche qui -->
+                                    </ul>
                                 </div>
-                            </perfect-scrollbar>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -178,9 +175,7 @@
     </div>
 </div>
 
-
-
-<!--  modal cambia status-->
+<!-- Modal Cambia Status -->
 <div class="modal" id="changePriorityModal">
     <div class="modal-content">
         <span class="close" onclick="closeChangePriorityModal()">&times;</span>
@@ -191,6 +186,7 @@
         </form>
     </div>
 </div>
+
 
       
   <!-- footer -->
@@ -209,7 +205,7 @@
 
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/task.js"></script>
+    <script src="js/consulente_task.js"></script>
 </body>
 
 </html>

@@ -1,67 +1,208 @@
-// recupera tasks dal db
-document.addEventListener("DOMContentLoaded", function() {
-    const taskList = document.getElementById('task-list');
+document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener("load", function () {
+        fillStatusArr();
+        showTasks();
+    });
 
-    // Funzione per caricare le task dal database
-    function loadTasks() {
-        fetch('https://....com/api/tasks')  // Modifica l'URL per puntare alla tua API
-            .then(response => response.json())
-            .then(tasks => {
-                tasks.forEach(task => {
-                    const listItem = document.createElement('li');
-                    listItem.className = 'list-group-item';
-                    listItem.innerHTML = `
-                        <div class="todo-indicator ${task.priority}"></div>
-                        <div class="widget-content p-0">
-                            <div class="widget-content-wrapper">
-                                <div class="widget-content-left mr-2">
-                                    <div class="custom-checkbox custom-control">
-                                        <input class="custom-control-input" type="checkbox" ${task.completed ? 'checked' : ''}>
-                                        <label class="custom-control-label">&nbsp;</label>
-                                    </div>
-                                </div>
+    const token = localStorage.getItem("token");
+    let projectArr = [];
+    const taskList = document.getElementById("task-list");
+    const complTaskList = document.getElementById("completed-task-list");
+    const newTaskList = document.getElementById("task-list-hp"); // Aggiungi il riferimento al nuovo task list
+
+    async function showTasks() {
+        await getUserTasks();
+        await fillProjectArr();
+
+        taskArr.forEach((task) => {
+            const taskID = task.id;
+            const taskName = task.task_name;
+            const taskDescription = task.task_desc;
+            const taskPriority = task.status.status;
+            const taskStatusColor = task.status.color;
+            const taskValue = task.value;
+            let taskMileName = task.milestone.mile_name || "Nessuna milestone assegnata!";
+            let taskEndDate = task.end_date || "Scadenza indefinita";
+            const taskCreated = task.start_date;
+            const taskProjectID = task.project_id;
+            let taskProjectName = projectArr.find(p => p.id == taskProjectID)?.project_name || "Progetto sconosciuto";
+
+            let listItem = document.createElement("li");
+            listItem.className = "list-group-item";
+            listItem.id = `task${taskID}`;
+            listItem.innerHTML = `
+                <div class="row"> 
+                    <div class="widget-content p-0">
+                        <div class="widget-content-wrapper">
+                            <div class="col-2"> 
                                 <div class="widget-content-left">
-                                    <div class="widget-heading">${task.name}</div>
-                                    <div class="widget-subheading">${task.description}</div>
+                                    <div class="widget-heading" style="color : ${taskStatusColor}">${taskPriority}</div>
+                                    <div class="widget-subheading">Creazione: ${taskCreated}</div>
+                                    <div class="widget-subheading">Scadenza: ${taskEndDate}</div>   
                                 </div>
+                            </div>
+                            <div class="col-8"> 
+                                <div class="p-2 text-center border-start border-end">
+                                    <div class="widget-subheading">${taskMileName}</div>
+                                    <div class="widget-heading mb-2"><strong>${taskName}</strong></div>
+                                    <div class="widget-subheading">${taskDescription}</div>
+                                </div>
+                            </div>
+                            <div class="col-1"> 
                                 <div class="widget-content-right">
-                                    <button class="border-0 btn-transition btn btn-outline-success" onclick="completeTask(this, ${task.id})">
-                                        <i class="fa fa-check"></i>
+                                    <button class="ms-1 border-0 btn-transition btn btn-outline-warning" onclick="showChangePriorityModal(${taskID})">
+                                        <i class="fa-solid fa-clock-rotate-left"></i>
+                                    </button>
+                                    <button class="ms-1 border-0 btn-transition btn btn-outline-success" onclick="completeTask(${taskID})">
+                                        <i class="fa-solid fa-check"></i> 
                                     </button>
                                 </div>
                             </div>
                         </div>
-                    `;
-                    taskList.appendChild(listItem);
-                });
-            })
-            .catch(error => console.error('Error loading tasks:', error));
+                    </div>
+                </div>
+            `;
+
+            if (taskPriority == "Completata") {
+                complTaskList?.appendChild(listItem);
+            } else {
+                taskList?.appendChild(listItem);
+                newTaskList?.appendChild(listItem.cloneNode(true));  // Aggiungi la task anche nella nuova lista
+            }
+        });
     }
 
-    // completa Task
-    window.completeTask = function(button, taskId) {
-        const listItem = button.closest('.list-group-item');
-        const checkbox = listItem.querySelector('.custom-control-input');
-        checkbox.checked = true;
-
-        // Aggiorna lo stato della task nel database
-        fetch(`https:.../tasks/${taskId}/complete`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ completed: true })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Task completed:', data);
-        })
-        .catch(error => console.error('Error completing task:', error));
+    async function getUserTasks() {
+        try {
+            const response = await fetch("http://localhost:8080/api/tasks/user", {
+                method: "GET",
+                headers: {
+                    token: token,
+                },
+            });
+            if (response.status === 200) {
+                const data = await response.json();
+                taskArr = data; // Usa direttamente la risposta JSON per popolare taskArr
+            } else {
+                console.error("Failed to fetch tasks:", response.status);
+            }
+        } catch (error) {
+            console.error("Error fetching tasks:", error);
+        }
     }
 
-    // Carica le task quando la pagina è pronta
-    loadTasks();
+    async function fillProjectArr() {
+        try {
+            const response = await fetch("http://localhost:8080/api/projects/user", {
+                method: "GET",
+                headers: {
+                    token: token,
+                },
+            });
+            if (response.status === 200) {
+                const data = await response.json();
+                projectArr = data; // Popola projectArr con la risposta JSON
+            } else {
+                console.error("Failed to fetch projects:", response.status);
+            }
+        } catch (error) {
+            console.error("Error fetching projects:", error);
+        }
+    }
+
+    window.completeTask = function (taskID) {
+        completeTask(taskID);
+    };
+
+    async function completeTask(taskID) {
+        try {
+            const response = await fetch(`http://localhost:8080/api/tasks/complete/${taskID}`, {
+                method: "GET",
+                headers: {
+                    token: token,
+                },
+            });
+            if (response.status === 200) {
+                document.getElementById("task-list").innerHTML = "";
+                if (document.getElementById('completed-task-list'))
+                document.getElementById("completed-task-list").innerHTML = "";
+                showTasks();
+            }
+        } catch (error) {
+            console.error("Error completing task:", error);
+        }
+    }
+
+    window.showChangePriorityModal = function (taskID) {
+        populateSelectWithArray(statusArr, "changePrioritySelect", "status", "Status non validi");
+        changePriorityModal.style.display = "block";
+        changePriorityID = taskID;
+    };
+
+    window.closeChangePriorityModal = async function () {
+        const statusID = document.getElementById("changePrioritySelect").value;
+        await changePriority(changePriorityID, statusID);
+        changePriorityModal.style.display = "none";
+        document.getElementById("task-list").innerHTML = "";
+        showTasks();
+    };
+
+    async function fillStatusArr() {
+        try {
+            const response = await fetch("http://localhost:8080/api/status", {
+                method: "GET",
+                headers: {
+                    token: token,
+                },
+            });
+            if (response.status === 200) {
+                const data = await response.json();
+                statusArr = data; // Popola statusArr con la risposta JSON
+            } else {
+                console.error("Failed to fetch statuses:", response.status);
+            }
+        } catch (error) {
+            console.error("Error fetching statuses:", error);
+        }
+    }
+
+    async function changePriority(taskID, statusID) {
+        try {
+            const response = await fetch(`http://localhost:8080/api/tasks/changestatus/${taskID}/${statusID}`, {
+                method: "PUT",
+                headers: {
+                    token: token,
+                },
+            });
+            if (response.status !== 200) {
+                console.error("Failed to change task priority:", response.status);
+            }
+        } catch (error) {
+            console.error("Error changing task priority:", error);
+        }
+    }
+
+    function populateSelectWithArray(array, selectId, nameProp, message) {
+        const selectElement = document.getElementById(selectId);
+        if (array.length > 0) {
+            selectElement.innerHTML = '<option>Nessuna scelta</option>';
+            array.forEach((item) => {
+                const option = document.createElement("option");
+                option.value = item.id;
+                option.id = `${nameProp}${item.id}`;
+                option.textContent = item[nameProp];
+                selectElement.appendChild(option);
+            });
+        } else {
+            selectElement.innerHTML = "";
+            const option = document.createElement("option");
+            option.textContent = message;
+            selectElement.appendChild(option);
+        }
+    }
 });
+
+
 
 // Card progetto attuale
         function toggleDetails(event, detailsId) {
@@ -349,32 +490,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // notes
-document.addEventListener("DOMContentLoaded", function() {
-    const notesList = document.getElementById('notes-list');
+async function showNotes() {
+    try {
+        const notes = await fetchNotesFromDB();
+        const notesParagraph = document.getElementById("notesParagraph");
+        
+        if (!notesParagraph) {
+            console.error("L'elemento <p> con l'ID 'notesParagraph' non è stato trovato.");
+            return;
+        }
 
-    // Funzione per visualizzare le note
-    function showNotes() {
-        // Esempio di note (da sostituire con dati reali da un database)
-        const notes = [
-            { title: "Nota 1", description: "Descrizione della nota 1", date: "01/08/2024" },
-            { title: "Nota 2", description: "Descrizione della nota 2", date: "02/08/2024" }
-        ];
-
-        notesList.innerHTML = ''; // Pulisce la lista delle note
+        let notesContent = "manager 1 dice:<br>";
         notes.forEach(note => {
-            const noteElement = document.createElement('div');
-            noteElement.classList.add('note');
-
-            noteElement.innerHTML = `
-                <h3>${note.title}</h3>
-                <p>${note.description}</p>
-                <span class="note-date">${note.date}</span>
-            `;
-
-            notesList.appendChild(noteElement);
+            notesContent += `${note.minitask_name}: ${note.minitask_desc}<br>`;
         });
-    }
 
-    // Chiamare la funzione per mostrare le note al caricamento della pagina
-    showNotes();
-}); 
+        notesParagraph.innerHTML = notesContent;
+    } catch (error) {
+        console.error("Errore durante il recupero delle note:", error);
+    }
+}
+document.addEventListener("DOMContentLoaded", showNotes);
