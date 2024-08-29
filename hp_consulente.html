@@ -90,13 +90,12 @@
                 </a>
             </li>
             <li>
-               <a href="#">
-                     <i class="fa fa-power-off"></i>
-                    <span class="nav-text">
-                        Logout
-                    </span>
+                <a href="#" id="logoutButton">
+                    <i class="fa fa-power-off"></i>
+                    <span class="nav-text">Logout</span>
                 </a>
-            </li>  
+            </li>
+             
         </ul>
     </nav>
 
@@ -155,15 +154,20 @@
                         </div>
                     </div>
             
-            <div class="col-md-6 mt-5">
-                    <div class="notes-section align-items-center justify-content-center">
-                        <i class="fa fa-heart"></i>&nbsp;Block Notes
-                        <ul class="notes-list mt-3">
-                            <p class="notes">manager 1 dice: </p>
-                            <!-- Le note verranno inserite qui -->
-                        </ul>
+                    <div class="col-md-6 mt-5">
+                        <div class="notes-section align-items-center justify-content-center">
+                            <i class="fa fa-heart"></i>&nbsp;Block Notes
+                            <ul class="notes-list mt-3">
+                                <p class="notes" id="notes-content"> 
+                                    manager 1 dice:
+                                </p>
+                                <!-- Le note verranno inserite qui -->
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                    
+                    
+                    
             </div>
         </div>
         </div>
@@ -226,6 +230,8 @@
     </div>
 </div>
 
+<!-- Div per i messaggi di logout -->
+<div id="message" style="margin-top: 20px; color: #333;"></div>
 
   <!-- footer -->
 <div class="container">

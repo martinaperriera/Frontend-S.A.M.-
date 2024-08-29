@@ -671,3 +671,44 @@ async function startup() {
   //ROBA DA RUNNARE
  startup()
 });
+
+
+//logout
+document.addEventListener('DOMContentLoaded', () => {
+document.getElementById('logoutButton').addEventListener('click', async function(event) {
+    event.preventDefault();
+    const token = localStorage.getItem('authToken');
+    const messageElement = document.getElementById('message');
+
+    if (!token) {
+        messageElement.textContent = 'No token found. Please log in.';
+        messageElement.style.color = 'red';
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:8080/auth/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (response.ok) {
+            localStorage.removeItem('authToken');
+            messageElement.textContent = 'Logout successful';
+            messageElement.style.color = 'green';
+            window.location.href = 'index.html';
+        } else {
+            const errorMessage = await response.text();
+            messageElement.textContent = `Logout failed: ${errorMessage}`;
+            messageElement.style.color = 'red';
+        }
+    } catch (error) {
+        console.error('Error during logout:', error);
+        messageElement.textContent = 'Error during logout';
+        messageElement.style.color = 'red';
+    }
+});
+});

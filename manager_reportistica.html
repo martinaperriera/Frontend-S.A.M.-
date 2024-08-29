@@ -133,18 +133,27 @@
 </div>
 
 <div class="container">
-    <h1 class="ms-5 mt-5 mb-5" id="benvenuto">Reportistica</h1>
+    
+    <button id="downloadReport" class="btn btn-primary download-btn">Scarica Report</button>
 
+    <h2 id="benvenuto">Avanzamento dei progetti</h2>
+    <br>
+    <div class="simple-bar-chart">
+    </div>
+
+    <h2 id="benvenuto" class="mt-5">Andamento utenti</h2>
+    <canvas id="performanceChart" class="mt-5" width="800" height="400"></canvas>
+
+    <h1 class="ms-5 mt-5 mb-5" id="benvenuto">Progetti attivi</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>Consulente</th>
                     <th>Progetto</th>
                     <th>Data Inizio</th>
                     <th>Data Fine</th>
                     <th>Stato</th>
-                    <th>Dettagli</th>
+                    <th>Punti</th>
                 </tr>
             </thead>
             <tbody id="reportTableBody">
@@ -152,41 +161,8 @@
             </tbody>
         </table>
     </div>
-  
-    <br>
-    
-    <h2 id="benvenuto">Avanzamento dei progetti</h2>
-    
-    <br>
 
-    <div class="simple-bar-chart">
 
-    <div class="item" style="--clr: #5EB344; --val: 80">
-        <div class="label">Progetto 1</div>
-        <div class="value">80%</div>
-    </div>
-    
-    <div class="item" style="--clr: #2a2afc; --val: 50">
-        <div class="label">Progetto 2</div>
-        <div class="value">50%</div>
-    </div>
-    
-    <div class="item" style="--clr: #2e5a1b; --val: 15">
-        <div class="label">Progetto 3</div>
-        <div class="value">15%</div>
-    </div>
-    
-    <div class="item" style="--clr: #963D97; --val: 100">
-        <div class="label">Progetto 4</div>
-        <div class="value">1%</div>
-    </div>
-    
-    <div class="item" style="--clr: #069CDB; --val: 90">
-        <div class="label">Progetto 5</div>
-        <div class="value">90%</div>
-    </div>
-
-    </div>
 
 </div>
 
@@ -204,7 +180,9 @@
             </div>
         </footer>
     
-    
+<!-- chart.js per grafico andamento utenti-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/reportistica.js"></script>
     <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>

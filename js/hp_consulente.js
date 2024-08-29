@@ -1,3 +1,4 @@
+//tasklist
 document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("load", function () {
         fillStatusArr();
@@ -490,24 +491,129 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // notes
-async function showNotes() {
-    try {
-        const notes = await fetchNotesFromDB();
-        const notesParagraph = document.getElementById("notesParagraph");
-        
-        if (!notesParagraph) {
-            console.error("L'elemento <p> con l'ID 'notesParagraph' non è stato trovato.");
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleziona l'elemento in cui inseriremo le note (ad esempio un contenitore div)
+    const notesContainer = document.querySelector('.notes-list');
+
+    // Recupera i dati dall'API
+    fetch('http://localhost:8080/api/minitasks')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Errore nel recupero delle note.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Itera attraverso ogni nota (minitask) e crea un nuovo elemento in-line per ciascuna
+            data.forEach(minitask => {
+                if (minitask.minitask_name) {
+                    // Crea un nuovo elemento span per contenere il testo della nota
+                    const noteElement = document.createElement('span');
+                    noteElement.textContent = `${minitask.minitask_name}: ${minitask.minitask_desc}`;
+                    
+                    // Applica eventualmente uno stile in-line al nuovo elemento
+                    noteElement.style.display = 'block'; // Per rendere ogni nota su una nuova riga
+                    
+                    // Aggiungi l'elemento al contenitore delle note
+                    notesContainer.appendChild(noteElement);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Errore nel recupero delle note:', error);
+        });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM completamente caricato e analizzato");
+
+    const notesContainer = document.querySelector('.notes-list');
+    console.log("notesContainer trovato:", notesContainer);
+
+    // Controlla se notesContainer è null
+    if (!notesContainer) {
+        console.error("notesContainer non trovato!");
+        return;
+    }
+
+    fetch('http://localhost:8080/api/minitasks')
+        .then(response => {
+            console.log("Risposta ricevuta dall'API", response);
+            if (!response.ok) {
+                throw new Error('Errore nel recupero delle note.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Dati ricevuti dall'API:", data);
+
+            data.forEach(minitask => {
+                console.log("Elaborazione della minitask:", minitask);
+
+                if (minitask.minitask_name) {
+                    const noteElement = document.createElement('span');
+                    noteElement.textContent = `${minitask.minitask_name}: ${minitask.minitask_desc}`;
+                    noteElement.style.display = 'block';
+
+                    notesContainer.appendChild(noteElement);
+                    console.log("Nota aggiunta al DOM:", noteElement);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Errore nel recupero delle note:', error);
+        });
+});
+
+
+
+
+    //logout
+    document.getElementById('logoutButton').addEventListener('click', async function(event) {
+        event.preventDefault(); // Previeni l'azione di default del link
+        console.log('Logout button clicked'); // Log per verificare che il click funzioni
+    
+        const token = localStorage.getItem('authToken');
+        console.log('Token retrieved:', token); // Log per verificare il token
+    
+        const messageElement = document.getElementById('message');
+    
+        if (!token) {
+            messageElement.textContent = 'No token found';
+            messageElement.style.color = 'red';
+            console.log('No token found');
             return;
         }
-
-        let notesContent = "manager 1 dice:<br>";
-        notes.forEach(note => {
-            notesContent += `${note.minitask_name}: ${note.minitask_desc}<br>`;
-        });
-
-        notesParagraph.innerHTML = notesContent;
-    } catch (error) {
-        console.error("Errore durante il recupero delle note:", error);
-    }
-}
-document.addEventListener("DOMContentLoaded", showNotes);
+    
+        try {
+            const response = await fetch('http://localhost:8080/api/users/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+    
+            console.log('Logout request sent'); // Log per verificare l'invio della richiesta
+    
+            if (response.ok) {
+                localStorage.removeItem('authToken');
+                messageElement.textContent = 'Logout successful';
+                messageElement.style.color = 'green';
+                console.log('Logout successful');
+                setTimeout(() => {
+                    window.location.href = 'login.html'; // Redirect to login page after a short delay
+                }, 1000);
+            } else {
+                const errorMessage = await response.text();
+                messageElement.textContent = `Logout failed: ${errorMessage}`;
+                messageElement.style.color = 'red';
+                console.log('Logout failed:', errorMessage);
+            }
+        } catch (error) {
+            console.error('Error during logout:', error);
+            messageElement.textContent = 'Error during logout';
+            messageElement.style.color = 'red';
+        }
+    });
+    

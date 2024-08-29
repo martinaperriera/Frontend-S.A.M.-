@@ -65,3 +65,9 @@ form button {
 form button:hover {
     background-color: #257709bd;
 }
+
+.card-header {
+    background-color: black;
+    color: white;
+}
+
