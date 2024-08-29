@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById('passwordLogin').value;
         const messageElement = document.getElementById('message')
         try {
-            const response = await fetch('http://local.sam.com:8080/auth/login', {
+            const response = await fetch('http://localhost:8080/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
