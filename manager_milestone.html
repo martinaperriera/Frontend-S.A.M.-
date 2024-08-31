@@ -16,14 +16,12 @@
 
 <body style="background-color: rgba(71, 38, 101, 0.59);">
     <nav class="main-menu">
-      <header class="avatar">
-          <img src="img/bg_home.jpg" alt="Avatar">
-          <div class='user-info'>
-              <div class='user-name'>Nome Utente</div>
-              <div class='user-stats'>
-                <div class='projects'>Progetti: 1</div>
-                <div class='tasks'>Task: 1</div>
-      </header>
+        <header class="avatar">
+            <img src="img/manag.jpeg" alt="Avatar">
+                <div class="user-info">
+                    <p id="fullName"></p>
+                </div>
+        </header>
       <ul>
           <li>
               <a href="hp_manager.html">
@@ -51,16 +49,6 @@
                   </span>
               </a>
               
-          </li>
-          <li class="has-subnav">
-              <a href="manager_notes.html">
-                  <i class="fa fa-comments"></i>
-                 
-                  <span class="nav-text">
-                      Le mie note <!-- storico note inserite dalle task / progetto -->
-                  </span>
-              </a>
-             
           </li>
           <li>
               <a href="manager_milestone.html">
@@ -99,13 +87,11 @@
               </a>
           </li>
           <li>
-             <a href="#">
-                   <i class="fa fa-power-off"></i>
-                  <span class="nav-text">
-                      Logout
-                  </span>
-              </a>
-          </li>  
+            <a href="#" id="logoutButton">
+                <i class="fa fa-power-off"></i>
+                <span class="nav-text">Logout</span>
+            </a>
+        </li> 
       </ul>
   </nav>
   

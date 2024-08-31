@@ -17,12 +17,10 @@
 <body style="background-color: rgba(71, 38, 101, 0.59);">
     <nav class="main-menu">
         <header class="avatar">
-            <img src="img/bg_home.jpg" alt="Avatar">
-            <div class='user-info'>
-                <div class='user-name'>Nome Utente</div>
-                <div class='user-stats'>
-                  <div class='projects'>Progetti: 1</div>
-                  <div class='tasks'>Task: 1</div>
+            <img src="img/manag.jpeg" alt="Avatar">
+            <div class="user-info">
+                <p id="fullName"></p>
+            </div>
         </header>
         <ul>
             <li>
@@ -51,16 +49,6 @@
                     </span>
                 </a>
                 
-            </li>
-            <li class="has-subnav">
-                <a href="manager_notes.html">
-                    <i class="fa fa-comments"></i>
-                   
-                    <span class="nav-text">
-                        Le mie note <!-- storico note inserite dalle task / progetto -->
-                    </span>
-                </a>
-               
             </li>
             <li>
                 <a href="manager_milestone.html">
@@ -99,13 +87,11 @@
                 </a>
             </li>
             <li>
-               <a href="#">
-                     <i class="fa fa-power-off"></i>
-                    <span class="nav-text">
-                        Logout
-                    </span>
+                <a href="#" id="logoutButton">
+                    <i class="fa fa-power-off"></i>
+                    <span class="nav-text">Logout</span>
                 </a>
-            </li>  
+            </li> 
         </ul>
     </nav>
 
@@ -132,7 +118,8 @@
     </ul>
 </div>
 
-    <div class="container">
+    <div class="container mt-5">
+        <h1 class="mb-5" id="benvenuto">Lista Task</h1>
         <!-- to do list -->
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-1"></div>
@@ -254,7 +241,7 @@
 
                 </select>
                 <br>
-                <button type="submit">Aggiungi Task</button>
+                <button type="submit" id="btnAggiungi">Aggiungi Task</button>
 
             </form>
         </div>
@@ -318,17 +305,20 @@
 
 
 <!-- footer -->
+
 <div class="container">
-    <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top" style="background-color: transparent;">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: transparent;">
         <div class="col-md-4 d-flex align-items-center">
             <span class="mb-3 mb-md-0 text-body-secondary footer-text">©️ 2024 S.A.M., Inc</span>
         </div>
         <div class="col-md-4 d-flex justify-content-end">
             <a href="index.html" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                <img src="img/s.a.m..svg" alt="Logo" width="100" height="100" class="me-2"> 
+                <img src="img/s.a.m..svg" alt="Logo" width="100" height="100" class="me-2">
             </a>
         </div>
     </footer>
+</div>
+
 
 
 <script src="js/bootstrap.bundle.min.js"></script>

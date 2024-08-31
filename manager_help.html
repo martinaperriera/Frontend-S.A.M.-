@@ -17,13 +17,11 @@
 <body style="background-color: rgba(71, 38, 101, 0.59);">
   <nav class="main-menu">
     <header class="avatar">
-        <img src="img/bg_home.jpg" alt="Avatar">
-        <div class='user-info'>
-            <div class='user-name'>Nome Utente</div>
-            <div class='user-stats'>
-              <div class='projects'>Progetti: 1</div>
-              <div class='tasks'>Task: 1</div>
-    </header>
+      <img src="img/manag.jpeg" alt="Avatar">
+      <div class="user-info">
+          <p id="fullName"></p>
+      </div>
+  </header>
     <ul>
         <li>
             <a href="hp_manager.html">
@@ -51,16 +49,6 @@
                 </span>
             </a>
             
-        </li>
-        <li class="has-subnav">
-            <a href="manager_notes.html">
-                <i class="fa fa-comments"></i>
-               
-                <span class="nav-text">
-                    Le mie note <!-- storico note inserite dalle task / progetto -->
-                </span>
-            </a>
-           
         </li>
         <li>
             <a href="manager_milestone.html">
@@ -99,13 +87,11 @@
             </a>
         </li>
         <li>
-           <a href="#">
-                 <i class="fa fa-power-off"></i>
-                <span class="nav-text">
-                    Logout
-                </span>
-            </a>
-        </li>  
+          <a href="#" id="logoutButton">
+              <i class="fa fa-power-off"></i>
+              <span class="nav-text">Logout</span>
+          </a>
+      </li>   
     </ul>
 </nav>
 
@@ -137,7 +123,7 @@
       <div class="row w-100 h-100">
         <div class="col-lg-8 d-flex justify-content-center align-items-center">
           <div class="accordion-container">
-              <h2 class="faq mb-5">F.A.Q.</h2>
+              <h2 class="faq mt-5 mb-5 ms-3">F.A.Q.</h2>
             <div class="accordion-item">
               <div class="accordion-header">
                 <h2 class="accordion-button">Accordion Item #1</h2>

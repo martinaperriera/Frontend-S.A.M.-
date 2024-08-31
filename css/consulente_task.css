@@ -5,21 +5,30 @@
     z-index: 1;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 80%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #333;
     padding-top: 60px;
 }
 
-.modal-content {
-    background-color: #332f2f;
+div.modal-content {
+    background-color: #333;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
+    width: 60% !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal, .ms-5 .me-5 .mt-5{
+    background-color: #333 !important;
+    margin: 5% auto;
+    padding: 20px;
     width: 80%;
 }
+
 
 .close {
     color: #aaa;
@@ -106,13 +115,16 @@
 
 /* Stile card per il task manager */
 .task-card {
-    border-radius: 8px;
+    border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
     background-color: #332f2f;
     font-family: 'Titillium Web', sans-serif;
     color: #89CC04;
+    height: 400px;
+    overflow-y: auto; /* Abilita lo scroll verticale quando il contenuto supera l'altezza della card */
+
 }
 .task-card h2 {
     margin-top: 0;
@@ -181,6 +193,65 @@
         width: 100%; /* Assicura che il task card prenda tutta la larghezza disponibile */
         max-width: 100%; /* Evita che il task card ecceda la larghezza della schermata */
         margin: 0 auto; /* Centra il task card */
+
     }
 }
 
+.list-group{
+    --bs-list-group-border-color: #333;
+}
+.list-group-item {
+    --bs-list-group-border-width: #333 !important; 
+    --bs-list-group-border-color: #333 !important;
+}
+.todo-container{
+    background-color: #333 !important;
+    padding: none;
+}
+
+#changePriorityModal.modal{
+    background-color: #333 !important;
+}
+.modal {
+    background-color: #333 !important;
+    color: white;
+    display: inline;
+}
+.modal-body {
+    background-color: #333;
+    color: white;
+    border-top: #333;
+  }
+  
+  .modal-header {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-top: #333;
+    border-bottom: #333;
+  
+  }
+  div.modal-footer{
+    background-color: #333;
+    border-top: #333;
+  }
+  .mb-3.card.container {
+   background-color: #333;
+   color: white;
+   border: none;
+   padding: 0;
+  }
+  .list-group-item {
+    background-color: #333 !important;
+    color: white;
+  }
+  #benvenuto2 {
+    text-align: center;
+    justify-content: center;
+    font-size: 35px;
+    color:white;
+  }
+  .form-check-label {
+    color: white
+  }
+  

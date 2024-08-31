@@ -1,3 +1,76 @@
+//nome e cognome dinamici sidebar
+document.addEventListener('DOMContentLoaded', function() {
+    // Recupera il token dal localStorage
+    const token = localStorage.getItem('token');
+    console.log('Token retrieved:', token); // Verifica se il token è recuperato correttamente
+
+    if (token) { 
+        fetch('http://localhost:8080/api/users/me', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token // Usa il token recuperato
+            },
+        })
+        .then(response => {
+            console.log('Response status:', response.status); // Verifica lo stato della risposta
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('User data:', data); // Verifica i dati ricevuti
+            document.getElementById('fullName').textContent = data.nomeCompleto;
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+    } else {
+        console.error('Token not found. Please login again.');
+    }
+});
+//logout
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('logoutButton').addEventListener('click', async function(event) {
+        event.preventDefault();
+        const token = localStorage.getItem('token');
+        const messageElement = document.getElementById('message');
+    
+        if (!token) {
+            messageElement.textContent = 'No token found. Please log in.';
+            messageElement.style.color = 'red';
+            return;
+        }
+    
+        try {
+            const response = await fetch('http://localhost:8080/auth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token // Usa l'header "token" come specificato nel controller
+                }
+            });
+    
+            if (response.ok) {
+                localStorage.removeItem('token');
+                messageElement.textContent = 'Logout successful';
+                messageElement.style.color = 'green';
+                window.location.href = 'index.html';
+            } else {
+                const errorMessage = await response.text();
+                messageElement.textContent = `Logout failed: ${errorMessage}`;
+                messageElement.style.color = 'red';
+            }
+        } catch (error) {
+            console.error('Error during logout:', error);
+            messageElement.textContent = 'Error during logout';
+            messageElement.style.color = 'red';
+        }
+    });
+});
+
+    
+
+
 document.addEventListener("DOMContentLoaded", () => {
   //variabili di servizio
   const token = localStorage.getItem("token");
@@ -20,13 +93,11 @@ document.addEventListener("DOMContentLoaded", () => {
     await changePriority2(changePriorityID, statusID);
     changePriorityModal.style.display = "none";
     document.getElementById("task-list").innerHTML = "";
-    document.getElementById("unassigned-task-list").innerHTML = "";
     await showProjects(mileID);
     showTasksInModal(mileID);
   };
   window.showTasksInModal = async function(mileID) {
     document.getElementById("task-list").innerHTML = '';
-    document.getElementById("unassigned-task-list").innerHTML = '';
     showTasksInModal(mileID);
     await showProjects(mileID);
   }
@@ -80,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
           barColor = "";
           break;
       }
-      //TEMPLATE DELla lista del progetto
+      //TEMPLATE della lista del progetto
       let projectListItem = document.createElement("a");
       projectListItem.className = "list-group-item list-group-item-action";
       projectListItem.id = `list-${projectID}-list`;
@@ -337,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error("Error fetching projects:", error);
     }
-  }
+  } 
 
   async function showTasksInModal(mileID) {
     document.getElementById("switchCompleted").setAttribute("onclick", `filterTasks(${mileID})`)
@@ -473,7 +544,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if(taskAssigned == true)
     document.getElementById("task-list").appendChild(listItem);
     else
-    document.getElementById("unassigned-task-list").appendChild(listItem);
   document.getElementById("xcloseStatusModal").setAttribute("onclick", `closeChangePriorityModalProj(${milestone.id})`)
       
       }
@@ -483,7 +553,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.completeTask = async function (taskID, mileID) {
     await completeTask(taskID);
     document.getElementById("task-list").innerHTML = "";
-    document.getElementById("unassigned-task-list").innerHTML = "";
     await showProjects(mileID);
     showTasksInModal(mileID);
   };
@@ -517,13 +586,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.selfAssign = async function (taskID, mileID) {
     await selfAssign(taskID)
     document.getElementById("task-list").innerHTML = "";
-    document.getElementById("unassigned-task-list").innerHTML = "";
     showProjects(mileID);
     showTasksInModal(mileID);
   } 
   window.filterTasks = async function (mileID) {
     document.getElementById("task-list").innerHTML = "";
-    document.getElementById("unassigned-task-list").innerHTML = "";
     showProjects(mileID);
     showTasksInModal(mileID);
   }
@@ -673,42 +740,4 @@ async function startup() {
 });
 
 
-//logout
-document.addEventListener('DOMContentLoaded', () => {
-document.getElementById('logoutButton').addEventListener('click', async function(event) {
-    event.preventDefault();
-    const token = localStorage.getItem('authToken');
-    const messageElement = document.getElementById('message');
 
-    if (!token) {
-        messageElement.textContent = 'No token found. Please log in.';
-        messageElement.style.color = 'red';
-        return;
-    }
-
-    try {
-        const response = await fetch('http://localhost:8080/auth/logout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-
-        if (response.ok) {
-            localStorage.removeItem('authToken');
-            messageElement.textContent = 'Logout successful';
-            messageElement.style.color = 'green';
-            window.location.href = 'index.html';
-        } else {
-            const errorMessage = await response.text();
-            messageElement.textContent = `Logout failed: ${errorMessage}`;
-            messageElement.style.color = 'red';
-        }
-    } catch (error) {
-        console.error('Error during logout:', error);
-        messageElement.textContent = 'Error during logout';
-        messageElement.style.color = 'red';
-    }
-});
-});

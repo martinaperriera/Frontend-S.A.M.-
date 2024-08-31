@@ -17,12 +17,10 @@
 <body style="background-color: rgba(71, 38, 101, 0.59);">
     <nav class="main-menu">
         <header class="avatar">
-            <img src="img/bg_home.jpg" alt="Avatar">
-            <div class='user-info'>
-                <div class='user-name'>Nome Utente</div>
-                <div class='user-stats'>
-                  <div class='projects'>Progetti: 1</div>
-                  <div class='tasks'>Task: 1</div>
+            <img src="img/manag.jpeg" alt="Avatar">
+            <div class="user-info">
+                <p id="fullName"></p>
+            </div>
         </header>
         <ul>
             <li>
@@ -51,16 +49,6 @@
                     </span>
                 </a>
                 
-            </li>
-            <li class="has-subnav">
-                <a href="manager_notes.html">
-                    <i class="fa fa-comments"></i>
-                   
-                    <span class="nav-text">
-                        Le mie note <!-- storico note inserite dalle task / progetto -->
-                    </span>
-                </a>
-               
             </li>
             <li>
                 <a href="manager_milestone.html">
@@ -101,11 +89,9 @@
                 </a>
             </li>
             <li>
-               <a href="#">
-                     <i class="fa fa-power-off"></i>
-                    <span class="nav-text">
-                        Logout
-                    </span>
+                <a href="#" id="logoutButton">
+                    <i class="fa fa-power-off"></i>
+                    <span class="nav-text">Logout</span>
                 </a>
             </li>  
         </ul>
@@ -139,8 +125,8 @@
     
         <!-- Sidebar Container -->
          <div class="container">
-        <div class="row align-items-stretch mb-4">
-            <div class="col-md-4">
+        <div class="row mb-4">
+            <div class="col-md-6">
                 <div class="sidebar-container">
                     <!-- badges Section -->
                     <div class="medagliere-section mb-4">
@@ -165,11 +151,35 @@
                             </div>
                         </div>
                     </div>
-            </div>
-            <div class="col-md-8">
-                <!-- Placeholder for future element -->
-            </div>
+            
+            <div class="col-md-6">
+                    <div class="notes-section align-items-center justify-content-center ms-3">
+                            <i class="fa fa-heart"></i>&nbsp;Block Notes
+                            <ul class="notes-list mt-3">
+                                <p class="notes" id="notes-content"> 
+                                    manager 1 dice:
+                                </p>
+                                <!-- Le note verranno inserite qui -->
+                            </ul>
+                        
+                
+                        <!-- Form per l'inserimento di nuove note -->
+                        <div class="new-note-form mt-4">
+                            <textarea id="new-note-text" class="form-control mb-2" placeholder="Inserisci una nuova nota..."></textarea>
+                            <select id="consultant-select" class="form-select mb-2">
+                                <option value="">Seleziona un consulente</option>
+                                <!-- Le opzioni verranno aggiunte dinamicamente -->
+                            </select>
+                            <button id="submit-note" class="btn btn-primary">Aggiungi Nota</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>            
         </div>
+    
+
+        
     
     
         <!-- Second Row: Project Overview and Task Lists -->

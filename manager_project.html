@@ -19,12 +19,10 @@
 <body style="background-color: rgba(71, 38, 101, 0.59);">
     <nav class="main-menu">
         <header class="avatar">
-            <img src="img/bg_home.jpg" alt="Avatar">
-            <div class='user-info'>
-                <div class='user-name'>Nome Utente</div>
-                <div class='user-stats'>
-                  <div class='projects'>Progetti: 1</div>
-                  <div class='tasks'>Task: 1</div>
+            <img src="img/manag.jpeg" alt="Avatar">
+            <div class="user-info">
+                <p id="fullName"></p>
+            </div>
         </header>
         <ul>
             <li>
@@ -53,16 +51,6 @@
                     </span>
                 </a>
                 
-            </li>
-            <li class="has-subnav">
-                <a href="manager_notes.html">
-                    <i class="fa fa-comments"></i>
-                   
-                    <span class="nav-text">
-                        Le mie note <!-- storico note inserite dalle task / progetto -->
-                    </span>
-                </a>
-               
             </li>
             <li>
                 <a href="manager_milestone.html">
@@ -101,11 +89,9 @@
                 </a>
             </li>
             <li>
-               <a href="#">
-                     <i class="fa fa-power-off"></i>
-                    <span class="nav-text">
-                        Logout
-                    </span>
+                <a href="#" id="logoutButton">
+                    <i class="fa fa-power-off"></i>
+                    <span class="nav-text">Logout</span>
                 </a>
             </li>  
         </ul>
@@ -135,20 +121,22 @@
 </div>
 
    <!-- Contentitore di tutto-->
-   <div class="container-fluid mt-5">
+   <div class="container mt-3">
+    <div class="text-center mb-5" id="benvenuto"> I miei Progetti</div>
+
     <div class="row">
         <div class="col-1"></div>
         <div class="col-11" style="margin-left: -40px;">
 
             <div class="row">
-                <div class="col-4">
-                    <div class="text-center"> I miei Progetti</div>
+                <div class="col-12 col-md-8 mb-3">
+                    <div class="tab-content" id="nav-tabContent"></div>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
                     <div class="list-group text-center" id="list-tab" role="tablist">
                     </div>
                 </div>
-                <div class="col-8">
-                    <div class="tab-content" id="nav-tabContent"></div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -160,7 +148,7 @@
             <div class="row">
                 <div id="mileBtn"></div>
                 <div class="col-12">
-                    <div class="apland-timeline-area">
+                    <div class="apland-timeline-area mt-3">
                         <div class="single-timeline-area">
                             <div class="timeline-date">
                                 <p>Completate</p>
@@ -289,75 +277,74 @@
     </div>
 
 
-<!-- Modale in cui carica le task -->
-<div class="modal taskModal fade" id="mileTaskModal" tabindex="-1" aria-labelledby="mileNameModal"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id=""></h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body container-fluid">
-                <h5 class="mb-2 text-center" id="benvenuto">Task correnti</h5>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="switchCompleted" checked>
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Mostra completate</label>
-                  </div>
-                <div class="row d-flex justify-content-center me-2 align-items-center">
-                    <div class="col-12 col-lg-6">
-                        <div class="card-hover-shadow-2x mb-3 card container">
-                            <div class="card-header-tab card-header">
-                                <div
-                                    class="card-header-title ms-auto font-size-lg text-capitalize font-weight-normal">
-                                    <i class="fa-solid fa-list-check"></i>&nbsp;Task Assegnate
-                                </div>
-                            </div>
-                            <div class="scroll-area-sm">
-                                <perfect-scrollbar class="ps-show-limits">
-                                    <div style="position: static;" class="ps ps--active-y">
-                                        <div class="ps-content">
-                                            <ul class="list-group list-group-flush" id="task-list">&nbsp;
-                                                <!-- task dinamiche qui -->
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </perfect-scrollbar>
-                            </div>
-                        </div>
+    <div class="modal taskModal" id="mileTaskModal" tabindex="-1" aria-labelledby="mileNameModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="benvenuto">Task correnti</h5>
+                </div>
+                <div class="modal-body container-fluid">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchCompleted" checked>
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Mostra completate</label>
                     </div>
-                    <div class="col-12 col-lg-6">
-                        <div class="card-hover-shadow-2x mb-3 card container">
-                            <div class="card-header-tab card-header">
-                                <div
-                                    class="card-header-title ms-auto font-size-lg text-capitalize font-weight-normal">
-                                    <i class="fa-solid fa-list-check"></i>&nbsp;Task Da Assegnare
+                    <div class="row d-flex justify-content-center align-items-start">
+                        <!-- Colonna Task Assegnate -->
+                        <div class="col-12 col-lg-6">
+                            <div class="card-hover-shadow-2x mb-3 card">
+                                <div class="card-header-tab card-header">
+                                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                                        <i class="fa-solid fa-list-check"></i>&nbsp;Task Assegnate
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="scroll-area-sm">
-                                <perfect-scrollbar class="ps-show-limits">
-                                    <div style="position: static;" class="ps ps--active-y">
+                                <div class="scroll-area-sm">
+                                    <perfect-scrollbar class="ps-show-limits">
                                         <div class="ps-content">
-                                            <ul class="list-group list-group-flush" id="unassigned-task-list">&nbsp;
+                                            <ul class="list-group list-group-flush" id="task-list">
                                                 <!-- task dinamiche qui -->
                                             </ul>
                                         </div>
-                                    </div>
-                                </perfect-scrollbar>
+                                    </perfect-scrollbar>
+                                </div>
                             </div>
                         </div>
+            <!-- 
+                        <!- Colonna Task Da Assegnare ->
+                        <div class="col-12 col-lg-6">
+                            <div class="card-hover-shadow-2x mb-3 card">
+                                <div class="card-header-tab card-header">
+                                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                                        <i class="fa-solid fa-list-check"></i>&nbsp;Task Da Assegnare
+                                    </div>
+                                </div>
+                                <div class="scroll-area-sm">
+                                    <perfect-scrollbar class="ps-show-limits">
+                                        <div class="ps-content">
+                                            <ul class="list-group list-group-flush" id="unassigned-task-list">
+                                                <!- task dinamiche qui ->
+                                            </ul>
+                                        </div>
+                                    </perfect-scrollbar>
+                                </div>
+                                <!- Bottone per aggiungere nuove task ->
+                                <button type="button" class="btn btn-add-task" onclick="addTaskModal()">Aggiungi Task</button>
+                            </div>
+                        </div>
+                    -->
                     </div>
                 </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer">
+                    <span class="close" onclick="closeNewProjectModal()">&times;</span>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    
 <!-- Nuovo progetto-->
     <div class="modal" id="newProjectModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeNewProjectModal()">&times;</span>
+
         <h2>Aggiungi/Modifica Progetto</h2>
         <form id="progetto-form">
             <input type="hidden" id="progetto-id">
@@ -375,20 +362,29 @@
             <input type="date" id="newProjExpected" name="newProjExpected"><br>
             
             <label for="newProjStatus">Status:</label>
-            <input type="text" id="newProjStatus" name="newProjStatus"><br>
+            <select id="newProjStatus" name="newProjStatus">
+                <option value="To Do">To Do</option>
+                <option value="In corso">In corso</option>
+                <option value="Dev OK">Dev OK</option>
+                <option value="Testing">Testing</option>
+                <option value="Completata">Completata</option>
+            </select><br>
             
             <label for="NewProjCustomer">Cliente:</label>
             <select name="NewProjCustomer" id="NewProjCustomer"></select>
 
             <label for="consulenti">Consulenti:</label>
             <select name="NewProjUsers" id="NewProjUsers" multiple></select>
-            <button type="button" onclick="closeNewProjectModal()">Salva</button>
+            <button type="button" class="save-button" onclick="closeNewProjectModal()">Salva</button>
         </form>
-
+        </div>
     </div>
 
     <div class="modal" id="newMileModal">
-        <h2>Milestone</h2>
+        <div class="modal-content">
+        <span class="close" onclick="closeNewMileModal()">&times;</span>
+
+        <h2 class="benvenuto2">Milestone</h2>
         <form id="milestone-form">
             <input type="hidden" id="progetto-id">
             <label for="newMileName">Nome:</label>
@@ -410,11 +406,11 @@
                 <option value="fa-solid fa-crown"> Crown</option>
                 <option value="fa-solid fa-medal"> Medal</option>
                 <option value="fa-solid fa-lightbulb"> Lightbulb</option>
-            </select>
+            </select><br>
 
-            <button type="button" onclick="closeNewMileModal()">Salva</button>
+            <button type="button" class="save-button" onclick="closeNewMileModal()">Salva</button>
         </form>
-
+</div>
     </div>
 
       <!-- footer -->

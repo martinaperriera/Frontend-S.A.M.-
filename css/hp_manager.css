@@ -4,7 +4,7 @@
   margin-left: 0;
   transition: margin-left 0.3s ease;
   max-width: 100%;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   padding: 20px; /* Padding laterale per schermi piccoli */
 }
@@ -23,7 +23,7 @@
 @media (min-width: 1400px) {
   .container {
       max-width: 1650px;
-      margin-left: 50px;
+      margin-left: 100px;
       margin-right: 100px;
       padding: 0; /* Rimuove il padding laterale per schermi grandi */
   }
@@ -178,4 +178,45 @@ color: white;
   0% { width: 0%; }
   80% { width: 85%; }
   100% { width: 100%; }
+}
+
+/*notes*/
+
+/* Stili per il block notes */
+.notes-section {
+  padding: 20px;
+  background-color: #FFFF88; /* Colore di sfondo chiaro */
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+}
+
+.notes-section h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+
+}
+
+.notes-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notes-list li {
+  background: #FFFF88; /* Colore di sfondo delle note */
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.notes-list li h3 {
+  margin: 0 0 5px;
+  font-size: 14px;
+  color: #007bff; /* Colore del titolo della nota */
+}
+
+.notes-list li p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
 }

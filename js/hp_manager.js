@@ -1,3 +1,37 @@
+//nome e cognome dinamici sidebar
+document.addEventListener('DOMContentLoaded', function() {
+    // Recupera il token dal localStorage
+    const token = localStorage.getItem('token');
+    console.log('Token retrieved:', token); // Verifica se il token è recuperato correttamente
+
+    if (token) { 
+        fetch('http://localhost:8080/api/users/me', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token // Usa il token recuperato
+            },
+        })
+        .then(response => {
+            console.log('Response status:', response.status); // Verifica lo stato della risposta
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('User data:', data); // Verifica i dati ricevuti
+            document.getElementById('fullName').textContent = data.nomeCompleto;
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+    } else {
+        console.error('Token not found. Please login again.');
+    }
+});
+
+
+
+//tasks
 document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("load", function () {
         fillStatusArr();
@@ -199,4 +233,124 @@ document.addEventListener("DOMContentLoaded", function () {
             selectElement.appendChild(option);
         }
     }
+});
+
+// Definizione della funzione fetchNotes
+async function fetchNotes() {
+    try {
+        const response = await fetch('http://localhost:8080/api/minitasks');
+        const minitasks = await response.json();
+
+        // Seleziona l'elemento in cui inserire le note
+        const notesList = document.querySelector('.notes-list');
+
+        // Pulisce la lista esistente (eccetto il paragrafo di introduzione)
+        notesList.innerHTML = `<p class="notes" id="notes-content"> manager 1 dice:</p>`;
+
+        // Aggiunge le note recuperate
+        minitasks.forEach(minitask => {
+            const noteItem = document.createElement('li');
+            
+            // Creare un input checkbox
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = minitask.minitask_status === 'completato'; // Supponiamo che lo stato 'completato' indichi una task completata
+            checkbox.addEventListener('change', () => updateTaskStatus(minitask.id, checkbox.checked));
+            
+            // Inserire il nome del mini-task
+            const noteText = document.createElement('span');
+            noteText.textContent = minitask.minitask_name;
+            noteText.style.marginLeft = '10px';
+
+            // Aggiungere checkbox e testo alla nota
+            noteItem.appendChild(checkbox);
+            noteItem.appendChild(noteText);
+            notesList.appendChild(noteItem);
+        });
+    } catch (error) {
+        console.error('Errore nel recupero delle note:', error);
+    }
+}
+
+// Funzione per recuperare i consulenti dall'API
+async function fetchConsultants() {
+    try {
+        const response = await fetch('http://localhost:8080/api/users');
+        const users = await response.json();
+
+        const consultantSelect = document.getElementById('consultant-select');
+        consultantSelect.innerHTML = '<option value="">Seleziona un consulente</option>'; // Pulisci le opzioni esistenti
+
+        // Filtra solo gli utenti con il ruolo di "consulente" basato su role.id (ad es. 2 per consulenti)
+        users.filter(user => user.role && user.role.id === 1).forEach(user => { 
+            const option = document.createElement('option');
+            option.value = user.id; // Usa l'ID del consulente
+            option.textContent = user.nomeCompleto; // Mostra il nome completo del consulente
+            consultantSelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Errore nel recupero dei consulenti:', error);
+    }
+}
+
+
+// Funzione per aggiornare lo stato del mini-task
+async function updateTaskStatus(taskId, isCompleted) {
+    try {
+        await fetch(`http://localhost:8080/api/minitasks/${taskId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                minitask_status: isCompleted ? 'completato' : 'iniziato'
+            }),
+        });
+    } catch (error) {
+        console.error('Errore nell\'aggiornamento dello stato della task:', error);
+    }
+}
+
+// Funzione per inviare una nuova nota all'API
+async function submitNewNote() {
+    const noteText = document.getElementById('new-note-text').value;
+    const consultantID = document.getElementById('consultant-select').value;
+
+    if (noteText && consultantID) {
+        try {
+            const response = await fetch('http://localhost:8080/api/minitasks', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    minitask_name: noteText, // Testo della nota
+                    minitask_status: 'iniziato',
+                    user_id: consultantID // ID del consulente selezionato
+                }),
+            });
+
+            if (response.ok) {
+                alert('Nota aggiunta con successo!');
+                fetchNotes(); // Aggiorna la lista delle note
+                document.getElementById('new-note-text').value = '';
+                document.getElementById('consultant-select').value = '';
+            } else {
+                alert('Errore durante l\'aggiunta della nota');
+            }
+        } catch (error) {
+            console.error('Errore nell\'invio della nuova nota:', error);
+        }
+    } else {
+        alert('Compila tutti i campi prima di inviare la nota.');
+    }
+}
+
+// Assicurati che la funzione venga chiamata dopo che la pagina è stata caricata
+document.addEventListener('DOMContentLoaded', () => {
+    fetchNotes(); // Qui la funzione fetchNotes viene chiamata
+    fetchConsultants();
+
+    // Aggiungi un event listener al pulsante di submit
+    document.getElementById('submit-note').addEventListener('click', submitNewNote);
 });

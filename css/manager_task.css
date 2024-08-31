@@ -5,6 +5,69 @@
     font-size: 35px;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the container horizontally */
+    justify-content: center; /* Centers the container vertically */
+    min-height: 100vh; /* Ensures the container takes full height */
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+@media (min-width: 1100px) and (max-width: 1400px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1650px;
+    }
+}
+
+@media (min-width: 1650px) {
+    .container {
+        max-width: 3000px;
+    }
+}
+
+footer {
+    width: 100%;
+    background-color: transparent;
+    padding: 20px 0; /* Ensure there’s enough padding */
+}
+
+.footer-text {
+    font-size: 16px; /* Adjust as needed */
+    color: #6c757d; /* text-body-secondary color */
+}
+
+/* To ensure the footer is correctly positioned */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Makes sure the body takes full height of the viewport */
+}
+
+.container {
+    flex: 1; /* Makes the main content grow and take up available space */
+}
+
+
+
 /*to do list*/
 .todo-container .card {
     box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 
@@ -28,6 +91,7 @@
     padding-right: 0.625rem;
     height: 3.5rem;
     background-color: #332f2f;
+    width: 80%;
 }
 
 .todo-container .widget-subheading {
@@ -53,7 +117,6 @@
 }
 
 .todo-container .btn-actions-pane-right {
-    margin-left: auto;
     white-space: nowrap;
 }
 
@@ -114,10 +177,6 @@
     transition: opacity .2s;
 }
 
-.todo-container .widget-content .widget-content-right {
-    margin-left: auto;
-}
-
 .todo-container .btn:not(:disabled):not(.disabled) {
     cursor: pointer;
 }
@@ -133,12 +192,6 @@
 }
 
 .todo-container .btn-outline-success:hover {
-    color: #fff;
-    background-color: #3ac47d;
-    border-color: #3ac47d;
-}
-
-.todo-container .btn-primary {
     color: #fff;
     background-color: #3ac47d;
     border-color: #3ac47d;
@@ -201,13 +254,7 @@ div.card-header-title{
     text-decoration: none;
     cursor: pointer;
 }
-/* Contenitore principale */
-.container {
-    margin-left: 0; /* Aggiusta il margine sinistro per fare spazio alla sidebar chiusa */
-    transition: margin-left 0.3s ease;
-    max-width: 100%; /* Valore predefinito per schermi piccoli */
-    padding: 0 15px; /* Padding laterale per schermi piccoli */
-}
+
 
 /* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
 @media (min-width: 1100px) and (max-width: 1400px) {
@@ -269,4 +316,114 @@ div.card-header-title{
         width: 100px;
         height: 100px;
     }
+}
+
+/*modali*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #333; /* Modal background */
+    color: white; /* Text color */
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px; /* Padding inside the modal */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 600px; /* Maximum width for larger screens */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #fff; /* Ensure header text is white */
+}
+
+/* Close Button (X) */
+.modal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal .close:hover,
+.modal .close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form Styles */
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content input[type="date"],
+.modal-content select,
+.modal-content button {
+    width: 100%; /* Full width of the container */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444; /* Darker background for inputs */
+    color: white;
+    font-size: 16px;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="number"]:focus,
+.modal-content input[type="date"]:focus,
+.modal-content select:focus {
+    outline: none;
+    background-color: #555; /* Slightly lighter on focus */
+}
+
+.modal-content button {
+    background: linear-gradient(147deg, #42d392, #647eff, #a627ed) !important;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+.modal-content button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Additional Button Styles */
+.modal-content .btn-secondary {
+    background-color: #6c757d; /* Secondary button color */
+}
+
+.modal-content .btn-secondary:hover {
+    background-color: #5a6268; /* Darker on hover */
+}
+#btnAggiungi {
+    background: linear-gradient(147deg, #42d392, #647eff, #a627ed) !important;
+}
+.btn-primary{
+    background: linear-gradient(147deg, #42d392, #647eff, #a627ed) !important;
+    border: none;
+}
+#searchName{
+    margin-left: 15px !important;
+    font-size: 16px !important;
 }

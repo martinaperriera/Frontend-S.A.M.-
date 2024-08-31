@@ -1,3 +1,88 @@
+//nome e cognome dinamici sidebar
+document.addEventListener('DOMContentLoaded', function() {
+    // Recupera il token dal localStorage
+    const token = localStorage.getItem('token');
+    console.log('Token retrieved:', token); // Verifica se il token è recuperato correttamente
+
+    if (token) { 
+        fetch('http://localhost:8080/api/users/me', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token // Usa il token recuperato
+            },
+        })
+        .then(response => {
+            console.log('Response status:', response.status); // Verifica lo stato della risposta
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('User data:', data); // Verifica i dati ricevuti
+            document.getElementById('fullName').textContent = data.nomeCompleto;
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+    } else {
+        console.error('Token not found. Please login again.');
+    }
+});
+
+//logout
+document.getElementById('logoutButton').addEventListener('click', async function(event) {
+    event.preventDefault(); // Previeni l'azione di default del link
+    console.log('Logout button clicked'); // Log per verificare che il click funzioni
+
+    const token = localStorage.getItem('authToken');
+    console.log('Token retrieved:', token); // Log per verificare il token
+
+    const messageElement = document.getElementById('message');
+
+    if (!token) {
+        messageElement.textContent = 'No token found';
+        messageElement.style.color = 'red';
+        console.log('No token found');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:8080/api/users/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        console.log('Logout request sent'); // Log per verificare l'invio della richiesta
+
+        if (response.ok) {
+            localStorage.removeItem('authToken');
+            messageElement.textContent = 'Logout successful';
+            messageElement.style.color = 'green';
+            console.log('Logout successful');
+            setTimeout(() => {
+                window.location.href = 'login.html'; // Redirect to login page after a short delay
+            }, 1000);
+        } else {
+            const errorMessage = await response.text();
+            messageElement.textContent = `Logout failed: ${errorMessage}`;
+            messageElement.style.color = 'red';
+            console.log('Logout failed:', errorMessage);
+        }
+    } catch (error) {
+        console.error('Error during logout:', error);
+        messageElement.textContent = 'Error during logout';
+        messageElement.style.color = 'red';
+    }
+});
+
+
+
+
+
+
 //tasklist
 document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("load", function () {
@@ -32,36 +117,33 @@ document.addEventListener("DOMContentLoaded", function () {
             listItem.className = "list-group-item";
             listItem.id = `task${taskID}`;
             listItem.innerHTML = `
-                <div class="row"> 
-                    <div class="widget-content p-0">
-                        <div class="widget-content-wrapper">
-                            <div class="col-2"> 
-                                <div class="widget-content-left">
-                                    <div class="widget-heading" style="color : ${taskStatusColor}">${taskPriority}</div>
-                                    <div class="widget-subheading">Creazione: ${taskCreated}</div>
-                                    <div class="widget-subheading">Scadenza: ${taskEndDate}</div>   
-                                </div>
-                            </div>
-                            <div class="col-8"> 
-                                <div class="p-2 text-center border-start border-end">
-                                    <div class="widget-subheading">${taskMileName}</div>
-                                    <div class="widget-heading mb-2"><strong>${taskName}</strong></div>
-                                    <div class="widget-subheading">${taskDescription}</div>
-                                </div>
-                            </div>
-                            <div class="col-1"> 
-                                <div class="widget-content-right">
-                                    <button class="ms-1 border-0 btn-transition btn btn-outline-warning" onclick="showChangePriorityModal(${taskID})">
-                                        <i class="fa-solid fa-clock-rotate-left"></i>
-                                    </button>
-                                    <button class="ms-1 border-0 btn-transition btn btn-outline-success" onclick="completeTask(${taskID})">
-                                        <i class="fa-solid fa-check"></i> 
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="widget-content-wrapper d-flex">
+    <div class="col-2 d-flex flex-column justify-content-center">
+        <div class="widget-content-left">
+            <div class="widget-heading text-danger">To Do</div>
+            <div class="widget-subheading">Creazione: 2024-08-29</div>
+            <div class="widget-subheading">Scadenza: 2024-08-30</div>   
+        </div>
+    </div>
+    <div class="col-8 d-flex align-items-center justify-content-center">
+        <div class="p-2 text-center border-start border-end w-100">
+            <div class="widget-subheading">finire</div>
+            <div class="widget-heading mb-2"><strong>homepage</strong></div>
+            <div class="widget-subheading">n</div>
+        </div>
+    </div>
+    <div class="col-2 d-flex align-items-center justify-content-end">
+        <div class="widget-content-right">
+            <button class="ms-1 border-0 btn-transition btn btn-outline-warning" onclick="showChangePriorityModal(22)">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+            </button>
+            <button class="ms-1 border-0 btn-transition btn btn-outline-success" onclick="completeTask(22)">
+                <i class="fa-solid fa-check"></i> 
+            </button>
+        </div>
+    </div>
+</div>
+
             `;
 
             if (taskPriority == "Completata") {
@@ -316,6 +398,63 @@ function deleteCompletedTask(id) {
 fetchTasks(); 
 
 
+// Funzione per recuperare le note dall'API
+async function fetchNotes() {
+    try {
+        const response = await fetch('http://localhost:8080/api/minitasks');
+        const minitasks = await response.json();
+
+        // Seleziona l'elemento in cui inserire le note
+        const notesList = document.querySelector('.notes-list');
+
+        // Pulisce la lista esistente (eccetto il paragrafo di introduzione)
+        notesList.innerHTML = `<p class="notes" id="notes-content"> manager 1 dice:</p>`;
+
+        // Aggiunge le note recuperate
+        minitasks.forEach(minitask => {
+            const noteItem = document.createElement('li');
+            
+            // Creare un input checkbox
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = minitask.minitask_status === 'completato'; // Supponiamo che lo stato 'completato' indichi una task completata
+            checkbox.addEventListener('change', () => updateTaskStatus(minitask.id, checkbox.checked));
+            
+            // Inserire il nome del mini-task
+            const noteText = document.createElement('span');
+            noteText.textContent = minitask.minitask_name;
+            noteText.style.marginLeft = '10px';
+
+            // Aggiungere checkbox e testo alla nota
+            noteItem.appendChild(checkbox);
+            noteItem.appendChild(noteText);
+            notesList.appendChild(noteItem);
+        });
+    } catch (error) {
+        console.error('Errore nel recupero delle note:', error);
+    }
+}
+
+// Funzione per aggiornare lo stato del mini-task
+async function updateTaskStatus(taskId, isCompleted) {
+    try {
+        await fetch(`http://localhost:8080/api/minitasks/${taskId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                minitask_status: isCompleted ? 'completato' : 'iniziato'
+            }),
+        });
+    } catch (error) {
+        console.error('Errore nell\'aggiornamento dello stato della task:', error);
+    }
+}
+
+// Esegui la funzione per caricare le note quando la pagina viene caricata
+fetchNotes();
+
 
 
   
@@ -491,129 +630,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // notes
-document.addEventListener('DOMContentLoaded', function() {
-    // Seleziona l'elemento in cui inseriremo le note (ad esempio un contenitore div)
-    const notesContainer = document.querySelector('.notes-list');
-
-    // Recupera i dati dall'API
-    fetch('http://localhost:8080/api/minitasks')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Errore nel recupero delle note.');
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Itera attraverso ogni nota (minitask) e crea un nuovo elemento in-line per ciascuna
-            data.forEach(minitask => {
-                if (minitask.minitask_name) {
-                    // Crea un nuovo elemento span per contenere il testo della nota
-                    const noteElement = document.createElement('span');
-                    noteElement.textContent = `${minitask.minitask_name}: ${minitask.minitask_desc}`;
-                    
-                    // Applica eventualmente uno stile in-line al nuovo elemento
-                    noteElement.style.display = 'block'; // Per rendere ogni nota su una nuova riga
-                    
-                    // Aggiungi l'elemento al contenitore delle note
-                    notesContainer.appendChild(noteElement);
-                }
-            });
-        })
-        .catch(error => {
-            console.error('Errore nel recupero delle note:', error);
-        });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM completamente caricato e analizzato");
-
-    const notesContainer = document.querySelector('.notes-list');
-    console.log("notesContainer trovato:", notesContainer);
-
-    // Controlla se notesContainer è null
-    if (!notesContainer) {
-        console.error("notesContainer non trovato!");
-        return;
-    }
-
-    fetch('http://localhost:8080/api/minitasks')
-        .then(response => {
-            console.log("Risposta ricevuta dall'API", response);
-            if (!response.ok) {
-                throw new Error('Errore nel recupero delle note.');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Dati ricevuti dall'API:", data);
-
-            data.forEach(minitask => {
-                console.log("Elaborazione della minitask:", minitask);
-
-                if (minitask.minitask_name) {
-                    const noteElement = document.createElement('span');
-                    noteElement.textContent = `${minitask.minitask_name}: ${minitask.minitask_desc}`;
-                    noteElement.style.display = 'block';
-
-                    notesContainer.appendChild(noteElement);
-                    console.log("Nota aggiunta al DOM:", noteElement);
-                }
-            });
-        })
-        .catch(error => {
-            console.error('Errore nel recupero delle note:', error);
-        });
-});
 
 
 
 
-    //logout
-    document.getElementById('logoutButton').addEventListener('click', async function(event) {
-        event.preventDefault(); // Previeni l'azione di default del link
-        console.log('Logout button clicked'); // Log per verificare che il click funzioni
-    
-        const token = localStorage.getItem('authToken');
-        console.log('Token retrieved:', token); // Log per verificare il token
-    
-        const messageElement = document.getElementById('message');
-    
-        if (!token) {
-            messageElement.textContent = 'No token found';
-            messageElement.style.color = 'red';
-            console.log('No token found');
-            return;
-        }
-    
-        try {
-            const response = await fetch('http://localhost:8080/api/users/logout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-    
-            console.log('Logout request sent'); // Log per verificare l'invio della richiesta
-    
-            if (response.ok) {
-                localStorage.removeItem('authToken');
-                messageElement.textContent = 'Logout successful';
-                messageElement.style.color = 'green';
-                console.log('Logout successful');
-                setTimeout(() => {
-                    window.location.href = 'login.html'; // Redirect to login page after a short delay
-                }, 1000);
-            } else {
-                const errorMessage = await response.text();
-                messageElement.textContent = `Logout failed: ${errorMessage}`;
-                messageElement.style.color = 'red';
-                console.log('Logout failed:', errorMessage);
-            }
-        } catch (error) {
-            console.error('Error during logout:', error);
-            messageElement.textContent = 'Error during logout';
-            messageElement.style.color = 'red';
-        }
-    });
+
     

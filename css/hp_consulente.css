@@ -4,7 +4,6 @@
   width: 90%;
   margin: 0 auto;
   padding: 20px; /* Padding laterale per schermi piccoli */
-  overflow: hidden; 
 }
 
 /* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
@@ -247,11 +246,9 @@ padding: 0;
 
 .notes-list li {
   background: #FFFF88; /* Colore di sfondo delle note */
-  border: 1px solid #ddd;
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 10px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .notes-list li h3 {
@@ -406,3 +403,17 @@ padding: 0;
       margin: 0 5px; /* Aggiunge margine laterale tra i pulsanti */
   }
 }
+
+.p-2{
+  background-color: #333;
+}
+
+.list-group-flush>.list-group-item:last-child {
+  background-color: #333;
+  color: white;
+}
+.list-group-item{
+  padding: none !important;
+}
+
+

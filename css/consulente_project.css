@@ -1,6 +1,4 @@
-/* lista nomi progetto
-*/
-
+/* lista nomi progetto*/
 #list-tab>a {
   background-color: #333;
   border: 0px;
@@ -16,42 +14,149 @@
 /* card progetti*/
 #nav-tabContent>div>div {
   background-color: #333;
-  color: darkgrey;
   border: 0px;
   transition: 0.3s;
+  border-radius: 15px;
 }
 #nav-tabContent>div>div>.card-header {
-  background-color: #222;
+  background-color: #333;
 }
   #nav-tabContent>div>div>div>.accordion-item {
   background-color: #333;
 }
+
+
+/* Correggere la centratura del contenuto della timeline */
+.timeline_area .single-timeline-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px; /* Assicurati che ci sia abbastanza spazio per il contenuto */
+  word-wrap: break-word; /* Assicura che il testo lungo non esca dalla card */
+}
+
+@media only screen and (max-width: 575px) {
+  .single-timeline-area .timeline-date {
+   margin-left: 50px;
+  }
+  .single-timeline-area .single-timeline-content {
+    margin-left: 70px;
+    width: 150px;
+    height: auto;
+  }
+  .timeline_area .single-timeline-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px; /* Assicurati che ci sia abbastanza spazio per il contenuto */
+    word-wrap: break-word; /* Assicura che il testo lungo non esca dalla card */
+  }
+}
+
+
+.card {
+  background-color: #333; /* Colore di sfondo della card */
+  color: #ffffff; /* Colore del testo */
+  padding: 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+  height: 100%; /* Assicura che la card occupi tutta l'altezza */
+}
+
+
 .projBtn {
-  background-color: #222 !important;
-  color: darkgrey !important;
   font-size: small !important;
+  background-color: #333 !important;
+  box-shadow: none;
+  border: 0;
+  color: white;
+}
+
+.accordion-flush>.accordion-item>.accordion-header .accordion-button {
+  border-radius: 15px !important;
+  color: white;
+}
+.card-header {
+  background-color: #333;
+  border-bottom: none;
 }
 .projName {
   color:#a627ed !important;
 }
-.projBody {
-  color: darkgrey !important;
-  
+.card-header:first-child {
+  background-color: #333 !important;
+  border-bottom: #333;
 }
+
+.progress-bar {
+  background: linear-gradient(147deg, #42d392, #647eff, #a627ed) !important;
+  color: #000000; /* Cambia il colore del testo sulla barra, esempio nero */
+}
+.progress-bar-striped {
+  background-image: inear-gradient(147deg, #42d392, #647eff, #a627ed);
+}
+
+/* Stile degli accordion */
+.accordion-button {
+  background-color: #333; /* Colore di sfondo dell'accordion */
+  color: #ffffff; /* Colore del testo */
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: none;
+  transition: all 0.3s ease-in-out;
+}
+
+
+/* Effetto hover sugli accordion */
+.list-group-item:hover {
+  background: linear-gradient(147deg, #42d392, #647eff, #a627ed);
+  box-shadow: 0 0.5rem 1.5rem 0 rgba(47, 91, 234, 0.25);
+  color: #ffffff;
+}
+
+/* timeline */ 
 .timeline_area {
   position: relative;
   z-index: 1;
 }
+
+
+.single-timeline-content.d-flex.wow.fadeInLeft {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+  text-align: center; /* Assicura che il testo sia centrato */
+}
+
+.timeline-text {
+  flex: 1; /* Permette al contenuto di adattarsi alla dimensione della card */
+  display: flex;
+  flex-direction: column; /* Dispone gli elementi verticalmente */
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra orizzontalmente */
+  padding: 10px; /* Aggiungi padding se necessario */
+}
+
+
+
+/* Sezione della timeline */
 .single-timeline-area {
   position: relative;
   z-index: 1;
   padding-left: 180px;
 }
+
 @media only screen and (max-width: 575px) {
   .single-timeline-area {
-      padding-left: 100px;
+    padding-left: 100px;
   }
 }
+
+/* Linea temporale */
 .single-timeline-area .timeline-date {
   position: absolute;
   width: 180px;
@@ -59,45 +164,58 @@
   top: 0;
   left: 0;
   z-index: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -ms-grid-row-align: center;
   align-items: center;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
   padding-right: 60px;
 }
+
 @media only screen and (max-width: 575px) {
   .single-timeline-area .timeline-date {
-      width: 100px;
+    width: 100px;
   }
 }
+
+
+/* Modifica della linea temporale: più spessa e con una freccia */
 .single-timeline-area .timeline-date::after {
   position: absolute;
-  width: 3px;
+  width: 10px;  /* Aumenta lo spessore della linea */
   height: 100%;
   content: "";
-  background-color: #ebebeb;
+  background-color: #333;
   top: 0;
   right: 30px;
   z-index: 1;
 }
+
 .single-timeline-area .timeline-date::before {
   position: absolute;
-  width: 11px;
-  height: 11px;
+  width: 16px;  /* Aumenta la dimensione dei pallini */
+  height: 16px; /* Aumenta la dimensione dei pallini */
   border-radius: 50%;
-  background-color: #f1c40f;
+  background: linear-gradient(147deg, #42d392, #647eff, #a627ed);
   content: "";
   top: 50%;
-  right: 26px;
+  right: 28px;
   z-index: 5;
-  margin-top: -5.5px;
+  margin-top: -7px; /* Centra i pallini */
 }
+
+/* Freccia alla fine della linea */
+.single-timeline-area .timeline-date:last-child::after {
+  background-color: transparent;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid #ebebeb;
+  bottom: -12px; /* Posiziona la freccia sotto l'ultimo pallino */
+  top: auto;
+  right: 21px;
+}
+
+/* Testo della timeline */
 .single-timeline-area .timeline-date p {
   margin-bottom: 0;
   color: #020710;
@@ -105,67 +223,133 @@
   text-transform: uppercase;
   font-weight: 500;
 }
+
+/* Stile delle card nella timeline */
 .single-timeline-area .single-timeline-content {
   position: relative;
   z-index: 1;
-  padding: 30px 30px 25px;
-  border-radius: 6px;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  -webkit-box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
+  padding: 30px 30px 30px !important;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  margin-top: 30px;
   box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
-  border: 1px solid #ebebeb;
+  background-color: #333; /* Sfondo grigio delle card */
+  transition: all 0.3s ease-in-out;
+  color: white;
 }
-@media only screen and (max-width: 575px) {
-  .single-timeline-area .single-timeline-content {
-      padding: 20px;
-  }
+
+/* Ombreggiatura e gradiente all'hover */
+.single-timeline-area .single-timeline-content:hover {
+  background: linear-gradient(147deg, #42d392, #647eff, #a627ed);
+  box-shadow: 0 0.5rem 1.5rem 0 rgba(47, 91, 234, 0.25);
 }
+
+/* Icona della timeline */
 .single-timeline-area .single-timeline-content .timeline-icon {
-  -webkit-transition-duration: 500ms;
-  transition-duration: 500ms;
   width: 30px;
   height: 30px;
-  background-color: #f1c40f;
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 30px;
+  background: linear-gradient(147deg, #42d392, #647eff, #a627ed);
   flex: 0 0 30px;
   text-align: center;
   max-width: 30px;
   border-radius: 50%;
   margin-right: 15px;
+  transition: background-color 0.5s ease;
 }
+
 .single-timeline-area .single-timeline-content .timeline-icon i {
   color: #ffffff;
   line-height: 30px;
   margin-left: -15px;
 }
+
+/* Cambia colore icona all'hover */
+.single-timeline-area .single-timeline-content:hover .timeline-icon {
+  background-color: #020710;
+}
+
 .single-timeline-area .single-timeline-content .timeline-text h6 {
-  -webkit-transition-duration: 500ms;
   transition-duration: 500ms;
 }
+
 .single-timeline-area .single-timeline-content .timeline-text p {
   font-size: 13px;
   margin-bottom: 0;
 }
-.single-timeline-area .single-timeline-content:hover .timeline-icon,
-.single-timeline-area .single-timeline-content:focus .timeline-icon {
-  background-color: #020710;
-  transition: 0.5s;
+
+.timeline-text {
+  align-items: center;
+  justify-content: center;
 }
-.single-timeline-area .single-timeline-content:hover .timeline-text h6,
-.single-timeline-area .single-timeline-content:focus .timeline-text h6 {
-  color: #3f43fd;
+
+/* Cambia colore testo all'hover */
+.single-timeline-area .single-timeline-content:hover .timeline-text h6 {
+  color: white;
 }
+
+@media only screen and (max-width: 575px) {
+  .single-timeline-area .single-timeline-content {
+    padding: 20px;
+  }
+}
+
 
 /* modale task*/
 .taskModal {
   --bs-modal-width: 80% !important;
 }
+/*testo dentro il modale delle le tasks*/
 
 .taskSub{
   font-size: small ;
+  color: white;
 }
+b,strong{
+  color: white;
+}
+div,a{
+  color:white;
+}
+
+
+.modal-body {
+  background-color: #333;
+  color: black;
+  border-top: #333;
+}
+
+.modal-header {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-top: #333;
+  border-bottom: #333;
+
+}
+div.modal-footer{
+  background-color: #333;
+  border-top: #333;
+}
+.mb-3.card.container {
+ background-color: #333;
+ color: white;
+ border: none;
+ padding: 0;
+}
+.list-group-item {
+  background-color: #333 !important;
+  color: white;
+}
+#benvenuto2 {
+  text-align: center;
+  justify-content: center;
+  font-size: 35px;
+  color:white;
+}
+.form-check-label {
+  color: white
+}
+
 
 
 
@@ -227,8 +411,7 @@
     }
   }
 
-  /* tl */
- /* General Styles */
+  /* TIMELINE */
 body {
     margin-top: 20px;
 }
@@ -526,7 +709,7 @@ body {
 
 
 /* card progetti passati */
-/* card progetti passati */
+
 .note-card, .note-card-plus {
   background: linear-gradient(190deg, green, #a627ed, blue);
   color: white;
@@ -599,17 +782,4 @@ body {
   font-size: 2rem;
   font-weight: bold;
   color: white;
-}
-
-.modal-body {
-  background-color: #332f2f;
-  opacity: 20%;
-  color: black;
-  border-radius: 15px;
-}
-
-.modal-header {
-  background-color: #332f2f;
-  color: white;
-  border-radius: 15px;
 }
