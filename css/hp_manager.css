@@ -86,12 +86,43 @@ body {
   margin: 0;
   padding: 0;
 }
-/* card hp consulente */
+/* card tasks */
 .card {
     background-color: #332f2f;
     color: white;
     box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
+    min-height: 500px; /* altezza card */
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+  }
+  
+
+.scroll-area-lg {
+  min-height: 100px; /* Altezza minima della scroll area */
+  max-height: 300px; /* Altezza massima con scroll */
 }
+@media (min-width: 768px) {
+  .card-hover-shadow-2x {
+      min-height: 250px; /* Maggiore altezza minima sui dispositivi più grandi */
+  }
+}
+
+@media (min-width: 992px) {
+  .card-hover-shadow-2x {
+      min-height: 500px; /* Ancora maggiore altezza minima sui dispositivi più grandi */
+  }
+}
+.card-header {
+  justify-content: center;
+  align-items: center;
+  padding: 13px;
+  padding-left: 13px;
+}
+
+
+
+
 .text-primary {
 color: white;
 }

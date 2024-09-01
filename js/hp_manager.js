@@ -1,37 +1,94 @@
-//nome e cognome dinamici sidebar
 document.addEventListener('DOMContentLoaded', function() {
-    // Recupera il token dal localStorage
-    const token = localStorage.getItem('token');
-    console.log('Token retrieved:', token); // Verifica se il token è recuperato correttamente
+    // Funzione per recuperare nome e cognome
+    function loadUserName() {
+        const token = localStorage.getItem('token');
+        console.log('Token retrieved:', token); // Verifica se il token è recuperato correttamente
 
-    if (token) { 
-        fetch('http://localhost:8080/api/users/me', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'token': token // Usa il token recuperato
-            },
-        })
-        .then(response => {
-            console.log('Response status:', response.status); // Verifica lo stato della risposta
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('User data:', data); // Verifica i dati ricevuti
-            document.getElementById('fullName').textContent = data.nomeCompleto;
-        })
-        .catch(error => console.error('Error fetching user data:', error));
-    } else {
-        console.error('Token not found. Please login again.');
+        if (token) {
+            fetch('http://localhost:8080/api/users/me', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token 
+                },
+            })
+            .then(response => {
+                console.log('Response status:', response.status); // Verifica lo stato della risposta
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('User data:', data); // Verifica i dati ricevuti
+                document.getElementById('fullName').textContent = data.nomeCompleto;
+            })
+            .catch(error => console.error('Error fetching user data:', error));
+        } else {
+            console.error('Token not found. Please login again.');
+        }
     }
+
+    // Funzione per il logout
+    function setupLogout() {
+        document.getElementById('logoutButton').addEventListener('click', async function(event) {
+            event.preventDefault(); 
+            console.log('Logout button clicked'); 
+
+            const token = localStorage.getItem('token');
+            console.log('Token retrieved:', token); // Log per verificare il token
+
+            const messageElement = document.getElementById('message');
+
+            if (!token) {
+                messageElement.textContent = 'No token found';
+                messageElement.style.color = 'red';
+                console.log('No token found');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:8080/auth/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'token': `${token}`
+                    }
+                });
+
+                console.log('Logout request sent'); // Log per verificare l'invio della richiesta
+
+                if (response.ok) {
+                    localStorage.removeItem('token');
+                    messageElement.textContent = 'Logout successful';
+                    messageElement.style.color = 'green';
+                    console.log('Logout successful');
+                    setTimeout(() => {
+                        window.location.href = 'index.html'; 
+                    }, 500);
+                } else {
+                    const errorMessage = await response.text();
+                    messageElement.textContent = `Logout failed: ${errorMessage}`;
+                    messageElement.style.color = 'red';
+                    console.log('Logout failed:', errorMessage);
+                }
+            } catch (error) {
+                console.error('Error during logout:', error);
+                messageElement.textContent = 'Error during logout';
+                messageElement.style.color = 'red';
+            }
+        });
+    }
+
+    // Carica il nome e cognome
+    loadUserName();
+    
+    // Imposta il logout
+    setupLogout();
 });
 
 
-
-//tasks
+//tasklist
 document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("load", function () {
         fillStatusArr();
@@ -65,36 +122,33 @@ document.addEventListener("DOMContentLoaded", function () {
             listItem.className = "list-group-item";
             listItem.id = `task${taskID}`;
             listItem.innerHTML = `
-                <div class="row"> 
-                    <div class="widget-content p-0">
-                        <div class="widget-content-wrapper">
-                            <div class="col-2"> 
-                                <div class="widget-content-left">
-                                    <div class="widget-heading" style="color : ${taskStatusColor}">${taskPriority}</div>
-                                    <div class="widget-subheading">Creazione: ${taskCreated}</div>
-                                    <div class="widget-subheading">Scadenza: ${taskEndDate}</div>   
-                                </div>
-                            </div>
-                            <div class="col-8"> 
-                                <div class="p-2 text-center border-start border-end">
-                                    <div class="widget-subheading">${taskMileName}</div>
-                                    <div class="widget-heading mb-2"><strong>${taskName}</strong></div>
-                                    <div class="widget-subheading">${taskDescription}</div>
-                                </div>
-                            </div>
-                            <div class="col-1"> 
-                                <div class="widget-content-right">
-                                    <button class="ms-1 border-0 btn-transition btn btn-outline-warning" onclick="showChangePriorityModal(${taskID})">
-                                        <i class="fa-solid fa-clock-rotate-left"></i>
-                                    </button>
-                                    <button class="ms-1 border-0 btn-transition btn btn-outline-success" onclick="completeTask(${taskID})">
-                                        <i class="fa-solid fa-check"></i> 
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="widget-content-wrapper d-flex">
+    <div class="col-2 d-flex flex-column justify-content-center">
+        <div class="widget-content-left">
+            <div class="widget-heading text-danger">To Do</div>
+            <div class="widget-subheading">Creazione: 2024-08-29</div>
+            <div class="widget-subheading">Scadenza: 2024-08-30</div>   
+        </div>
+    </div>
+    <div class="col-8 d-flex align-items-center justify-content-center">
+        <div class="p-2 text-center border-start border-end w-100">
+            <div class="widget-subheading">finire</div>
+            <div class="widget-heading mb-2"><strong>homepage</strong></div>
+            <div class="widget-subheading">n</div>
+        </div>
+    </div>
+    <div class="col-2 d-flex align-items-center justify-content-end">
+        <div class="widget-content-right">
+            <button class="ms-1 border-0 btn-transition btn btn-outline-warning" onclick="showChangePriorityModal(22)">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+            </button>
+            <button class="ms-1 border-0 btn-transition btn btn-outline-success" onclick="completeTask(22)">
+                <i class="fa-solid fa-check"></i> 
+            </button>
+        </div>
+    </div>
+</div>
+
             `;
 
             if (taskPriority == "Completata") {
@@ -124,6 +178,8 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Error fetching tasks:", error);
         }
     }
+
+    //progetti
     async function fillProjectArr() {
         try {
             const response = await fetch("http://localhost:8080/api/projects/user", {
@@ -244,7 +300,7 @@ async function fetchNotes() {
         // Seleziona l'elemento in cui inserire le note
         const notesList = document.querySelector('.notes-list');
 
-        // Pulisce la lista esistente (eccetto il paragrafo di introduzione)
+        // Pulisce la lista esistente (tranne il paragrafo di introduzione)
         notesList.innerHTML = `<p class="notes" id="notes-content"> manager 1 dice:</p>`;
 
         // Aggiunge le note recuperate
@@ -255,7 +311,12 @@ async function fetchNotes() {
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.checked = minitask.minitask_status === 'completato'; // Supponiamo che lo stato 'completato' indichi una task completata
-            checkbox.addEventListener('change', () => updateTaskStatus(minitask.id, checkbox.checked));
+            checkbox.addEventListener('change', () => {
+                updateTaskStatus(minitask.id, checkbox.checked);
+                if (checkbox.checked) {
+                    noteItem.remove(); // Rimuove la nota dalla lista se completata
+                }
+            });
             
             // Inserire il nome del mini-task
             const noteText = document.createElement('span');
@@ -281,7 +342,7 @@ async function fetchConsultants() {
         const consultantSelect = document.getElementById('consultant-select');
         consultantSelect.innerHTML = '<option value="">Seleziona un consulente</option>'; // Pulisci le opzioni esistenti
 
-        // Filtra solo gli utenti con il ruolo di "consulente" basato su role.id (ad es. 2 per consulenti)
+        // Filtra solo gli utenti con il ruolo di "consulente" basato su role.id (ad es. 1 per consulenti)
         users.filter(user => user.role && user.role.id === 1).forEach(user => { 
             const option = document.createElement('option');
             option.value = user.id; // Usa l'ID del consulente
@@ -292,7 +353,6 @@ async function fetchConsultants() {
         console.error('Errore nel recupero dei consulenti:', error);
     }
 }
-
 
 // Funzione per aggiornare lo stato del mini-task
 async function updateTaskStatus(taskId, isCompleted) {
