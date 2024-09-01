@@ -8,13 +8,15 @@
     <!-- mini icona pagina web -->
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/themeswitch.css">
+
     <link rel="stylesheet" href="css/sidebar_footer.css">
     <link rel="stylesheet" href="css/manager_task.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
-<body style="background-color: rgba(71, 38, 101, 0.59);">
+<body class="manager-mode" style="background-color: rgba(71, 38, 101, 0.59);">
     <nav class="main-menu">
         <header class="avatar">
             <img src="img/manag.jpeg" alt="Avatar">
@@ -49,14 +51,6 @@
                     </span>
                 </a>
                 
-            </li>
-            <li>
-                <a href="manager_milestone.html">
-                    <i class="fa fa-film"></i>
-                    <span class="nav-text">
-                        Milestones <!-- storico delle milestones inserite dal manager x progetto attivo -->
-                    </span>
-                </a>
             </li>
             <li>
                 <a href="manager_reportistica.html">
@@ -108,23 +102,30 @@
         <li><a href="hp_consulente.html"><i class="fa fa-home"></i></a></li>
         <li><a href="consulente_project.html"><i class="fa fa-globe"></i></a></li>
         <li><a href="consulente_task.html"><i class="fa fa-book"></i></a></li>
-        <li><a href="consulente_notes.html"><i class="fa fa-comments"></i></a></li>
-        <li><a href="consulente_milestone.html"><i class="fa fa-film"></i></a></li>
         <li><a href="consulente_planner.html"><i class="fa fa-cogs"></i></a></li>
-        <li><a href="consulente.classifica.html"><i class="fa fa-map-marker"></i></a></li>
-        <li><a href="consulente_profile.html"><i class="fa fa-user"></i></a></li>
         <li><a href="consulente_help.html"><i class="fa fa-info"></i></a></li>
         <li><a href="#"><i class="fa fa-power-off"></i></a></li>
     </ul>
 </div>
 
     <div class="container mt-5">
+
+         <!-- theme switch -->
+    <div class="theme-switch-wrapper" style="float: right;">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <em class="ms-2">Dark Mode</em>
+    </div>
+    <br>
+    <br>
+
         <h1 class="mb-5" id="benvenuto">Lista Task</h1>
-        <!-- to do list -->
+        <!-- tasklist -->
         <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-1"></div>
-            <div class="col-11">
-                <div class="card-hover-shadow-2x mb-3 card todo-container" style="background-color: #332f2f;">
+            <div class="col-md-6">
+                <div class="card-hover-shadow-2x ms-5 mb-3 card todo-container" style="background-color: #332f2f;">
                     <div class="card-header-tab card-header">
                         <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                             <i class="fa fa-check fa-2x"></i>&nbsp;Task List <br>
@@ -203,6 +204,10 @@
                         <button class="btn btn-primary" onclick="showAddTaskModal()">Aggiungi Task</button>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-6"> 
+                <canvas id="projectChart" width="400" height="200"></canvas>
+
             </div>
         </div>
 
@@ -321,9 +326,13 @@
     </footer>
 </div>
 
+<!-- chart.js per grafico -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/themeswitch.js"></script>
+
 <script src="js/manager_task.js"></script>
 
 </body>

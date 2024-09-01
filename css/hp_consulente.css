@@ -33,8 +33,57 @@
   }
 }
 
+.card, shadow{
+  box-shadow: 0px 0px 26px 39px rgba(0,0,0,0.1);
 
+}
 
+/* Sidebar Container */
+.sidebar-container {
+  flex: 2;
+  width: 100%;
+  max-width: 800px; 
+  margin-left: 50px;
+  margin-top: 50px;
+  background-color: transparent !important;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+}
+
+.sidebar-container {
+  flex: 2;
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#statusChart {
+  width: 100%; /* Occupa tutto lo spazio disponibile */
+  max-width: 500px; /* Limite massimo */
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  #statusChart {
+    max-height: 400px;
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #statusChart {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 1800px) {
+  #colchart {
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente il contenuto */
+    align-items: center;    /* Centra verticalmente il contenuto (opzionale) */
+  }
+}
 
 
 /* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
@@ -66,14 +115,15 @@
 
 
 /* card progetto attuale */
-body {
-  background-color: #000;
-}
+
 .card {
   border: none; /* Rimuove il bordo */
   border-radius: 15px; /* Aggiunge il border-radius */
   overflow: hidden; /* Previene overflow del contenuto */
   color: white;
+  min-height: 500px; /* altezza card */
+  background-color: #333;
+
 }
 
 
@@ -100,75 +150,40 @@ padding: 0;
   background-color: transparent !important;
 }
 
-/* medagliere */
-.medagliere-section {
-  margin-top: 50px;
-  text-align: center;
-}
-
-.badges-container {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap:nowrap;
-  justify-content: center;
-  gap: 15px;
-  max-width: 100%;
-  color: transparent !important;
-}
-
-.badge {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: #f1f1f1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.badge img {
-  width: 80px;
-  height: 80px;
-}
-
-.badge:hover {
-  transform: scale(1.1);
-}
 
 
-/* Stili per la progress-section */
-.progress-section {
-  text-align: center; /* Centra l'intera sezione di progresso */
-}
-
-.progress-bar-container {
-  width: 400px;
-  margin: 0 auto; /* Centra il contenitore della progress bar orizzontalmente */
-}
-
-.progress {
-  display: flex;
-  align-items: center; /* Allinea verticalmente al centro */
-  padding: 15px;
-  background: white;
-
+.progress-container {
+  margin-bottom: 1rem; /* Spaziatura tra le barre di progresso */
 }
 
 .progress-bar {
-  height: 25px;
-  border-radius: 20px;
-  width: 60%; /* Imposta la larghezza iniziale della barra di progresso */
-  animation: progressAnimation 7s;
-  background: blue; /* Colore della barra di progresso */
+  transition: width 0.6s ease; /* Animazione fluida della larghezza */
+}
+/* Esempio di CSS per i colori delle barre di progresso */
+.bg-red {
+  background-color: #dc3545; /* Rosso */
 }
 
-.progress-text {
-  font-size: 16px;
-  color: #333;
-  margin-top: 10px; /* Spazio tra la barra di progresso e il testo */
+.bg-gold {
+  background-color: #ffc107; /* Oro */
 }
+
+.bg-blue {
+  background-color: #007bff; /* Blu */
+}
+
+.bg-purple {
+  background-color: #6f42c1; /* Viola */
+}
+
+.bg-green {
+  background-color: #28a745; /* Verde */
+}
+
+
+
+
+
 
 @keyframes progressAnimation {
   0% { width: 0%; }
@@ -183,7 +198,7 @@ padding: 0;
   padding: 20px;
   border-radius: 15px;
   max-width: 800px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 26px 39px rgba(0,0,0,0.1);  
   justify-content: center;
 }
 
@@ -200,7 +215,7 @@ padding: 0;
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 15px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 26px 39px rgba(0,0,0,0.1);  
   position: relative;
 }
 
@@ -229,7 +244,8 @@ padding: 0;
   padding: 20px;
   background-color: #FFFF88; /* Colore di sfondo chiaro */
   border-radius: 15px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+  box-shadow: 0px 0px 26px 39px rgba(0,0,0,0.1);  
+  min-height: 300px;
 }
 
 .notes-section h2 {
@@ -406,14 +422,18 @@ padding: 0;
 
 .p-2{
   background-color: #333;
+
 }
 
 .list-group-flush>.list-group-item:last-child {
   background-color: #333;
   color: white;
+
 }
 .list-group-item{
   padding: none !important;
+  background-color: #333;
+  color: white;
 }
 
 

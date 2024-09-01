@@ -159,7 +159,6 @@
 @media (min-width: 1650px) {
     .footer-container {
         margin-left: 500px;
-        max-width: 3000px;
         margin: 0 auto;
     }
     .avatarmobile {

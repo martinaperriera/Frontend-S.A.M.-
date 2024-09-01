@@ -45,25 +45,6 @@ align-items: stretch;
 }
 
 
-/* Media query per schermi più grandi di 1100px ma non più grandi di 1400px */
-@media (min-width: 1100px) and (max-width: 1400px) {
-  .sidebar-container {
-    max-width: 60%; /* Adatta la larghezza della sidebar al contenuto */
-}
-}
-
-/* Media query per schermi più grandi di 1400px */
-@media (min-width: 1400px) {
-  .sidebar-container {
-    max-width: 50%; /* Adatta la larghezza della sidebar al contenuto */
-}
-}
-/* Media query per schermi enormi */
-@media (min-width: 1650px) {
-  .sidebar-container {
-    max-width: 40%; /* Adatta la larghezza della sidebar al contenuto */
-}
-}
 
 /* Testo di benvenuto */
 #benvenuto {
@@ -90,11 +71,15 @@ body {
 .card {
     background-color: #332f2f;
     color: white;
-    box-shadow: -22px 24px 11px 3px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 26px 39px rgba(0,0,0,0.1);    
     min-height: 500px; /* altezza card */
     display: flex;
     flex-direction: column; 
-    justify-content: space-between; 
+  }
+
+  .list-group-item{
+    background-color: #332f2f;
+    color: white;
   }
   
 
@@ -121,94 +106,56 @@ body {
 }
 
 
-
-
 .text-primary {
 color: white;
 }
+
 
 /* Sidebar Container */
 .sidebar-container {
   flex: 2;
   width: 100%;
-  max-width: 800px; /* Limita la larghezza del medagliere e della barra di avanzamento */
+  max-width: 800px; 
   margin-left: 50px;
   margin-top: 50px;
   background-color: transparent !important;
-}
-
-/* medagliere */
-.medagliere-section {
-  margin-top: 50px;
-  text-align: center;
-}
-
-.badges-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  max-width: 100%;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
 }
 
-.badge {
-  width: 100px;
-  height: 100px;
+.sidebar-container {
+  flex: 2;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: #f1f1f1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-.badge img {
-  width: 80px;
-  height: 80px;
+#statusChart {
+  width: 100%; /* Occupa tutto lo spazio disponibile */
+  max-width: 500px; /* Limite massimo */
+  height: auto;
 }
 
-.badge:hover {
-  transform: scale(1.1);
+@media (min-width: 768px) {
+  #statusChart {
+    max-height: 400px;
+    max-width: 600px;
+  }
 }
 
-
-/* Stili per la progress-section */
-.progress-section {
-  text-align: center; /* Centra l'intera sezione di progresso */
+@media (min-width: 1200px) {
+  #statusChart {
+    max-width: 700px;
+  }
 }
 
-.progress-bar-container {
-  width: 400px;
-  margin: 0 auto; /* Centra il contenitore della progress bar orizzontalmente */
-}
-
-.progress {
-  display: flex;
-  align-items: center; /* Allinea verticalmente al centro */
-  padding: 15px;
-  background: white;
-
-}
-
-.progress-bar {
-  height: 25px;
-  border-radius: 20px;
-  width: 60%; /* Imposta la larghezza iniziale della barra di progresso */
-  animation: progressAnimation 7s;
-  background: blue; /* Colore della barra di progresso */
-}
-
-.progress-text {
-  font-size: 16px;
-  color: #333;
-  margin-top: 10px; /* Spazio tra la barra di progresso e il testo */
-}
-
-@keyframes progressAnimation {
-  0% { width: 0%; }
-  80% { width: 85%; }
-  100% { width: 100%; }
+@media (min-width: 1800px) {
+  #colchart {
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente il contenuto */
+    align-items: center;    /* Centra verticalmente il contenuto (opzionale) */
+  }
 }
 
 /*notes*/
@@ -218,7 +165,7 @@ color: white;
   padding: 20px;
   background-color: #FFFF88; /* Colore di sfondo chiaro */
   border-radius: 15px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+  box-shadow: 0px 0px 26px 39px rgba(0,0,0,0.1);
 }
 
 .notes-section h2 {
@@ -250,4 +197,32 @@ color: white;
   margin: 0;
   font-size: 14px;
   color: #555;
+}
+
+.progress-container {
+  margin-bottom: 1rem; /* Spaziatura tra le barre di progresso */
+}
+
+.progress-bar {
+  transition: width 0.6s ease; /* Animazione fluida della larghezza */
+}
+/* colori delle barre di progresso */
+.bg-red {
+  background-color: #dc3545; /* Rosso */
+}
+
+.bg-gold {
+  background-color: #ffc107; /* Oro */
+}
+
+.bg-blue {
+  background-color: #007bff; /* Blu */
+}
+
+.bg-purple {
+  background-color: #6f42c1; /* Viola */
+}
+
+.bg-green {
+  background-color: #28a745; /* Verde */
 }

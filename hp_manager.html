@@ -9,12 +9,14 @@
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/sidebar_footer.css">
+    <link rel="stylesheet" href="css/themeswitch.css">
+
     <link rel="stylesheet" href="css/hp_manager.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
-<body style="background-color: rgba(71, 38, 101, 0.59);">
+<body class="manager-mode" style="background-color: rgba(71, 38, 101, 0.59);">
     <nav class="main-menu">
         <header class="avatar">
             <img src="img/manag.jpeg" alt="Avatar">
@@ -49,14 +51,6 @@
                     </span>
                 </a>
                 
-            </li>
-            <li>
-                <a href="manager_milestone.html">
-                    <i class="fa fa-film"></i>
-                    <span class="nav-text">
-                        Milestones <!-- storico delle milestones inserite dal manager x progetto attivo -->
-                    </span>
-                </a>
             </li>
 
             <li>
@@ -121,61 +115,55 @@
 </div>
 
     <div class="container mt-5">
+<!-- theme switch -->
+<div class="theme-switch-wrapper" style="float: right;">
+    <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox">
+        <span class="slider round"></span>
+    </label>
+    <em class="ms-2">Dark Mode</em>
+</div>
+<br>
+<br>
+
         <h1 class="ms-5 mb-5" id="benvenuto">Benvenuto Manager</h1>
     
         <!-- Sidebar Container -->
-         <div class="container">
+        
         <div class="row mb-4">
+
+            <div class="col-md-6 align-items-center justify-content-center" id="colchart">
+                
+                <!-- polar area chart Section -->
+                <canvas id="statusChart"></canvas>
+                </div>
+
             <div class="col-md-6">
-                <div class="sidebar-container">
-                    <!-- badges Section -->
-                    <div class="medagliere-section mb-4">
-                        <div class="card-header">
-                            <h2>Medagliere</h2>
-                            <div class="badges-container">
-                                <!-- I badge verranno aggiunti qui dinamicamente -->
-                            </div>
-                        </div>
-                    </div>
-                  
-    
-                    <!-- Progress Section -->
-                    <div class="progress-section mt-3">
-                            <h3>Completamento progetto attuale</h3>
-                            <div class="progress-bar-container">
-                                <div class="progress">
-                                    <div class="progress-bar"></div>
-                                </div>
-                                </div>
-                                <p class="progress-text">60% completato - 40% per il prossimo badge</p>
-                            </div>
-                        </div>
+                <div class="notes-section align-items-center justify-content-center">
+                    <i class="fa fa-heart"></i>&nbsp;Block Notes
+                    <ul class="notes-list mt-3">
+                        <p class="notes" id="notes-content"> 
+                            manager 1 dice:
+                        </p>
+                        <!-- Le note verranno inserite qui -->
+                    </ul>
+                
+        
+                <!-- Form per l'inserimento di nuove note -->
+                <div class="new-note-form mt-4">
+                    <textarea id="new-note-text" class="form-control mb-2" placeholder="Inserisci una nuova nota..."></textarea>
+                    <select id="consultant-select" class="form-select mb-2">
+                        <option value="">Seleziona un consulente</option>
+                        <!-- Le opzioni verranno aggiunte dinamicamente -->
+                    </select>
+                    <button id="submit-note" class="btn btn-primary">Aggiungi Nota</button>
+                </div>
+            </div>
                     </div>
             
-            <div class="col-md-6">
-                    <div class="notes-section align-items-center justify-content-center ms-3">
-                            <i class="fa fa-heart"></i>&nbsp;Block Notes
-                            <ul class="notes-list mt-3">
-                                <p class="notes" id="notes-content"> 
-                                    manager 1 dice:
-                                </p>
-                                <!-- Le note verranno inserite qui -->
-                            </ul>
-                        
-                
-                        <!-- Form per l'inserimento di nuove note -->
-                        <div class="new-note-form mt-4">
-                            <textarea id="new-note-text" class="form-control mb-2" placeholder="Inserisci una nuova nota..."></textarea>
-                            <select id="consultant-select" class="form-select mb-2">
-                                <option value="">Seleziona un consulente</option>
-                                <!-- Le opzioni verranno aggiunte dinamicamente -->
-                            </select>
-                            <button id="submit-note" class="btn btn-primary">Aggiungi Nota</button>
-                        </div>
-                    </div>
-                    </div>
+            
                 </div>
-            </div>            
+                       
         </div>
     
 
@@ -188,32 +176,15 @@
             <div class="col-md-6 mb-4">
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold" id="text-primary">Overview progetti</h6>
+                        <h6 class="m-0 font-weight-bold" id="text-primary">Overview tasks</h6>
                     </div>
-                    <div class="card-body">
-                        <h4 class="small font-weight-bold">Task 1 - <span class="float-right">20%</span></h4>
-                        <div class="progress mb-4">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h4 class="small font-weight-bold">Task 2 - <span class="float-right">40%</span></h4>
-                        <div class="progress mb-4">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h4 class="small font-weight-bold">Task 3 - <span class="float-right">60%</span></h4>
-                        <div class="progress mb-4">
-                            <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h4 class="small font-weight-bold">Task 4 - <span class="float-right">80%</span></h4>
-                        <div class="progress mb-4">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h4 class="small font-weight-bold">Task 5 - <span class="float-right">Complete!</span></h4>
-                        <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
+                    <div class="card-body" id="task-container">
+                        <!-- Le barre di progresso saranno inserite qui tramite JavaScript -->
                     </div>
                 </div>
             </div>
+            
+            
     
             <div class="col-md-6 mb-4">
                 <div class="card-hover-shadow-2x mb-3 card todo-container">
@@ -255,8 +226,12 @@
         </div>
     </footer>
 
+
+    <!-- chart.js per grafico polar area -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/profilo_badges.js"></script>
+    <script src="js/themeswitch.js"></script>
     <script src="js/hp_manager.js"></script>
 </body>
 

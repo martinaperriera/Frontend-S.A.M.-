@@ -83,7 +83,7 @@ body, html {
 }
 
   .accordion-item.active .accordion-body {
-    max-height: 300px; /* Altezza massima per l'espansione */
+    max-height: 100px; /* Altezza massima per l'espansione */
     padding: 1.5rem;
 }
   
@@ -160,7 +160,6 @@ body, html {
 /* Media query per schermi enormi */
 @media (min-width: 1650px) {
     .container {
-        max-width: 3000px; 
         margin-left: 100px; 
         margin-right: 100px;
     }

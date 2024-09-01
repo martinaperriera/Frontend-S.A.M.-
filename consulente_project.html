@@ -9,11 +9,12 @@
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/consulente_project.css">
     <link rel="stylesheet" href="css/sidebar_footer.css">
+    <link rel="stylesheet" href="css/themeswitch.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-<body style="background-color: #40832bd0;">
+<body>
     <nav class="main-menu">
       <header class="avatar">
         <img src="img/cons.jpeg" alt="Avatar">
@@ -90,149 +91,32 @@
         <li><a href="hp_consulente.html"><i class="fa fa-home"></i></a></li>
         <li><a href="consulente_project.html"><i class="fa fa-globe"></i></a></li>
         <li><a href="consulente_task.html"><i class="fa fa-book"></i></a></li>
-        <li><a href="consulente_notes.html"><i class="fa fa-comments"></i></a></li>
-        <li><a href="consulente_milestone.html"><i class="fa fa-film"></i></a></li>
         <li><a href="consulente_planner.html"><i class="fa fa-cogs"></i></a></li>
-        <li><a href="consulente.classifica.html"><i class="fa fa-map-marker"></i></a></li>
-        <li><a href="consulente_profile.html"><i class="fa fa-user"></i></a></li>
         <li><a href="consulente_help.html"><i class="fa fa-info"></i></a></li>
         <li><a href="#"><i class="fa fa-power-off"></i></a></li>
     </ul>
 </div>
 
-<!-- 
-    <div class="container mt-5">
-        <h1 class="ms-5 mb-5" id="benvenuto">I miei progetti</h1>
-        <div class="row align-items-stretch">
-            <div class="col-lg-6 col-md-8 col-sm-12">
-                <div class="ag-format-container">
-                    <div class="ag-courses_box justify-content-center">
-                        <div class="ag-courses_item active">
-                            <div class="ag-courses-item_link" onclick="toggleDetails(event, 'details1')">
-                                <div class="ag-courses-item_bg"></div>
-                                <div class="ag-courses-item_title" id="projectTitle">
-                                    Progetto attuale
-                                </div>
-                                <div class="ag-courses-item_date-box">
-                                    start - deadline:
-                                    <span class="ag-courses-item_date" id="projectDate">
-                                        26.07.2024 - 02.09.2024
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="ag-courses-item_details" id="details1">
-                                <p id="projectDetails">Dettagli del progetto: <br>
-                                    Obiettivi: raggiungimento pubblico più ampio <br>
-                                    Modalità utilizzate: remote work
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-8 col-sm-12">
-                <div class="row row-cols-1 row-cols-md-2 g-4 mt-5">
-                    <div class="col">
-                      <div class="note-card" onclick="toggleNoteCard(this)">
-                        <div class="note-card-header">
-                          <h5 class="note-card-title">Progetto passato 1</h5>
-                        </div>
-                        <div class="note-card-body d-none">
-                          <p class="note-card-text">Questa è una descrizione più lunga che verrà mostrata al click. Include dettagli e altre informazioni utili.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="note-card" onclick="toggleNoteCard(this)">
-                        <div class="note-card-header">
-                          <h5 class="note-card-title">Progetto passato 2</h5>
-                        </div>
-                        <div class="note-card-body d-none">
-                          <p class="note-card-text">Descrizione più dettagliata per la seconda card. Anche questa verrà mostrata al click.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="note-card" onclick="toggleNoteCard(this)">
-                        <div class="note-card-header">
-                          <h5 class="note-card-title">Progetto passato 3</h5>
-                        </div>
-                        <div class="note-card-body d-none">
-                          <p class="note-card-text">Un'altra descrizione con informazioni che sono utili al click.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col align-items-center justify-content-center">
-                        <div class="col">
-                            <div class="note-card note-card-plus" onclick="openModal()">
-                              <div class="note-card-header">
-                                <h5 class="note-card-title">+</h5>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                  </div>
-                  
-            </div> 
-
-            
-<div class="modal fade" id="projectsModal" tabindex="-1" aria-labelledby="projectsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="projectsModalLabel">Progetti Passati</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row row-cols-1 row-cols-md-2 g-4" id="modalProjectsContainer">
-            //card progetti passati
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-        </div>
-            
-        <div class="timeline-container mt-4">
-            <div class="timeline-card">
-                <div class="timeline-header">
-                    <h4 class="timeline-title">Timeline Progetto Attivo</h4>
-                </div>
-                <div class="timeline-content">
-                    <ul class="timeline-list">
-                        <li class="timeline-item">
-                            <div class="timeline-date bg-primary">23 Luglio</div>
-                            <h5 class="timeline-event-title">Start</h5>
-                            <p class="timeline-event-description">Divisione in gruppi, spiegazione obiettivi. Inizio.</p>
-                        </li>
-                        <li class="timeline-item">
-                            <div class="timeline-date bg-success">2 Agosto</div>
-                            <h5 class="timeline-event-title">Check</h5>
-                            <p class="timeline-event-description">Controllo risultati raggiunti.</p>
-                        </li>
-                        <li class="timeline-item">
-                            <div class="timeline-date bg-danger">2 Settembre</div>
-                            <h5 class="timeline-event-title">Consegna</h5>
-                            <p class="timeline-event-description">Presentazione.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        
-    </div>
-
-
--->
-
 
 <!-- Contentitore di tutto-->
 <div class="container mt-3">
+     <!-- theme switch -->
+     <div class="theme-switch-wrapper" style="float: right;">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <em class="ms-2">Dark Mode</em>
+    </div>
+    <br>
+    <br>
+
     <div class="text-center mb-5" id="benvenuto" style="color: #333;"> I miei Progetti</div>
+
+<!-- bar chart  -->
+<div class="row align-items-center justify-content-center mb-5">
+    <canvas id="completionChart" width="400" height="200"></canvas>
+</div>
 
     <div class="row">
         <div class="col-1"></div>
@@ -373,8 +257,10 @@
     </footer>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/themeswitch.js"></script>
     <script src="js/consulente_project.js"></script>
 </body>
 

@@ -414,3 +414,156 @@ document.addEventListener('DOMContentLoaded', () => {
     // Aggiungi un event listener al pulsante di submit
     document.getElementById('submit-note').addEventListener('click', submitNewNote);
 });
+
+// polar area chart 
+// mappa lo status ai valori numerici
+function getStatusValue(status) {
+    const normalizedStatus = status.trim().toLowerCase();
+
+    const statusValues = {
+        'to do': 5,
+        'in corso': 10,
+        'in progress': 10,
+        'dev ok': 15,
+        'testing': 20,
+        'completata': 25,
+        'completato': 25, 
+    };
+
+    return statusValues[normalizedStatus] || 0;
+}
+
+// conta lo status e mappa i progetti con il loro valore
+function countStatus(projects) {
+    const projectStatusMap = projects.map(project => {
+        const value = getStatusValue(project.status);
+        console.log(`Project: ${project.project_name}, Status: ${project.status}, Value: ${value}`);
+        return {
+            name: project.project_name,
+            value: value
+        };
+    });
+
+    return projectStatusMap;
+}
+
+
+
+function createPolarAreaChart(projectStatusMap) {
+    const canvas = document.getElementById('statusChart');
+    const ctx = canvas.getContext('2d');
+
+    // Rimuovi gli attributi width e height se impostati
+    canvas.removeAttribute('width');
+    canvas.removeAttribute('height');
+
+    new Chart(ctx, {
+        type: 'polarArea',
+        data: {
+            labels: projectStatusMap.map(project => project.name), 
+            datasets: [{
+                label: 'Project Status',
+                data: projectStatusMap.map(project => project.value), 
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, 
+            scales: {
+                r: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true
+                }
+            }
+        }
+    });
+}
+
+// Recupera i dati dall'API e crea il grafico
+fetch('http:/localhost:8080/api/projects')
+    .then(response => response.json())
+    .then(data => {
+        const projectStatusMap = countStatus(data);
+        createPolarAreaChart(projectStatusMap);
+    })
+    .catch(error => console.error('Errore nel recupero dei dati:', error));
+
+
+    // progetti tasks
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchTasks();
+    });
+    
+    function fetchTasks() {
+        fetch('http:/localhost:8080/api/tasks') 
+            .then(response => response.json())
+            .then(tasks => {
+                const container = document.getElementById('task-container');
+                container.innerHTML = ''; // Pulisce il contenitore prima di aggiungere nuove barre
+                tasks.forEach(task => {
+                    const progressPercentage = getProgressPercentage(task.status.id); // Converti status.id in percentuale
+                    
+                    // Mappa l'id del colore alla classe CSS
+                    const colorClass = getColorClass(task.status.id);
+    
+                    const progressContainer = document.createElement('div');
+                    progressContainer.className = 'progress-container';
+    
+                    // Crea il nome della task
+                    const taskName = document.createElement('h4');
+                    taskName.className = 'small font-weight-bold';
+                    taskName.innerHTML = `${task.task_name} - <span class="float-right">${progressPercentage}%</span>`;
+                    
+                    // Crea la barra di progresso
+                    const progressBar = document.createElement('div');
+                    progressBar.className = 'progress';
+                    progressBar.innerHTML = `
+                        <div class="progress-bar ${colorClass}" role="progressbar" style="width: ${progressPercentage}%" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+                    `;
+                    
+                    progressContainer.appendChild(taskName);
+                    progressContainer.appendChild(progressBar);
+                    container.appendChild(progressContainer);
+                });
+            })
+            .catch(error => {
+                console.error('Errore nel recupero dei dati:', error);
+            });
+    }
+    
+    // Funzione per convertire status.id in percentuale
+    function getProgressPercentage(statusId) {
+        // Mappa i tuoi status.id ai valori percentuali
+        const statusMap = {
+            1: 0,    // Esempio
+            2: 25,   // Esempio
+            3: 50,   // Esempio
+            4: 75,   // Esempio
+            5: 100   // Esempio
+        };
+        return statusMap[statusId] || 0; // Restituisce 0 se statusId non è definito
+    }
+    
+    // Funzione per mappare status.id alla classe di colore CSS
+    function getColorClass(statusId) {
+        const colorMap = {
+            1: 'bg-red',    // Rosso
+            2: 'bg-gold',   // Oro
+            3: 'bg-blue',   // Blu
+            4: 'bg-purple', // Viola
+            5: 'bg-green'   // Verde
+        };
+        return colorMap[statusId] || 'bg-secondary'; // Restituisce 'bg-secondary' se statusId non è definito
+    }

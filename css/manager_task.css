@@ -66,6 +66,9 @@ body {
     flex: 1; /* Makes the main content grow and take up available space */
 }
 
+.card-hover-shadow-2x{
+box-shadow: 0px 0px 26px 39px rgba(0,0,0,0.1);
+}
 
 
 /*to do list*/

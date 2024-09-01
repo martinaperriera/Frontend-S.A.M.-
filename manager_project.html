@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <link rel="stylesheet" href="css/manager_project.css">
-
+    <link rel="stylesheet" href="css/themeswitch.css">
     <link rel="stylesheet" href="css/sidebar_footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
-<body style="background-color: rgba(71, 38, 101, 0.59);">
+<body class="manager-mode" style="background-color: rgba(71, 38, 101, 0.59);">
     <nav class="main-menu">
         <header class="avatar">
             <img src="img/manag.jpeg" alt="Avatar">
@@ -51,14 +51,6 @@
                     </span>
                 </a>
                 
-            </li>
-            <li>
-                <a href="manager_milestone.html">
-                    <i class="fa fa-film"></i>
-                    <span class="nav-text">
-                        Milestones <!-- storico delle milestones inserite dal manager x progetto attivo -->
-                    </span>
-                </a>
             </li>
             <li>
                 <a href="manager_reportistica.html">
@@ -110,11 +102,7 @@
         <li><a href="hp_consulente.html"><i class="fa fa-home"></i></a></li>
         <li><a href="consulente_project.html"><i class="fa fa-globe"></i></a></li>
         <li><a href="consulente_task.html"><i class="fa fa-book"></i></a></li>
-        <li><a href="consulente_notes.html"><i class="fa fa-comments"></i></a></li>
-        <li><a href="consulente_milestone.html"><i class="fa fa-film"></i></a></li>
         <li><a href="consulente_planner.html"><i class="fa fa-cogs"></i></a></li>
-        <li><a href="consulente.classifica.html"><i class="fa fa-map-marker"></i></a></li>
-        <li><a href="consulente_profile.html"><i class="fa fa-user"></i></a></li>
         <li><a href="consulente_help.html"><i class="fa fa-info"></i></a></li>
         <li><a href="#"><i class="fa fa-power-off"></i></a></li>
     </ul>
@@ -122,7 +110,25 @@
 
    <!-- Contentitore di tutto-->
    <div class="container mt-3">
+
+    <!-- theme switch -->
+    <div class="theme-switch-wrapper" style="float: right;">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <em class="ms-2">Dark Mode</em>
+    </div>
+    <br>
+    <br>
+
+
     <div class="text-center mb-5" id="benvenuto"> I miei Progetti</div>
+
+    <!-- bar chart  -->
+    <div class="row align-items-center justify-content-center mb-5">
+        <canvas id="completionChart" width="400" height="200"></canvas>
+    </div>
 
     <div class="row">
         <div class="col-1"></div>
@@ -429,7 +435,12 @@
     </footer>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/themeswitch.js"></script>
+
 <script src="js/manager_project.js"></script>
 
 </body>

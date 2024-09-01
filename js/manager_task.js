@@ -87,6 +87,140 @@ document.addEventListener('DOMContentLoaded', function() {
   setupLogout();
 });
 
+//grafico che mostra l'andamento del completamento delle task (rispetto a quelle assegnate)
+// Funzione per recuperare i dati dall'API e processarli
+async function fetchProjectData(userId) {
+  try {
+      const response = await fetch('http://localhost:8080/api/tasks');
+      const tasks = await response.json();
+
+      // Filtrare e processare le tasks per l'utente specifico
+      const tasksPerMonth = processTasks(tasks, userId);
+
+      // Estrarre le labels (mesi) e i dataset dai dati processati
+      const labels = Object.keys(tasksPerMonth);
+      const assignedData = labels.map(month => tasksPerMonth[month].assigned);
+      const completedData = labels.map(month => tasksPerMonth[month].completed);
+
+      // Configurare e creare la chart
+      createChart(labels, assignedData, completedData);
+
+  } catch (error) {
+      console.error('Errore nel recupero dei dati:', error);
+  }
+}
+
+// Funzione per processare le tasks e calcolare i totali per mese
+function processTasks(tasks, userId) {
+  const tasksPerMonth = {};
+
+  tasks.forEach(task => {
+      // Controllo che la task sia assegnata all'utente specifico
+      if (task.userID === userId) {
+          const month = new Date(task.start_date).toLocaleString('default', { month: 'long' });
+
+          // Inizializzare il mese se non ancora presente
+          if (!tasksPerMonth[month]) {
+              tasksPerMonth[month] = { assigned: 0, completed: 0 };
+          }
+
+          // Incrementare il contatore dei progetti assegnati
+          tasksPerMonth[month].assigned++;
+
+          // Incrementare il contatore dei progetti completati se lo status è "Completata"
+          if (task.status && task.status.status === 'Completata') {
+              tasksPerMonth[month].completed++;
+          }
+      }
+  });
+
+  return tasksPerMonth;
+}
+
+// Funzione per creare la line chart
+function createChart(labels, assignedData, completedData) {
+  const ctx = document.getElementById('projectChart').getContext('2d');
+  const chartData = {
+      labels: labels,
+      datasets: [
+          {
+              label: 'Progetti Assegnati',
+              data: assignedData,
+              borderColor: 'rgba(75, 192, 192, 1)',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              fill: true,
+              tension: 0.4,
+          },
+          {
+              label: 'Progetti Completati',
+              data: completedData,
+              borderColor: 'rgba(153, 102, 255, 1)',
+              backgroundColor: 'rgba(153, 102, 255, 0.2)',
+              fill: true,
+              tension: 0.4,
+          }
+      ]
+  };
+
+  const config = {
+      type: 'line',
+      data: chartData,
+      options: {
+          responsive: true,
+          plugins: {
+              title: {
+                  display: true,
+                  text: 'Andamento dei Progetti Assegnati e Completati'
+              },
+              tooltip: {
+                  mode: 'index',
+                  intersect: false,
+              },
+          },
+          interaction: {
+              mode: 'nearest',
+              axis: 'x',
+              intersect: false
+          },
+          scales: {
+              x: {
+                  display: true,
+                  title: {
+                      display: true,
+                      text: 'Mese'
+                  }
+              },
+              y: {
+                  display: true,
+                  title: {
+                      display: true,
+                      text: 'Numero di Progetti'
+                  },
+                  beginAtZero: true
+              }
+          },
+          animations: {
+              tension: {
+                  duration: 1000,
+                  easing: 'linear',
+                  from: 0.4,
+                  to: 0.4,
+                  loop: true
+              }
+          }
+      },
+  };
+
+  new Chart(ctx, config);
+}
+
+// Chiamare la funzione per caricare i dati e creare la chart per l'utente loggato
+const loggedInUserId = 7; // Assicurati di avere l'ID dell'utente loggato
+fetchProjectData(loggedInUserId);
+
+
+
+
 /* to do list */
 document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("load", function () {
@@ -218,6 +352,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let projectListItem = document.createElement("ul");
         projectListItem.className = "p-2";
         projectListItem.id = `listaProgetto${taskProjectID}`;
+
+    
+
         //TEMPLATE DEL NOME DELLA CATEGORIA
         projectListItem.innerHTML = `
             <h5 class="mb-3 text-center">${taskProjectName}</h5>`;
@@ -839,4 +976,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
   });
+  
+
   

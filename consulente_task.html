@@ -9,6 +9,7 @@
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/consulente_project.css">
     <link rel="stylesheet" href="css/sidebar_footer.css">
+    <link rel="stylesheet" href="css/themeswitch.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -50,15 +51,6 @@
 
             </li>
             <li>
-                <a href="consulente_milestone.html">
-                    <i class="fa fa-film"></i>
-                    <span class="nav-text">
-                        Milestones <!-- storico delle milestones inserite dal manager x progetto attivo -->
-                    </span>
-                </a>
-            </li>
-
-            <li>
                <a href="consulente_planner.html">
                    <i class="fa fa-cogs"></i>
                     <span class="nav-text">
@@ -78,13 +70,12 @@
                 </a>
             </li>
             <li>
-                <a href="consulente_help.html">
-                    <i class="fa fa-info"></i>  
-                    <span class="nav-text">
-                        Help
-                        </span>                
+                <a href="#" id="logoutButton">
+                    <i class="fa fa-power-off"></i>
+                    <span class="nav-text">Logout</span>
                 </a>
-            </li>  
+            </li> 
+            
         </ul>
     </nav>
 
@@ -100,24 +91,36 @@
     <ul>
         <li><a href="hp_consulente.html"><i class="fa fa-home"></i></a></li>
         <li><a href="consulente_project.html"><i class="fa fa-globe"></i></a></li>
-        <li><a href="consulente_task.html"><i class="fa fa-book"></i></a></li>
-        <li><a href="consulente_notes.html"><i class="fa fa-comments"></i></a></li>
-        <li><a href="consulente_milestone.html"><i class="fa fa-film"></i></a></li>
+        <li><a href="consulente_task.html"><i class="fa fa-book"></i></a></li> 
         <li><a href="consulente_planner.html"><i class="fa fa-cogs"></i></a></li>
-        <li><a href="consulente.classifica.html"><i class="fa fa-map-marker"></i></a></li>
-        <li><a href="consulente_profile.html"><i class="fa fa-user"></i></a></li>
         <li><a href="consulente_help.html"><i class="fa fa-info"></i></a></li>
         <li><a href="#"><i class="fa fa-power-off"></i></a></li>
     </ul>
 </div>
 
 <div class="container">
+     <!-- theme switch -->
+     <div class="theme-switch-wrapper" style="float: right;">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <em class="ms-2">Dark Mode</em>
+    </div>
+    <br>
+    <br>
+
 <div class="row">
     <div class="col-1">
     </div>
     <div class="col-11">
         <div class="container me-2">
             <h1 class="mb-5" id="benvenuto">Le mie task</h1>
+
+            <row class="align-items-center justify-content-center">
+                <canvas id="projectChart" width="400" height="200"></canvas>
+            </row>
+
             <div class="row d-flex justify-content-center me-2">
                 
                 <!-- Task Assegnate -->
@@ -176,6 +179,8 @@
         </form>
     </div>
 </div>
+
+
 <!-- Div per i messaggi di logout -->
 <div id="message" style="margin-top: 20px; color: #333;"></div>
 </div>
@@ -194,9 +199,13 @@
     </footer>
 </div>
 
+<!-- chart.js per grafico -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/consulente_task.js"></script>
+    <script src="js/themeswitch.js"></script>
+
 </body>
 
 </html>

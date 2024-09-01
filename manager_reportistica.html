@@ -8,13 +8,15 @@
     <!-- mini icona pagina web -->
     <link rel="icon" href="img/Favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/themeswitch.css">
+
     <link rel="stylesheet" href="css/sidebar_footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/reportistica.css">
 
 </head>
 
-<body style="background-color: rgba(71, 38, 101, 0.59);">
+<body class="manager-mode" style="background-color: rgba(71, 38, 101, 0.59);">
     <nav class="main-menu">
         <header class="avatar">
             <img src="img/manag.jpeg" alt="Avatar">
@@ -49,14 +51,6 @@
                     </span>
                 </a>
                 
-            </li>
-            <li>
-                <a href="manager_milestone.html">
-                    <i class="fa fa-film"></i>
-                    <span class="nav-text">
-                        Milestones <!-- storico delle milestones inserite dal manager x progetto attivo -->
-                    </span>
-                </a>
             </li>
             <li>
                 <a href="manager_reportistica.html">
@@ -108,11 +102,7 @@
         <li><a href="hp_consulente.html"><i class="fa fa-home"></i></a></li>
         <li><a href="consulente_project.html"><i class="fa fa-globe"></i></a></li>
         <li><a href="consulente_task.html"><i class="fa fa-book"></i></a></li>
-        <li><a href="consulente_notes.html"><i class="fa fa-comments"></i></a></li>
-        <li><a href="consulente_milestone.html"><i class="fa fa-film"></i></a></li>
         <li><a href="consulente_planner.html"><i class="fa fa-cogs"></i></a></li>
-        <li><a href="consulente.classifica.html"><i class="fa fa-map-marker"></i></a></li>
-        <li><a href="consulente_profile.html"><i class="fa fa-user"></i></a></li>
         <li><a href="consulente_help.html"><i class="fa fa-info"></i></a></li>
         <li><a href="#"><i class="fa fa-power-off"></i></a></li>
     </ul>
@@ -120,6 +110,17 @@
 
 <div class="container">
     
+     <!-- theme switch -->
+     <div class="theme-switch-wrapper" style="float: right;">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <em class="ms-2">Dark Mode</em>
+    </div>
+    <br>
+    <br>
+
     <button id="downloadReport" class="btn btn-primary download-btn">Scarica Report</button>
 
     <h2 id="benvenuto">Avanzamento dei progetti</h2>
@@ -172,6 +173,8 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/reportistica.js"></script>
+    <script src="js/themeswitch.js"></script>
+
     <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
     </body>
     
