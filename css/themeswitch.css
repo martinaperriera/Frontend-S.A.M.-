@@ -100,24 +100,27 @@ body {
 :root {
     --background-color: #40832bd0;
     --text-color: white;
-    --card-bg: #332f2f !important;
+    --card-bg: #333 !important;
     --notes-bg: #FFFF88;
+    --bs-list-group-border-color:#333;
 }
 
 /* Stili specifici per manager-mode */
 .manager-mode {
     --background-color: rgba(71, 38, 101, 0.59) !important;
-    --text-color: black !important;
-    --card-bg: #332f2f !important;
+    --text-color: white !important;
+    --card-bg: #333 !important;
     --notes-bg: #FFFF88; 
+    --bs-list-group-border-color: #333;
 }
 
 /* Modalità scura */
 .dark-mode {
     --background-color: #0b0b64 !important;
     --text-color: white !important;
-    --card-bg: #332f2f !important;
-    --notes-bg: #332f2f !important;
+    --card-bg: #333 !important;
+    --notes-bg: #333 !important;
+    --bs-list-group-border-color: #333;
 }
 
 /* Applicazione delle variabili */
@@ -132,11 +135,11 @@ body {
 }
 
 .notes-section {
-    background-color: var(--notes-bg) !important;
+    background-color: var(--card-bg) !important;
     color: var(--text-color) !important;
 }
 .notes-list li {
-    background-color: var(--notes-bg) !important;
+    background-color: var(--card-bg) !important;
     color: var(--text-color);
 }
 #benvenuto{
@@ -144,4 +147,10 @@ body {
 }
 .single-timeline-area .timeline-date p {
     color: var(--text-color) !important;
+}
+::marker {
+    background-color: #333;
+}
+.table-calendar{
+    color: black !important;
 }

@@ -121,36 +121,36 @@ document.addEventListener("DOMContentLoaded", function () {
             listItem.className = "list-group-item";
             listItem.id = `task${taskID}`;
             listItem.innerHTML = `
-                <div class="row"> 
-                    <div class="widget-content p-0">
-                        <div class="widget-content-wrapper">
-                            <div class="col-2"> 
-                                <div class="widget-content-left">
-                                    <div class="widget-heading" style="color : ${taskStatusColor}">${taskPriority}</div>
-                                    <div class="widget-subheading">Creazione: ${taskCreated}</div>
-                                    <div class="widget-subheading">Scadenza: ${taskEndDate}</div>   
-                                </div>
-                            </div>
-                            <div class="col-8"> 
-                                <div class="p-2 text-center border-start border-end">
-                                    <div class="widget-subheading">${taskMileName}</div>
-                                    <div class="widget-heading mb-2"><strong>${taskName}</strong></div>
-                                    <div class="widget-subheading">${taskDescription}</div>
-                                </div>
-                            </div>
-                            <div class="col-1"> 
-                                <div class="widget-content-right">
-                                    <button class="ms-1 border-0 btn-transition btn btn-outline-warning" onclick="showChangePriorityModal(${taskID})">
-                                        <i class="fa-solid fa-clock-rotate-left"></i>
-                                    </button>
-                                    <button class="ms-1 border-0 btn-transition btn btn-outline-success" onclick="completeTask(${taskID})">
-                                        <i class="fa-solid fa-check"></i> 
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                <div class="row card-task"> 
+        <div class="widget-content p-0">
+            <div class="widget-content-wrapper d-flex align-items-center">
+                <div class="col-2 d-flex flex-column justify-content-center"> 
+                    <div class="widget-content-left">
+                        <div class="widget-heading" style="color : ${taskStatusColor}">${taskPriority}</div>
+                        <div class="widget-subheading">Creazione: ${taskCreated}</div>
+                        <div class="widget-subheading">Scadenza: ${taskEndDate}</div>   
                     </div>
                 </div>
+                <div class="col-6 d-flex flex-column align-items-center justify-content-center"> 
+                    <div class="p-2 text-center border-start border-end">
+                        <div class="widget-subheading">${taskMileName}</div>
+                        <div class="widget-heading mb-2"><strong>${taskName}</strong></div>
+                        <div class="widget-subheading">${taskDescription}</div>
+                    </div>
+                </div>
+                <div class="col-4 d-flex align-items-center justify-content-end"> 
+                    <div class="widget-content-right d-flex gap-2">
+                        <button class="border-0 btn-transition btn btn-outline-warning" onclick="showChangePriorityModal(${taskID})">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </button>
+                        <button class="border-0 btn-transition btn btn-outline-success" onclick="completeTask(${taskID})">
+                            <i class="fa-solid fa-check"></i> 
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
             `;
 
             if (taskPriority == "Completata") {

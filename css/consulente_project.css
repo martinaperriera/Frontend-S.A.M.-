@@ -783,3 +783,55 @@ body {
   font-weight: bold;
   color: white;
 }
+
+
+/*grafico*/
+/*grafico progetti*/
+.simple-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 300px;
+  justify-content: center; /* Centra le barre all'interno del contenitore */
+  margin: 0 auto; /* Centra il contenitore rispetto alla pagina */
+
+}
+
+.item {
+  position: relative;
+  width: 150px;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column-reverse; /* Dispone il testo sotto la barra */
+  align-items: center; /* Centra il testo rispetto alla barra */
+}
+
+.item::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: calc(var(--val) * 1%);
+  background-color: var(--clr);
+  z-index: 1;
+  transition: height 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.label, .value {
+  z-index: 2;
+  color: white;
+  margin: 0;
+  position: relative;
+  margin-top:200px;
+  font-size: 14px;
+}
+
+.value {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+

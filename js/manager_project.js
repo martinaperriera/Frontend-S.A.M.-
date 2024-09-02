@@ -658,6 +658,13 @@ document.addEventListener("DOMContentLoaded", () => {
       
       }
   });
+
+function closeModal() {
+  var modal = document.getElementById("addTaskModal");
+  modal.style.display = "none";
+}
+
+
   //PER METTERE TASK COMPLETATA
   //ATTUALMENTE INUTILIZZATA LATO MANAGER
   window.completeTask = async function (taskID, mileID) {
@@ -1335,148 +1342,3 @@ let allUsers = []
     
 });
 
-//bar chart
-// Definisci i valori per i vari stati di completamento
-const statusValues = {
-  'To Do': 0,
-  'In Progress': 25,
-  'Testing': 50,
-  'Completed': 75,
-  'Done': 100
-};
-
-// Funzione per processare i dati dei progetti e calcolare il livello di completamento per ogni progetto
-function processProjectCompletion(projects) {
-  const projectCompletion = {};
-
-  projects.forEach(project => {
-      const projectName = project.project_name;
-      const projectStatus = project.status;
-
-      if (!projectName) {
-          console.warn('Nome del progetto mancante:', project);
-          return;
-      }
-
-      if (!projectCompletion[projectName]) {
-          projectCompletion[projectName] = { totalValue: 0, count: 0 };
-      }
-
-      const statusValue = statusValues[projectStatus] || 0;
-      projectCompletion[projectName].totalValue += statusValue;
-      projectCompletion[projectName].count++;
-  });
-
-  Object.keys(projectCompletion).forEach(project => {
-      const data = projectCompletion[project];
-      if (data.count > 0) {
-          projectCompletion[project] = Math.round((data.totalValue / (data.count * 100)) * 100);
-      } else {
-          projectCompletion[project] = 0;
-      }
-  });
-
-  console.log('Project Completion:', projectCompletion);
-  return projectCompletion;
-}
-
-// Funzione per creare la bar chart
-function createCompletionChart(labels, completionData) {
-  const ctx = document.getElementById('completionChart').getContext('2d');
-  const chartData = {
-      labels: labels,
-      datasets: [
-          {
-              label: 'Livello di Completamento (%)',
-              data: completionData,
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              borderColor: 'rgba(75, 192, 192, 1)',
-              borderWidth: 1
-          }
-      ]
-  };
-
-  const config = {
-      type: 'bar',
-      data: chartData,
-      options: {
-          responsive: true,
-          plugins: {
-              title: {
-                  display: true,
-                  text: 'Livello di Completamento dei Progetti'
-              },
-              tooltip: {
-                  mode: 'index',
-                  intersect: false,
-              },
-          },
-          scales: {
-              x: {
-                  display: true,
-                  title: {
-                      display: true,
-                      text: 'Progetti'
-                  }
-              },
-              y: {
-                  display: true,
-                  title: {
-                      display: true,
-                      text: 'Completamento (%)'
-                  },
-                  beginAtZero: true,
-                  max: 100
-              }
-          }
-      },
-  };
-
-  new Chart(ctx, config);
-}
-
-// Funzione per recuperare i dati dall'API e processarli
-async function fetchProjectCompletionData(userId) {
-  try {
-      const response = await fetch('http://localhost:8080/api/projects');
-      const projects = await response.json();
-
-      console.log('Progetti:', projects);
-      console.log('ID Utente:', userId);
-
-      // Filtrare i progetti in base all'utente specifico
-      const filteredProjects = projects.filter(project => project.owner_id === userId);
-
-      console.log('Progetti Filtrati:', filteredProjects);
-
-      // Processare i dati dei progetti per ottenere il completamento
-      const projectCompletion = processProjectCompletion(filteredProjects);
-
-      // Estrarre le labels (nomi dei progetti) e i dataset dai dati processati
-      const labels = Object.keys(projectCompletion);
-      const completionData = labels.map(project => projectCompletion[project]);
-
-      console.log('Labels:', labels);
-      console.log('Completion Data:', completionData);
-
-      // Configurare e creare la chart
-      createCompletionChart(labels, completionData);
-
-  } catch (error) {
-      console.error('Errore nel recupero dei dati:', error);
-  }
-}
-
-// Funzione per ottenere l'ID dell'utente dal token
-function getUserIdFromToken() {
-  const token = localStorage.getItem('token');
-  if (!token) {
-      throw new Error('Token non trovato, l\'utente potrebbe non essere autenticato');
-  }
-  console.log('Token dell\'utente:', token); // Verifica il valore del token
-  return token; // Assumi che il token sia l'ID dell'utente o gestisci come necessario
-}
-
-// Chiamare la funzione per caricare i dati e creare la chart per l'utente loggato
-const loggedInUserId = getUserIdFromToken();
-fetchProjectCompletionData(loggedInUserId);

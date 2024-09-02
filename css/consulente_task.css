@@ -81,6 +81,52 @@ div.modal-content {
     }
 }
 
+.widget-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permette agli elementi di andare a capo su schermi più piccoli */
+}
+
+.card-task {
+    width: 90%; /* Aumenta la larghezza al 90% del contenitore */
+    margin: 0 auto; /* Centra la card */
+}
+
+.col-2, .col-6, .col-4 {
+    flex: 1 1 auto;
+    max-width: 100%;
+}
+
+.col-2 {
+    flex-basis: 20%; /* 20% del contenitore */
+}
+
+.col-6 {
+    flex-basis: 50%; /* 50% del contenitore */
+    text-align: center;
+}
+
+.col-4 {
+    flex-basis: 30%; /* 30% del contenitore */
+    justify-content: flex-end; /* Allinea i pulsanti a destra */
+}
+
+@media (max-width: 768px) {
+    .card-task {
+        width: 100%; /* 100% su schermi più piccoli */
+    }
+    
+    .col-2, .col-6, .col-4 {
+        flex-basis: 100%; /* Su schermi piccoli, ogni colonna occupa il 100% */
+        text-align: center;
+        margin-bottom: 10px; /* Spazio tra le colonne */
+    }
+}
+
+
+
+
 /* Footer styling */
 .footer-container {
     margin-left: 0;
@@ -111,6 +157,7 @@ div.modal-content {
         width: 100px;
         height: 100px;
     }
+
 }
 
 /* Stile card per il task manager */
@@ -124,7 +171,6 @@ div.modal-content {
     color: #89CC04;
     height: 400px;
     overflow-y: auto; /* Abilita lo scroll verticale quando il contenuto supera l'altezza della card */
-
 }
 .task-card h2 {
     margin-top: 0;
@@ -140,7 +186,6 @@ div.modal-content {
     border: 1px solid #ddd;
     border-radius: 5px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: #f9f9f9;
 }
@@ -170,6 +215,27 @@ div.modal-content {
 }
 .completed-tasks {
     margin-top: 20px;
+}
+
+
+
+.col-2, .col-6, .col-4 {
+    flex: 1 1 auto;
+    max-width: 100%;
+}
+
+.col-2 {
+    flex-basis: 20%; /* 20% del contenitore */
+}
+
+.col-6 {
+    flex-basis: 50%; /* 50% del contenitore */
+    text-align: center;
+}
+
+.col-4 {
+    flex-basis: 30%; /* 30% del contenitore */
+    justify-content: flex-end; /* Allinea i pulsanti a destra */
 }
 
 /* centra il contenuto */
@@ -203,6 +269,16 @@ div.modal-content {
 .list-group-item {
     --bs-list-group-border-width: #333 !important; 
     --bs-list-group-border-color: #333 !important;
+}
+.p-2{
+    padding-left: 0;
+    padding-right: 0;
+}
+.border-start{
+    border-left: #333 !important;
+}
+.border-end{
+    border-right:none;
 }
 .todo-container{
     background-color: #333 !important;

@@ -39,7 +39,7 @@ body {
 }
  
 .container-calendar #left h1 {
-    color: green;
+    color: white;
     text-align: center;
     background-color: #f2f2f2;
     margin: 0;
@@ -47,7 +47,7 @@ body {
 }
  
 #event-section h3 {
-    color: green;
+    color: white;
     font-size: 18px;
     margin: 0;
 }
@@ -60,7 +60,7 @@ body {
 }
  
 #event-section button {
-    background: green;
+    background: linear-gradient(147deg, #42d392, #647eff, #a627ed) !important;
     color: white;
     border: none;
     border-radius: 10px;
@@ -195,7 +195,7 @@ body {
 #monthAndYear {
     text-align: center;
     margin-top: 0;
-    color: green;
+    color: white;
 }
  
 /* Navigation buttons */

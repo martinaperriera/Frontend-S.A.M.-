@@ -758,7 +758,7 @@ async function startup() {
  startup()
 });
 
-
+/*
 //bar chart
 // Definisci i valori per i vari stati di completamento
 const statusValues = {
@@ -904,4 +904,83 @@ function getUserIdFromToken() {
 // Chiamare la funzione per caricare i dati e creare la chart per l'utente loggato
 const loggedInUserId = getUserIdFromToken();
 fetchProjectCompletionData(loggedInUserId);
+*/ 
 
+// Definizione della funzione getColorForStatus
+function getColorForStatus(status) {
+  switch (status?.toLowerCase()) {
+      case 'completato':
+          return 'green';
+      case 'testing':
+          return 'yellow';
+      case 'dev ok':
+          return 'blue';
+      case 'in progress':
+          return 'orange';
+      case 'to do':
+          return 'red';
+      default:
+          return 'grey';
+  }
+}
+
+// Supponendo che l'utente abbia un token o un ID associato
+const userId = localStorage.getItem('token');
+
+fetch(`http://localhost:8080/api/projects`)
+  .then(response => response.json())
+  .then(data => {
+      console.log('Data parsed:', data); // Verifica i dati ricevuti
+
+      const container = document.querySelector('.simple-bar-chart');
+      container.innerHTML = '';
+
+      data.forEach((project) => {
+          let progressPercentage = 0;
+
+          switch (project.status?.toLowerCase()) {
+              case 'completato':
+                  progressPercentage = 100;
+                  break;
+              case 'testing':
+                  progressPercentage = 70;
+                  break;
+              case 'dev ok':
+                  progressPercentage = 50;
+                  break;
+              case 'in progress':
+                  progressPercentage = 30;
+                  break;
+              case 'to do':
+                  progressPercentage = 10;
+                  break;
+              default:
+                  progressPercentage = 0;
+          }
+
+          console.log(`Project ${project.project_name} - Status: ${project.status}, Percentage: ${progressPercentage}`);
+
+          // Creazione dell'elemento barra
+          const item = document.createElement('div');
+          item.classList.add('item');
+          item.style.setProperty('--clr', getColorForStatus(project.status));
+          item.style.setProperty('--val', progressPercentage);
+          
+          // Creazione delle etichette (label e value)
+          const label = document.createElement('div');
+          label.classList.add('label');
+          label.textContent = project.project_name;
+
+          const value = document.createElement('div');
+          value.classList.add('value');
+          value.textContent = `${progressPercentage}%`;
+
+          // Aggiunta degli elementi 'value' e 'label' sotto la barra
+          item.appendChild(value);
+          item.appendChild(label);
+
+          // Aggiungi l'elemento item (che contiene la barra, il valore e il label) al contenitore
+          container.appendChild(item);
+      });
+  })
+  .catch(error => console.error('Error fetching projects:', error));
